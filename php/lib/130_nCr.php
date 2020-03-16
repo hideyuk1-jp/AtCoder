@@ -1,5 +1,5 @@
 <?php
-define(MOD, 10 ** 9 + 7);
+define("MOD", 10 ** 9 + 7);
 
 // nCr 前処理
 $comb = comb(100);
