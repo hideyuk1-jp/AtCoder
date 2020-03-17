@@ -1,9 +1,8 @@
 <?php
 fscanf(STDIN, '%d %d', $n, $m);
 $a = array_map('intval', explode(' ', trim(fgets(STDIN))));
-$lcm = $a[0];
+$lcm = lcmAll($a);
 for ($i = 0; $i < $n; ++$i) {
-    $lcm = lcm($lcm, $a[$i]);
     if ($lcm / $a[$i] % 2 === 0) {
         echo (0) . PHP_EOL;
         exit;
