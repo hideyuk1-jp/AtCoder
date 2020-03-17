@@ -12,7 +12,7 @@ for ($i = 0; $i < $n; ++$i) {
 $ans = floor((2 * $m + $lcm) / (2 * $lcm));
 echo $ans . PHP_EOL;
 
-// 最大公約数
+// 最大公約数（2つ）
 function gcd($m, $n)
 {
     if (!$n) return $m;
