@@ -1,4 +1,6 @@
 <?php
+define('WALL', '#');
+define('ROAD', '.');
 fscanf(STDIN, '%d %d', $h, $w);
 for ($i  = 0; $i < $h; $i++) {
     $s[] = trim(fgets(STDIN));
@@ -8,14 +10,14 @@ for ($i  = 0; $i < $h * $w; $i++) {
     $l = intval(floor($i / $w));
     $m = $i % $w;
 
-    if ($s[$l][$m] === '#') continue;
+    if ($s[$l][$m] === WALL) continue;
 
-    if ($m < $w - 1 && $s[$l][$m + 1] === '.') {
+    if ($m < $w - 1 && $s[$l][$m + 1] === ROAD) {
         $g[$i][] = $i + 1;
         $g[$i + 1][] = $i;
     }
 
-    if ($l < $h - 1 && $s[$l + 1][$m] === '.') {
+    if ($l < $h - 1 && $s[$l + 1][$m] === ROAD) {
         $g[$i][] = $i + $w;
         $g[$i + $w][] = $i;
     }
@@ -26,8 +28,8 @@ for ($i = 0; $i < $h * $w; $i++) {
     $q = new SplQueue(); // キューを用意
     $dist = array_fill(0, $h * $w, -1); // 距離を格納する配列（-1の場合はその頂点が未発見）
 
-    $dist[$i] = 0; // 頂点0からの距離格納配列
-    $q->enqueue($i); // キューに0を追加
+    $dist[$i] = 0; // 頂点iからの距離格納配列
+    $q->enqueue($i); // キューにiを追加
 
     while (!$q->isEmpty()) {
         $v = $q->dequeue();
