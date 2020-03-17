@@ -27,6 +27,32 @@ for ($i  = 0; $i < $n; $i++) fscanf(STDIN, '%d %d', $a[], $b[]);
 fscanf(STDIN, '%d', $n);
 for ($i  = 0; $i < $n; $i++) $a[] = array_map('intval', explode(' ', trim(fgets(STDIN))));
 
+// 縦h x 横w の迷路を木構造に変換（壁=# 道=.）
+define('WALL', '#');
+define('ROAD', '.');
+fscanf(STDIN, '%d %d', $h, $w);
+for ($i  = 0; $i < $h; $i++) {
+    $s[] = trim(fgets(STDIN));
+}
+$g = array_fill(0, $h * $w, []);
+for ($i  = 0; $i < $h * $w; $i++) {
+    $l = intval(floor($i / $w));
+    $m = $i % $w;
+
+    if ($s[$l][$m] === WALL) continue;
+
+    if ($m < $w - 1 && $s[$l][$m + 1] === ROAD) {
+        $g[$i][] = $i + 1;
+        $g[$i + 1][] = $i;
+    }
+
+    if ($l < $h - 1 && $s[$l + 1][$m] === ROAD) {
+        $g[$i][] = $i + $w;
+        $g[$i + $w][] = $i;
+    }
+}
+
+
 // 出力
 // そのまま
 echo $ans . PHP_EOL;
