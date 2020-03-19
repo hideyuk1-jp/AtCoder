@@ -1,7 +1,7 @@
 <?php
 fscanf(STDIN, '%d', $max);
 // 素数かどうか前処理
-$ans = primeList($max);
+$ans = primesArr($max);
 echo implode(' ', $ans);
 
 exit;
@@ -34,9 +34,9 @@ for ($i = 0; $i < $q; $i++) {
  * エラトステネスのふるい
  * $maxまでの整数のうち素数のみを格納した配列を返す
  */
-function primeList($max)
+function primesArr($max)
 {
-    $is_prime = isPrime($max);
+    $is_prime = isPrimeArr($max);
     $res = [];
     for ($i = 1; $i <= $max; $i++) {
         if ($is_prime[$i]) $res[] = $i;
@@ -48,16 +48,48 @@ function primeList($max)
  * エラトステネスのふるい
  * $maxまでの整数が素数かどうかboolを格納した配列を返す
  */
-function isPrime($max)
+function isPrimeArr($max)
 {
-    $res = array_fill(0, $max + 1, true);
-    $res[0] = $res[1] = false;
-    $rmax = floor(sqrt($max));
+    $arr = array_fill(0, $max + 1, true);
+    $arr[0]  = $arr[1] = false;
+    $rmax = (int) floor(sqrt($max));
     for ($i = 2; $i <= $rmax; $i++) {
-        if (!$res[$i]) continue;
         for ($j = 2 * $i; $j <= $max; $j += $i) {
-            $res[$j] = false;
+            $arr[$j] = false;
         }
     }
-    return $res;
+    return $arr;
+}
+
+function primes($max)
+{
+    $arr = [];
+    for ($i = 2; $i <= $max; $i++) {
+        if (isPrime($i)) $arr[] = $i;
+    }
+    return $arr;
+}
+
+function isPrime($n)
+{
+    if ($n === 1) return false;
+    $rmax = (int) floor(sqrt($n));
+    for ($i = 2; $i <= $rmax; $i++) {
+        if ($n % $i === 0) return false;
+    }
+    return true;
+}
+
+function divisors($max)
+{
+    $arr = [];
+    $rmax = (int) floor(sqrt($max));
+    for ($i = 1; $i <= $rmax; $i++) {
+        if ($max % $i === 0) {
+            $arr[] = $i;
+            $arr[] = $max / $i;
+        }
+    }
+    sort($arr);
+    return array_unique($arr);
 }
