@@ -39,7 +39,7 @@ function modPow($n, $x)
 // 階乗
 function modFac($n)
 {
-    if ($n === 1) return 1;
+    if ($n === 0) return 1;
     return modMul($n, modFac($n - 1));
 }
 
@@ -54,6 +54,6 @@ function nPr($n, $r)
 function nCr($n, $r)
 {
     $r = min($r, $n - $r);
-    if ($r === 0) return $n;
+    if ($r === 0) return 1;
     return modDiv(nPr($n, $r), modFac($r));
 }
