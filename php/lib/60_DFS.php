@@ -9,17 +9,19 @@ for ($i  = 0; $i < $m; $i++) {
 
 $seen = array_fill(0, $n, false); // 到達可能かを格納する配列
 
-dfs($g, $s, $seen);
+dfs($s);
 
-if ($seen[$t]) echo 'YES'.PHP_EOL;
-else echo 'NO'.PHP_EOL;
+if ($seen[$t]) echo 'YES' . PHP_EOL;
+else echo 'NO' . PHP_EOL;
 
-function dfs($g, $v = 0, &$seen) {
+function dfs($v = 0)
+{
+    global $g, $seen;
     $seen[$v] = true;
 
     if (is_null($g[$v])) return;
-    foreach ($g[$v] as $next_v) {
-        if ($seen[$next_v]) continue;
-        dfs($g, $next_v, $seen);
+    foreach ($g[$v] as $to) {
+        if ($seen[$to]) continue;
+        dfs($to);
     }
 }
