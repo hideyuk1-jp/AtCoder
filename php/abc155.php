@@ -4,61 +4,88 @@ $a = array_map('intval', explode(' ', trim(fgets(STDIN))));
 $minus = $zero = $plus = [];
 for ($i = 0; $i < $n; $i++) {
     if ($a[$i] < 0) {
-        $minus[] = $a[$i];
-    } elseif ($a[$i] == 0) {
+        $minus[] = -$a[$i];
+    } elseif ($a[$i] === 0) {
         $zero[] = 0;
     } else {
         $plus[] = $a[$i];
     }
 }
 
-// マイナスになるものの組み合わせ
-$kumi_minus = count($minus) * count($plus);
-// 0になるものの組み合わせ
-$kumi_zero = count($zero) * ($n - count($zero)) + count($zero) * (count($zero) - 1) / 2;
+sort($plus);
+sort($minus);
+
+$cnt_plus = count($plus);
+$cnt_zero = count($zero);
+$cnt_minus = count($minus);
+
 // プラスになるものの組み合わせ
-$kumi_plus = count($plus) * (count($plus) - 1) / 2 + count($minus) * (count($minus) - 1) / 2;
+$kumi_plus = $cnt_plus * ($cnt_plus - 1) / 2 + $cnt_minus * ($cnt_minus - 1) / 2;
+// 0になるものの組み合わせ
+$kumi_zero = $cnt_zero * ($n - $cnt_zero) + $cnt_zero * ($cnt_zero - 1) / 2;
+// マイナスになるものの組み合わせ
+$kumi_minus = $cnt_minus * $cnt_plus;
 
-if ($k <= $kumi_minus) {
-    // k番目はマイナス
-    sort($minus);
-    rsort($plus);
-    $min = $minus[0] * $plus[0];
-    $max = $minus[count($minus) - 1] * $plus[count($plus) - 1];
-    $mid = floor(($min + $max) / 2);
-
-    // mid以下の数を数える
-    while (true) {
-        $cnt = $j = 0;
-        $_max = -10 ** 9;
-        for ($i = 0; $i < count($minus); $i++) {
-            for ($j = $j; $j < count($plus); $j++) {
-                if ($minus[$i] * $plus[$j] > $mid) {
-                    $cnt += $j + 1;
-                    if ($_max < $minus[$i] * $plus[$j - 1]) $_max = $minus[$i] * $plus[$j - 1];
-                    break;
-                }
-            }
-        }
-        if ($cnt == $k) {
-            $ans = $_max;
-            $break;
-        } elseif ($cnt > $k) {
-            $max = $mid;
-        } else {
-            $min = $mid;
-        }
-    }
-} elseif ($k <= $kumi_minus + $kumi_zero) {
-    // k番目はゼロ
-    $ans = 0;
-} else {
-    // k番目はプラス
-    rsort($minus);
-    sort($plus);
+// 二分探索
+$ok = -10 ** 18 - 1;
+$ng = 10 ** 18 + 1;
+while (abs($ok - $ng) > 1) {
+    $mid = intdiv($ok + $ng, 2);
+    if (cnt($mid) < $k) $ok = $mid;
+    else $ng = $mid;
 }
+echo $ok;
 
-echo $ans . PHP_EOL;
+// $x未満になるものの組み合わせの数を返す
+function cnt($x)
+{
+    global $minus, $plus, $cnt_minus, $cnt_plus, $kumi_minus, $kumi_zero, $kumi_plus;
+
+    if (!$x) { // 0の場合はマイナスになる組み合わせの数を返す
+        return $kumi_minus;
+    }
+
+    if ($x > 0) {
+        $res = $kumi_minus + $kumi_zero;
+
+        // しゃくとり プラスxプラス
+        $r = $cnt_plus - 1;
+        for ($l = 0; $l < $cnt_plus; $l++) {
+            while ($r > $l && $plus[$l] * $plus[$r] >= $x) {
+                $r--;
+            }
+            $res += $r - $l;
+            if ($l >= $r) break;
+        }
+
+        // しゃくとり マイナスxマイナス
+        $r = $cnt_minus - 1;
+        for ($l = 0; $l < $cnt_minus; $l++) {
+            while ($r > $l && $minus[$l] * $minus[$r] >= $x) {
+                $r--;
+            }
+            $res += $r - $l;
+            if ($l >= $r) break;
+        }
+
+        return $res;
+    }
+
+    if ($x < 0) {
+        $res = 0;
+
+        // しゃくとり マイナスxプラス
+        $r = 0;
+        for ($l = $cnt_minus - 1; $l >= 0; $l--) {
+            while ($r < $cnt_plus && -$minus[$l] * $plus[$r] >= $x) {
+                $r++;
+            }
+            $res += $cnt_plus - $r;
+        }
+
+        return $res;
+    }
+}
 
 exit;
 
