@@ -3,13 +3,11 @@ fscanf(STDIN, '%d', $n);
 $a = array_map('intval', explode(' ', trim(fgets(STDIN))));
 while (true) {
     $n = count($a);
-    var_dump($a);
     if ($n === 1) break;
     sort($a);
     $a_tmp = [$a[0]];
     for ($i = 1; $i < $n; $i++) {
         $x = $a[$i] % $a[0];
-        var_dump($x);
         if ($x > 0) $a_tmp[] = $x;
     }
     $a = $a_tmp;
