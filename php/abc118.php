@@ -1,4 +1,23 @@
 <?php
+fscanf(STDIN, '%d', $n);
+$a = array_map('intval', explode(' ', trim(fgets(STDIN))));
+while (true) {
+    $n = count($a);
+    var_dump($a);
+    if ($n === 1) break;
+    sort($a);
+    $a_tmp = [$a[0]];
+    for ($i = 1; $i < $n; $i++) {
+        $x = $a[$i] % $a[0];
+        var_dump($x);
+        if ($x > 0) $a_tmp[] = $x;
+    }
+    $a = $a_tmp;
+}
+echo $a[0];
+
+exit;
+
 fscanf(STDIN, '%d %d', $n, $m);
 for ($i  = 0; $i < $n; $i++) $a[] = array_map('intval', explode(' ', trim(fgets(STDIN))));
 $f = array_fill(1, $m, true);
