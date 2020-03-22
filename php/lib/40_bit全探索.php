@@ -6,7 +6,7 @@ $n = count($item);
 // bit全探索
 for ($i = 0; $i < 2 ** $n; $i++) {
     $bag = [];
-    echo ('pattern '.$i.': ');
+    echo ('pattern ' . $i . ': ');
     for ($j = 0; $j < $n; $j++) {
         if (($i >> $j) & 1) {
             $bag[] = $item[$j][0];
