@@ -1,4 +1,11 @@
 <?php
+// 素因数分解（エラトステネスの篩）
+fscanf(STDIN, '%d', $n);
+$prime_fac = primeFactorization($n);
+var_dump($prime_fac);
+
+exit;
+
 fscanf(STDIN, '%d', $max);
 // 素数かどうか前処理
 $ans = primesArr($max);
@@ -59,6 +66,37 @@ function isPrimeArr($max)
         }
     }
     return $arr;
+}
+
+// 素因数分解
+function primeFactorization($n)
+{
+    $res = [];
+    $res[1] = 1;
+    if ($n === 1) return $res;
+
+    $primes = primesArr((int) sqrt($n) + 1);
+
+    foreach ($primes as $prime) {
+        while ($n % $prime === 0) {
+            if (isset($res[$prime])) {
+                $res[$prime]++;
+            } else {
+                $res[$prime] = 1;
+            }
+            $n /= $prime;
+        }
+    }
+
+    if ($n > 1) {
+        if (isset($res[$n])) {
+            $res[$n]++;
+        } else {
+            $res[$n] = 1;
+        }
+    }
+
+    return $res;
 }
 
 function primes($max)
