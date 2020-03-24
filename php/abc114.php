@@ -2,35 +2,95 @@
 // バーチャル CまでAC 600 24:38 => 推定パフォ 1307
 // D
 fscanf(STDIN, '%d', $n);
-for ($i = 1; $i <= $n; $i++) {
-    $div[$i] = divisors($i);
-}
-echo (2 ** 100) . PHP_EOL;
-$sum = 0;
-for ($i = 0; $i < 2 ** $n; $i++) {
-    $tdiv = [];
-    for ($j = 0; $j < $n; $j++) {
-        if (($i >> $j) & 1) {
-            $tdiv = array_merge($tdiv, $div[$j + 1]);
+for ($i = 2; $i <= $n; $i++) {
+    $pf = primeFactorization($i);
+    foreach ($pf as $p => $c) {
+        if ($p !== 1) {
+            if (isset($cnt_p[$p])) {
+                $cnt_p[$p] += $c;
+            } else {
+                $cnt_p[$p] = $c;
+            }
         }
     }
-    $tdiv = array_unique($tdiv);
-    if (count($tdiv) === 75) $sum++;
 }
-echo $sum;
+$cnt75 = f(75);
+$cnt25 = f(25);
+$cnt15 = f(15);
+$cnt5 = f(5);
+$cnt3 = f(3);
 
-function divisors($max)
+$ans = $cnt75 + $cnt25 * ($cnt3 - 1) + $cnt15 * ($cnt5 - 1) + $cnt5 * ($cnt5 - 1) / 2 * ($cnt3 - 2);
+echo $ans;
+
+function f($n)
 {
-    $arr = [];
+    global $cnt_p;
+    return count(array_filter($cnt_p, function ($v) use ($n) {
+        return $v >= $n - 1;
+    }));
+}
+
+/**
+ * エラトステネスのふるい
+ * $maxまでの整数のうち素数のみを格納した配列を返す
+ */
+function primesArr($max)
+{
+    $is_prime = isPrimeArr($max);
+    $res = [];
+    for ($i = 1; $i <= $max; $i++) {
+        if ($is_prime[$i]) $res[] = $i;
+    }
+    return $res;
+}
+
+/**
+ * エラトステネスのふるい
+ * $maxまでの整数が素数かどうかboolを格納した配列を返す
+ */
+function isPrimeArr($max)
+{
+    $arr = array_fill(0, $max + 1, true);
+    $arr[0]  = $arr[1] = false;
     $rmax = (int) floor(sqrt($max));
-    for ($i = 1; $i <= $rmax; $i++) {
-        if ($max % $i === 0) {
-            $arr[] = $i;
-            $arr[] = $max / $i;
+    for ($i = 2; $i <= $rmax; $i++) {
+        for ($j = 2 * $i; $j <= $max; $j += $i) {
+            $arr[$j] = false;
         }
     }
-    sort($arr);
-    return array_unique($arr);
+    return $arr;
+}
+
+// 素因数分解
+function primeFactorization($n)
+{
+    $res = [];
+    $res[1] = 1;
+    if ($n === 1) return $res;
+
+    $primes = primesArr((int) sqrt($n) + 1);
+
+    foreach ($primes as $prime) {
+        while ($n % $prime === 0) {
+            if (isset($res[$prime])) {
+                $res[$prime]++;
+            } else {
+                $res[$prime] = 1;
+            }
+            $n /= $prime;
+        }
+    }
+
+    if ($n > 1) {
+        if (isset($res[$n])) {
+            $res[$n]++;
+        } else {
+            $res[$n] = 1;
+        }
+    }
+
+    return $res;
 }
 
 exit;
