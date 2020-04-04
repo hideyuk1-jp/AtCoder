@@ -38,7 +38,7 @@ for ($i = 0; $i < $q; $i++) {
 }
 
 /**
- * エラトステネスのふるい
+ * 素数列挙（エラトステネスのふるい）
  * $maxまでの整数のうち素数のみを格納した配列を返す
  */
 function primesArr($max)
@@ -52,7 +52,7 @@ function primesArr($max)
 }
 
 /**
- * エラトステネスのふるい
+ * 素数判定（エラトステネスのふるい）
  * $maxまでの整数が素数かどうかboolを格納した配列を返す
  */
 function isPrimeArr($max)
@@ -68,11 +68,12 @@ function isPrimeArr($max)
     return $arr;
 }
 
-// 素因数分解
+// 素因数分解（エラトステネスのふるい）
+// インデックスに素数、値に数を格納した配列を返す
+// （1は素数ではないので含まない）
 function primeFactorization($n)
 {
     $res = [];
-    $res[1] = 1;
     if ($n === 1) return $res;
 
     $primes = primesArr((int) sqrt($n) + 1);
@@ -99,6 +100,7 @@ function primeFactorization($n)
     return $res;
 }
 
+// 素数列挙（試し割り）
 function primes($max)
 {
     $arr = [];
@@ -108,6 +110,7 @@ function primes($max)
     return $arr;
 }
 
+// 素数判定（試し割り）
 function isPrime($n)
 {
     if ($n === 1) return false;
@@ -118,6 +121,7 @@ function isPrime($n)
     return true;
 }
 
+// 約数列挙
 function divisors($max)
 {
     $arr = [];
