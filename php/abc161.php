@@ -1,5 +1,25 @@
 <?php
 // コンテスト参加 Dまで自力AC 1000 22:24 => パフォ 1060
+// D 解説の解放で
+fscanf(STDIN, '%d', $k);
+$q = new SplQueue();
+for ($i = 1; $i <= 9; $i++) {
+    $q->enqueue($i);
+}
+$cnt = 1;
+while (true) {
+    $cur = $q->dequeue();
+    if ($cnt === $k) break;
+    $btm = $cur % 10;
+    if ($btm !== 0) $q->enqueue($cur * 10 + $btm - 1);
+    $q->enqueue($cur * 10 + $btm);
+    if ($btm !== 9) $q->enqueue($cur * 10 + $btm + 1);
+    $cnt++;
+}
+echo $cur;
+
+exit;
+
 // F
 fscanf(STDIN, '%d', $n);
 $ans = 0;
