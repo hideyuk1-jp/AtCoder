@@ -1,22 +1,42 @@
 <?php
 // コンテスト参加 Dまで自力AC 1000 22:24 => パフォ 1060
-// D 解説の解放で
-fscanf(STDIN, '%d', $k);
-$q = new SplQueue();
-for ($i = 1; $i <= 9; $i++) {
-    $q->enqueue($i);
+// E 解説見て
+fscanf(STDIN, '%d %d %d', $n, $k, $c);
+fscanf(STDIN, '%s', $s);
+
+// 左から
+$rest = 10 ** 6; // 今日まで連続で休んだ日数の初期値は十分大きい値
+$cnt = 1; // 何回目に働くか
+for ($i = 1; $i <= $n && $cnt <= $k; $i++) {
+    if ($s[$i - 1] === 'o' && $rest >= $c) {
+        // $cnt 回目に働くのは $i 日目以降
+        $l[$cnt] = $i;
+        $cnt++;
+        $rest = 0;
+    } else {
+        $rest++;
+    }
 }
-$cnt = 1;
-while (true) {
-    $cur = $q->dequeue();
-    if ($cnt === $k) break;
-    $btm = $cur % 10;
-    if ($btm !== 0) $q->enqueue($cur * 10 + $btm - 1);
-    $q->enqueue($cur * 10 + $btm);
-    if ($btm !== 9) $q->enqueue($cur * 10 + $btm + 1);
-    $cnt++;
+
+// 右から
+$rest = 10 ** 6; // 今日まで連続で休んだ日数の初期値は十分大きい値
+$cnt = $k; // 何回目に働くか
+for ($i = $n; $i >= 1 && $cnt >= 1; $i--) {
+    if ($s[$i - 1] === 'o' && $rest >= $c) {
+        // $cnt 回目に働くのは $i 日目以前
+        $r[$cnt] = $i;
+        $cnt--;
+        $rest = 0;
+    } else {
+        $rest++;
+    }
 }
-echo $cur;
+
+$ans = [];
+for ($i = 1; $i <= $k; $i++) {
+    if (isset($l[$i]) && isset($r[$i]) && $l[$i] === $r[$i]) $ans[] = $l[$i];
+}
+echo implode(PHP_EOL, $ans);
 
 exit;
 
@@ -139,7 +159,7 @@ function divisors($max)
 
 exit;
 
-// E
+// E 解けず
 fscanf(STDIN, '%d %d %d', $n, $k, $c);
 fscanf(STDIN, '%s', $s);
 
