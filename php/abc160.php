@@ -1,34 +1,106 @@
 <?php
 // コンテスト参加 EまでAC
 // F
+define("MOD", 10 ** 9 + 7);
 fscanf(STDIN, '%d', $n);
 for ($i  = 0; $i < $n - 1; $i++) {
     fscanf(STDIN, '%d %d', $a, $b);
     $g[$a][] = $b;
     $g[$b][] = $a; // 無向グラフの場合
 }
-
+dfs1(1);
+dfs2(1);
+$ans = [];
 for ($i = 1; $i <= $n; $i++) {
-    dfs($i);
-    var_dump($cnt);
+    $ans[] = $dp[$i][-1]['value'];
+}
+echo implode(PHP_EOL, $ans);
+
+function dfs1($v, $par = -1)
+{
+    global $g, $dp;
+
+    $size = 0;
+    $value = 1;
+    foreach ($g[$v] as $to) {
+        if ($to === $par) continue;
+        dfs1($to, $v);
+        $size += $dp[$to][$v]['size'];
+        $value = modMul($value, $dp[$to][$v]['value']);
+        $value = modMul($value, nCr($size, $dp[$to][$v]['size']));
+    }
+    $size++;
+    $dp[$v][$par] = compact('value', 'size');
 }
 
-function dfs($v = 0)
+function dfs2($v, $par = -1)
 {
-    global $g, $seen, $cnt;
-    $seen[$v] = true;
+    global $g, $dp;
 
-    if (is_null($g[$v])) return;
-
-    // 子の頂点の数
-    $cnt[$v] = count($g[$v]) - 1;
-
+    $size = $dp[$v][-1]['size'];
     foreach ($g[$v] as $to) {
-        if ($seen[$to]) continue;
-        dfs($to);
+        if ($to === $par) continue;
+        $value = modMul($dp[$v][-1]['value'], $dp[$to][$v]['size']);
+        $value = modDiv($value, $size - $dp[$to][$v]['size']);
+        $dp[$to][-1] = compact('value', 'size');
+        dfs2($to, $v);
     }
 }
 
+// 足し算
+function modAdd($x, $y)
+{
+    return ($x + $y) % MOD;
+}
+
+// 引き算
+function modSub($x, $y)
+{
+    return ($x + MOD - $y) % MOD;
+}
+
+// 掛け算
+function modMul($x, $y)
+{
+    return ($x * $y) % MOD;
+}
+
+// 割り算
+function modDiv($x, $y)
+{
+    return modMul($x, modPow($y, MOD - 2));
+}
+
+// 累乗（繰り返し二乗法）
+function modPow($n, $x)
+{
+    if ($x === 0) return 1;
+    $res = (modPow($n, $x >> 1) ** 2) % MOD;
+    if ($x % 2 === 1) $res = modMul($res, $n);
+    return $res;
+}
+
+// 階乗
+function modFac($n)
+{
+    if ($n === 0) return 1;
+    return modMul($n, modFac($n - 1));
+}
+
+// 順列
+function nPr($n, $r)
+{
+    if ($r === 0) return 1;
+    return modDiv(modFac($n), modFac($n - $r));
+}
+
+// 組み合わせ
+function nCr($n, $r)
+{
+    $r = min($r, $n - $r);
+    if ($r === 0) return 1;
+    return modDiv(nPr($n, $r), modFac($r));
+}
 
 exit;
 
