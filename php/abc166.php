@@ -1,4 +1,20 @@
 <?php
+// E
+fscanf(STDIN, '%d', $n);
+$a = array_map('intval', explode(' ', trim(fgets(STDIN))));
+for ($i = 0; $i < $n; $i++) {
+    $x[$i + $a[$i]][] = $i;
+    $y[$i - $a[$i]][] = $i;
+}
+$ans = 0;
+for ($i = 0; $i < $n; $i++) {
+    if (!isset($x[$i]) || !isset($y[$i])) continue;
+    $ans += count($x[$i]) * count($y[$i]);
+}
+echo $ans;
+
+exit;
+
 // D
 fscanf(STDIN, '%d', $x);
 $a = 0;
