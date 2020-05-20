@@ -4,6 +4,8 @@
 fscanf(STDIN, '%d %d %d %d', $n, $m, $s, $t);
 for ($i  = 0; $i < $m; $i++) {
     fscanf(STDIN, '%d %d', $a, $b);
+    $a--; // 0スタートに合わせる
+    $b--;
     $g[$a][] = $b; // 有向グラフ
 }
 

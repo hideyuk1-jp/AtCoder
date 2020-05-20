@@ -3,6 +3,8 @@
 fscanf(STDIN, '%d %d', $n, $m);
 for ($i  = 0; $i < $m; $i++) {
     fscanf(STDIN, '%d %d', $a, $b);
+    $a--; // 0スタートに合わせる
+    $b--;
     $g[$a][] = $b;
     $g[$b][] = $a; // 無向グラフの場合
 }
@@ -14,7 +16,7 @@ $dist = array_fill(0, $n, -1); // 距離を格納する配列（-1の場合は�
 $dist[0] = 0; // 頂点0からの距離格納配列
 $q->enqueue(0); // キューに0を追加
 
-while(!$q->isEmpty()) {
+while (!$q->isEmpty()) {
     $v = $q->dequeue();
 
     foreach ($g[$v] as $next_v) {
@@ -26,7 +28,7 @@ while(!$q->isEmpty()) {
 }
 
 foreach ($dist as $i => $v) {
-    echo $i.': '.$v.PHP_EOL;
+    echo $i . ': ' . $v . PHP_EOL;
 }
 
 // BFS：二部グラフ判定
@@ -38,7 +40,7 @@ for ($i = 0; $i < $n; $i++) {
     if ($dist[$i] !== -1) continue; // 発見済み
     $dist[$i] = 0; // 頂点$iからの距離格納配列
     $q->enqueue($i); // キューに$iを追加
-    while(!$q->isEmpty()) {
+    while (!$q->isEmpty()) {
         $v = $q->dequeue();
 
         foreach ($g[$v] as $next_v) {
@@ -51,10 +53,9 @@ for ($i = 0; $i < $n; $i++) {
                     break 3;
                 }
             }
-
         }
     }
 }
 
-if ($is_nipartite) echo 'YES'.PHP_EOL;
-else echo 'NO'.PHP_EOL;
+if ($is_nipartite) echo 'YES' . PHP_EOL;
+else echo 'NO' . PHP_EOL;
