@@ -12,9 +12,9 @@ function gcd($m, $n)
 // 最大公約数（3つ以上）
 function gcdAll($arr)
 {
-    $gcd = $arr[0];
-    for ($i = 0; $i < count($arr); $i++) {
-        $gcd = gcd($gcd, $arr[$i]);
+    $gcd = array_pop($arr);
+    foreach ($arr as $a) {
+        $gcd = gcd($gcd, $a);
     }
     return $gcd;
 }
@@ -28,9 +28,9 @@ function lcm($m, $n)
 // 最小公倍数（3つ以上）
 function lcmAll($arr)
 {
-    $lcm = $arr[0];
-    for ($i = 0; $i < count($arr); $i++) {
-        $lcm = lcm($lcm, $arr[$i]);
+    $lcm = array_pop($arr);
+    foreach ($arr as $a) {
+        $lcm = lcm($lcm, $a);
     }
     return $lcm;
 }
