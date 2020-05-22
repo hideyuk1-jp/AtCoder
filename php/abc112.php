@@ -1,4 +1,15 @@
 <?php
+// D
+fscanf(STDIN, '%d %d', $n, $m);
+$x = intdiv($m, $n);
+while (true) {
+    if (($m - $x * ($n - 1)) % $x === 0) break;
+    $x--;
+}
+echo $x;
+
+exit;
+
 // C
 fscanf(STDIN, '%d', $n);
 $ans = 1001;
