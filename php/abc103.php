@@ -11,15 +11,13 @@ for ($i  = 0; $i < $m; $i++) {
         $x[$a] = $b;
     }
 }
-ksort($x);
+asort($x);
 $ans = 0;
-$ok = -1;
-foreach ($x as $i => $v) {
-    if ($i > $ok) {
+$prem = -1; // 直前に取り除いた橋
+foreach ($x as $l => $r) {
+    if ($l > $prem) {
         $ans++;
-        $ok = $v - 1;
-    } else {
-        $ok = min($ok, $v - 1);
+        $prem = $r - 1;
     }
 }
 echo $ans;
