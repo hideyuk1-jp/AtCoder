@@ -1,4 +1,21 @@
 <?php
+// C
+fscanf(STDIN, '%d', $n);
+fscanf(STDIN, '%s', $s);
+$cusum['E'][0] = 0;
+$cusum['W'][0] = 0;
+for ($i = 1; $i <= $n; $i++) {
+    $cusum['E'][$i] = $cusum['E'][$i - 1];
+    $cusum['W'][$i] = $cusum['W'][$i - 1];
+    $cusum[$s[$i - 1]][$i]++;
+}
+$ans = PHP_INT_MAX;
+for ($i = 0; $i < $n; $i++)
+    $ans = min($ans, $n - 1 - ($cusum['E'][$i] + ($cusum['W'][$n] - $cusum['W'][$i + 1])));
+echo $ans;
+
+exit;
+
 // B
 fscanf(STDIN, '%d', $n);
 fscanf(STDIN, '%s', $s);
