@@ -39,21 +39,24 @@ for ($i = 0; $i < $q; $i++) {
 
 /**
  * 素数列挙（エラトステネスのふるい）
- * $maxまでの整数のうち素数のみを格納した配列を返す
+ * $max以下の素数を格納した配列を返す
  */
 function primesArr($max)
 {
-    $is_prime = isPrimeArr($max);
-    $res = [];
-    for ($i = 1; $i <= $max; $i++) {
-        if ($is_prime[$i]) $res[] = $i;
+    $arr = array_fill(2, $max - 1, true);
+    $rmax = (int) floor(sqrt($max));
+    for ($i = 2; $i <= $rmax; $i++) {
+        if (!isset($arr[$i])) continue;
+        for ($j = 2 * $i; $j <= $max; $j += $i) {
+            unset($arr[$j]);
+        }
     }
-    return $res;
+    return array_keys($arr);
 }
 
 /**
  * 素数判定（エラトステネスのふるい）
- * $maxまでの整数が素数かどうかboolを格納した配列を返す
+ * $max以下の整数が素数かどうかboolを格納した配列を返す
  */
 function isPrimeArr($max)
 {
