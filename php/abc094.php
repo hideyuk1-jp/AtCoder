@@ -7,9 +7,7 @@ $l = $a[$n - 1];
 $r = -1;
 $d = PHP_INT_MAX;
 for ($i = 0; $i < $n - 1; $i++) {
-    $td = $l % 2 === 0
-        ? abs(intdiv($l, 2) - $a[$i])
-        : min(abs(intdiv($l, 2) - $a[$i]), abs(intdiv($l, 2) + 1 - $a[$i]));
+    $td = abs($l / 2 - $a[$i]);
     if ($td < $d) {
         $d = $td;
         $r = $a[$i];
