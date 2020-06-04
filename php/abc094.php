@@ -1,5 +1,5 @@
 <?php
-// C
+// D
 fscanf(STDIN, '%d', $n);
 $a = array_map('intval', explode(' ', trim(fgets(STDIN))));
 sort($a);
