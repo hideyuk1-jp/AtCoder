@@ -2,15 +2,14 @@
 // D
 fscanf(STDIN, '%d', $n);
 $a = array_map('intval', explode(' ', trim(fgets(STDIN))));
-sort($a);
-$l = $a[$n - 1];
-$r = -1;
+$l = max($a);
+unset($a[array_search($l, $a)]);
 $d = PHP_INT_MAX;
-for ($i = 0; $i < $n - 1; $i++) {
-    $td = abs($l / 2 - $a[$i]);
+foreach ($a as $v) {
+    $td = abs($l / 2 - $v);
     if ($td < $d) {
         $d = $td;
-        $r = $a[$i];
+        $r = $v;
     }
 }
 echo implode(' ', [$l, $r]);
