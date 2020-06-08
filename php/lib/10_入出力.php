@@ -36,7 +36,7 @@ for ($i  = 0; $i < $h; $i++) {
 }
 $g = array_fill(0, $h * $w, []);
 for ($i  = 0; $i < $h * $w; $i++) {
-    $l = intval(floor($i / $w));
+    $l = intdiv($i, $w);
     $m = $i % $w;
 
     if ($s[$l][$m] === WALL) continue;
