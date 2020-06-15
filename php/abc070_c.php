@@ -1,6 +1,15 @@
 <?php
-echo gcd(45, 27) . PHP_EOL;
-echo lcm(45, 27) . PHP_EOL;
+list($n) = ints();
+for ($i = 0; $i < $n; ++$i) {
+    list($t) = ints();
+    if ($i > 0) $ans = lcm($ans, $t);
+    else $ans = $t;
+}
+echo $ans;
+function ints()
+{
+    return array_map('intval', explode(' ', trim(fgets(STDIN))));
+}
 
 // 最大公約数（2つ）
 function gcd($m, $n)
