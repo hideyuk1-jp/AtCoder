@@ -25,6 +25,7 @@ class WarshallFloyd
     {
         $this->n = $n;
         $this->d = array_fill(0, $this->n, array_fill(0, $this->n, INF));
+        for ($i = 0; $i < $this->n; ++$i) $this->d[$i][$i] = 0;
     }
 
     function connect($x, $y, $w)
