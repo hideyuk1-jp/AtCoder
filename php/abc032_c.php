@@ -8,19 +8,17 @@ for ($i = 0; $i < $n; ++$i) {
     }
 }
 // しゃくとり
-$max = 0;
-$j = 0;
-for ($i = 0; $i < $n; ++$i) {
-    $j = max($i, $j);
-    if ($s[$i] > $k) continue;
-    if ($j === $i) $p = $s[$i];
-    else $p /= $s[$i - 1];
-    while ($j < $n - 1 && $p * $s[$j + 1] <= $k) {
-        $p *= $s[$j + 1];
-        $j++;
+$max = $r = 0;
+for ($l = 0; $l < $n; ++$l) {
+    $r = max($l, $r); // 左端が右端を追い越さないように
+    if ($r === $l) $p = 1;
+    else $p /= $s[$l - 1];
+    while ($r < $n && $p * $s[$r] <= $k) {
+        $p *= $s[$r];
+        ++$r;
     }
-    $max = max($max, $j - $i + 1);
-    if ($j === $n - 1) break;
+    $max = max($max, $r - $l);
+    if ($r === $n) break;
 }
 echo $max . PHP_EOL;
 function ints()
