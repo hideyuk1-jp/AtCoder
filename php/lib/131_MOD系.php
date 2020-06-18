@@ -47,7 +47,7 @@ function modFac($n)
 function nPr($n, $r)
 {
     if ($r === 0) return 1;
-    return modDiv(modFac($n), modFac($n - $r));
+    return modMul(nPr($n, $r - 1), $n - $r + 1);
 }
 
 // 組み合わせ
