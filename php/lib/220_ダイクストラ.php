@@ -22,8 +22,55 @@ function ints()
 }
 
 // ノードsからの各ノードへの最短距離
-// 0->n-1
+// 0->indexed
 class Dijkstra
+{
+    private $n;
+    private $d; // 最短距離を格納
+    private $cost; // ノード間の距離を格納
+
+    function __construct($n)
+    {
+        $this->n = $n;
+        $this->cost = array_fill(0, $this->n, array_fill(0, $this->n, INF));
+    }
+
+    function connect($x, $y, $w)
+    {
+        $this->cost[$x][$y] = $w;
+    }
+
+    function solve($s = 0)
+    {
+        $this->d[$s] = array_fill(0, $this->n, INF);
+        $this->d[$s][$s] = 0;
+        $used = array_fill(0, $this->n, false);
+        while (true) {
+            $v = -1;
+            // 残りのノードのうち最短で到達出来るノードを選択
+            for ($i = 0; $i < $this->n; ++$i) {
+                if (!$used[$i] && $v === -1) $v = $i;
+                elseif (!$used[$i] && $this->d[$s][$i] < $this->d[$s][$v]) $v = $i;
+            }
+            if ($v === -1) break;
+            for ($i = 0; $i < $this->n; ++$i) {
+                if ($this->d[$s][$i] > $this->d[$s][$v] + $this->cost[$v][$i]) {
+                    $this->d[$s][$i] = $this->d[$s][$v] + $this->cost[$v][$i];
+                }
+            }
+            $used[$v] = true;
+        }
+    }
+
+    function dist($x, $y)
+    {
+        return $this->d[$x][$y];
+    }
+}
+
+// ノードsからの各ノードへの最短距離（経路も保持）
+// 0->indexed
+class Dijkstra2
 {
     private $n;
     private $d; // 最短距離を格納
