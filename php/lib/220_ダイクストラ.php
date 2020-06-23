@@ -42,24 +42,28 @@ class Dijkstra
 
     function solve($s = 0)
     {
-        $this->d[$s] = array_fill(0, $this->n, INF);
-        $this->d[$s][$s] = 0;
-        $used = array_fill(0, $this->n, false);
+        $n = $this->n;
+        $d = $this->d;
+        $cost = $this->cost;
+        $d[$s] = array_fill(0, $n, INF);
+        $d[$s][$s] = 0;
+        $used = array_fill(0, $n, false);
         while (true) {
             $v = -1;
             // 残りのノードのうち最短で到達出来るノードを選択
-            for ($i = 0; $i < $this->n; ++$i) {
+            for ($i = 0; $i < $n; ++$i) {
                 if (!$used[$i] && $v === -1) $v = $i;
-                elseif (!$used[$i] && $this->d[$s][$i] < $this->d[$s][$v]) $v = $i;
+                elseif (!$used[$i] && $d[$s][$i] < $d[$s][$v]) $v = $i;
             }
             if ($v === -1) break;
-            for ($i = 0; $i < $this->n; ++$i) {
-                if ($this->d[$s][$i] > $this->d[$s][$v] + $this->cost[$v][$i]) {
-                    $this->d[$s][$i] = $this->d[$s][$v] + $this->cost[$v][$i];
+            for ($i = 0; $i < $n; ++$i) {
+                if ($d[$s][$i] > $d[$s][$v] + $cost[$v][$i]) {
+                    $d[$s][$i] = $d[$s][$v] + $cost[$v][$i];
                 }
             }
             $used[$v] = true;
         }
+        $this->d = $d;
     }
 
     function dist($x, $y)
@@ -90,26 +94,32 @@ class Dijkstra2
 
     function solve($s = 0)
     {
-        $this->d[$s] = array_fill(0, $this->n, INF);
-        $this->d[$s][$s] = 0;
-        $this->root[$s] = array_fill(0, $this->n, [$s]); // 各ノードまでの最短経路を格納
-        $used = array_fill(0, $this->n, false);
+        $n = $this->n;
+        $d = $this->d;
+        $cost = $this->cost;
+        $root = $this->root;
+        $d[$s] = array_fill(0, $n, INF);
+        $d[$s][$s] = 0;
+        $root[$s] = array_fill(0, $n, [$s]); // 各ノードまでの最短経路を格納
+        $used = array_fill(0, $n, false);
         while (true) {
             $v = -1;
             // 残りのノードのうち最短で到達出来るノードを選択
-            for ($i = 0; $i < $this->n; ++$i) {
+            for ($i = 0; $i < $n; ++$i) {
                 if (!$used[$i] && $v === -1) $v = $i;
-                elseif (!$used[$i] && $this->d[$s][$i] < $this->d[$s][$v]) $v = $i;
+                elseif (!$used[$i] && $d[$s][$i] < $d[$s][$v]) $v = $i;
             }
             if ($v === -1) break;
-            for ($i = 0; $i < $this->n; ++$i) {
-                if ($this->d[$s][$i] > $this->d[$s][$v] + $this->cost[$v][$i]) {
-                    $this->d[$s][$i] = $this->d[$s][$v] + $this->cost[$v][$i];
-                    $this->root[$s][$i] = array_merge($this->root[$s][$v], [$i]);
+            for ($i = 0; $i < $n; ++$i) {
+                if ($d[$s][$i] > $d[$s][$v] + $cost[$v][$i]) {
+                    $d[$s][$i] = $d[$s][$v] + $cost[$v][$i];
+                    $root[$s][$i] = array_merge($root[$s][$v], [$i]);
                 }
             }
             $used[$v] = true;
         }
+        $this->d = $d;
+        $this->root = $root;
     }
 
     function dist($x, $y)

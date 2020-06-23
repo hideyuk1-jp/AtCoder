@@ -1,21 +1,30 @@
 <?php
-// ワーシャルフロイド
-// abc079_d
-list($h, $w) = ints();
-$wf = new WarshallFloyd(10);
-for ($i = 0; $i < 10; ++$i)
-    foreach (ints() as $j => $v) $wf->connect($i, $j, $v);
+list($n, $m) = ints();
+$wf = new WarshallFloyd($n);
+for ($i = 0; $i < $m; ++$i) {
+    list($u, $v, $l) = ints();
+    --$u;
+    --$v;
+    if ($u !== 0) {
+        $wf->connect($u, $v, $l);
+        $wf->connect($v, $u, $l);
+    } else {
+        $d[$v] = $l;
+    }
+}
 $wf->solve();
-$ans = 0;
-for ($i = 0; $i < $h; ++$i)
-    foreach (ints() as $v) $ans += $v !== -1 ? $wf->dist($v, 1) : 0;
-echo $ans;
-
+$ans = INF;
+foreach ($d as $i => $di) {
+    foreach ($d as $j => $dj) {
+        if ($i < $j) $ans = min($ans, $di + $wf->dist($i, $j) + $dj);
+    }
+}
+echo $ans !== INF ? $ans : '-1';
+echo PHP_EOL;
 function ints()
 {
     return array_map('intval', explode(' ', trim(fgets(STDIN))));
 }
-
 // 全てのノード間の最短距離を求める
 // 0-indexed
 class WarshallFloyd
