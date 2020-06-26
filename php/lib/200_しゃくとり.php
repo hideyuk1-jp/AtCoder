@@ -1,4 +1,26 @@
 <?php
+// ARC022_B 同じ数字が現れない部分区間の最大長を求める
+list($n) = ints();
+$a = ints();
+$ans = 0;
+// 尺取
+for ($l = $r = 0; $l < $n; ++$l) {
+    $r = max($l, $r);
+    while ($r < $n && !isset($cnt[$a[$r]])) {
+        $cnt[$a[$r]] = true;
+        ++$r;
+    }
+    unset($cnt[$a[$l]]);
+    $ans = max($ans, $r - $l);
+}
+echo $ans . PHP_EOL;
+function ints()
+{
+    return array_map('intval', explode(' ', trim(fgets(STDIN))));
+}
+
+exit;
+
 // ABC155 D 二分探索の判定の中でしゃくとり
 fscanf(STDIN, '%d %d', $n, $k);
 $a = array_map('intval', explode(' ', trim(fgets(STDIN))));
