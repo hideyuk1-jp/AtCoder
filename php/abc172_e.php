@@ -1,8 +1,19 @@
 <?php
 define("MOD", 10 ** 9 + 7);
-
-echo nCr(10, 1);
-
+list($n, $m) = ints();
+init($m);
+$cnta = nPr2($m, $n);
+$cntb = 0;
+for ($i = 0; $i <= $n; ++$i) {
+    $c = modMul(nCr2($n, $i), nPr2($m - $i, $n - $i));
+    if ($i & 1) $cntb = modSub($cntb, $c);
+    else $cntb = modAdd($cntb, $c);
+}
+echo modMul($cnta, $cntb);
+function ints()
+{
+    return array_map('intval', explode(' ', trim(fgets(STDIN))));
+}
 // 足し算
 function modAdd($x, $y)
 {
@@ -68,14 +79,12 @@ function init($n)
     for ($i = $n; $i >= 1; --$i)
         $ifact[$i - 1] = modMul($ifact[$i], $i);
 }
-
 // 順列（前処理）
 function nPr2($n, $r)
 {
     global $fact, $ifact;
     return modMul($fact[$n], $ifact[$n - $r]);
 }
-
 // 組み合わせ（前処理）
 function nCr2($n, $r)
 {
