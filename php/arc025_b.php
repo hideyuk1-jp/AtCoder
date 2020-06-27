@@ -13,9 +13,9 @@ for ($i = 0; $i < $h; ++$i) {
     for ($j = 0; $j < $w; ++$j) {
         for ($k = $h - 1; $k >= $i; --$k) {
             for ($l = $w - 1; $l >= $j; --$l) {
-                $t = $dp[$k][$l] - ($dp[$k][$j - 1] ?? 0) - ($dp[$i - 1][$l] ?? 0) + ($dp[$i - 1][$j - 1] ?? 0);
                 $area = ($k - $i + 1) * ($l - $j + 1);
                 if ($max >= $area) break;
+                $t = $dp[$k][$l] - ($dp[$k][$j - 1] ?? 0) - ($dp[$i - 1][$l] ?? 0) + ($dp[$i - 1][$j - 1] ?? 0);
                 if ($t === 0) {
                     $max = $area;
                     break;
