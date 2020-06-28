@@ -1,5 +1,17 @@
 <?php
-// Union-Find：同じグループに属するかどうかを判定する
+list($n, $m) = ints();
+$uf = new UnionFind($n);
+for ($i = 0; $i < $m; ++$i) {
+    list($a, $b) = ints();
+    --$a;
+    --$b;
+    $uf->unite($a, $b);
+}
+echo ($uf->count() - 1) . PHP_EOL;
+function ints()
+{
+    return array_map('intval', explode(' ', trim(fgets(STDIN))));
+}
 class UnionFind
 {
     private $par; // par[$i]:$iの親 自分が根の場合は自身のindexとなる
@@ -47,22 +59,3 @@ class UnionFind
         return $cnt;
     }
 }
-
-fscanf(STDIN, '%d %d', $n, $m);
-$p = array_map('intval', explode(' ', trim(fgets(STDIN))));
-
-$tree = new UnionFind($n);
-
-for ($i  = 0; $i < $m; $i++) {
-    fscanf(STDIN, '%d %d', $x, $y);
-    $x--;
-    $y--; // 0 ~ $n-1に合わせる
-    $tree->unite($x, $y);
-}
-
-$cnt = 0;
-for ($i = 0; $i < $n; $i++) {
-    if ($tree->isSame($i, $p[$i])) $cnt++;
-}
-
-echo $cnt . PHP_EOL;

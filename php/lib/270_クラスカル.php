@@ -87,7 +87,15 @@ class UnionFind
     }
 
     function size($x)
-    {
+    { // xが属するグループのサイズ
         return $this->size[$this->root($x)];
+    }
+
+    function count()
+    { // グループの数
+        $cnt = 0;
+        foreach ($this->par as $i => $r)
+            if ($i === $r) ++$cnt;
+        return $cnt;
     }
 }
