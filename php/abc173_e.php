@@ -37,6 +37,8 @@ $i = 0;
 $ans = 1;
 while ($k > 1) {
     list($v, $f) = $q->extract();
+    while ($k % 2 && $f && $i + 2 === count($ap))
+        list($v, $f) = $q->extract();
     $k -= 2;
     $ans = modMul($ans, $v % MOD);
     if ($f) $i += 2;
