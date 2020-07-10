@@ -8,6 +8,7 @@ for ($i = 1; $i <= $n; ++$i) {
     $dp[$i] = $dp[$i - 1];
     if ((isset($last[$a])) && $last[$a] !== $i - 1)
         $dp[$i] += $dp[$last[$a]];
+    $dp[$i] %= MOD;
     $last[$a] = $i;
 }
 echo $dp[$n];
