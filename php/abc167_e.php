@@ -1,7 +1,21 @@
 <?php
-define("MOD", 10 ** 9 + 7);
-
-echo nCr(10, 1);
+const MOD = 998244353;
+list($n, $m, $k) = ints();
+init($n - 1);
+$ans = 0;
+// 隣り合う組のうちi個が同じ色
+// = 左端を除いたn-1個のブロックのうちi個が左隣と同じ色（１通り）で、
+//   その他のn-1-i個のブロックは左隣と違う色（m-1通り）。
+//   左端のブロックは何色でも良い（m通り）
+for ($i = 0; $i <= $k; ++$i) {
+    $t = modProd($m, nCr2($n - 1, $i), modPow($m - 1, $n - 1 - $i));
+    $ans = modAdd($ans, $t);
+}
+echo $ans;
+function ints()
+{
+    return array_map('intval', explode(' ', trim(fgets(STDIN))));
+}
 
 // 足し算
 function modAdd($x, $y)
