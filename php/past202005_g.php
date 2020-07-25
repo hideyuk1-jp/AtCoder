@@ -19,9 +19,9 @@ while (!$q->isEmpty()) {
     for ($i = 0; $i < 6; ++$i) {
         $nx = $x + $dx[$i];
         $ny = $y + $dy[$i];
-        if (max(abs($nx), abs($ny)) >= 403) continue;
+        if (max($nx, $ny) >= 403 || min($nx, $ny) < 0) continue; // 範囲外
         if ($dist[$nx][$ny] !== -1) continue; // 発見済み
-        if (isset($block[$nx][$ny])) continue;
+        if (isset($block[$nx][$ny])) continue; // 障害物
         $dist[$nx][$ny] = $dist[$x][$y] + 1;
         $q->enqueue([$nx, $ny]);
     }
