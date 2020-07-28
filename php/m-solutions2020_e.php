@@ -1,40 +1,48 @@
 <?php
 list($n) = ints();
-for ($i = 0; $i < $n; ++$i) {
-    list($x[$i], $y[$i], $p[$i]) = ints();
+for ($i = 0; $i < $n; ++$i) list($x[], $y[], $p[]) = ints();
+for ($i = 0; $i < 2 ** $n; ++$i) {
+    $pc[$i] = popcount($i);
+    for ($j = 0; $j < $n; ++$j) {
+        if ($i >> $j & 1) {
+            for ($k = 0; $k < $n; ++$k) {
+                $distx[$i][$k] = min($distx[$i][$k] ?? abs($x[$k]), abs($x[$j] - $x[$k]));
+                $disty[$i][$k] = min($disty[$i][$k] ?? abs($y[$k]), abs($y[$j] - $y[$k]));
+            }
+        } else {
+            if (!isset($distx[$i][$j])) $distx[$i][$j] = abs($x[$j]);
+            if (!isset($disty[$i][$j])) $disty[$i][$j] = abs($y[$j]);
+        }
+    }
 }
-for ($k = 0; $k <= $n; ++$k) $ans[] = dfs($k);
+$ans = array_fill(0, $n + 1, PHP_INT_MAX);
+for ($i = 0; $i < 2 ** $n; ++$i) {
+    $k = $pc[$i];
+    $t = $i;
+    while ($t) {
+        $u = $t ^ $i;
+        $ans[$k] = min($ans[$k], calcCost($t, $t ^ $i));
+        $t = ($t - 1) & $i;
+    }
+    $ans[$k] = min($ans[$k], calcCost(0, $i));
+}
 echo implode(PHP_EOL, $ans);
-function dfs($k = 0, $d = 0, $lxs = [true], $lys = [true])
+function popcount($x)
 {
-    global $n, $x, $y, $cntx, $cnty;
-    if (count($lxs) + count($lys) - 2 > $k) return PHP_INT_MAX;
-    if ($d === $n || count($lxs) + count($lys) - 2 === $k) return calc($lxs, $lys);
-    $res[] = dfs($k, $d + 1, $lxs, $lys);
-    $_lxs = $lxs;
-    $_lys = $lys;
-    $_lxs[$x[$d]] = true;
-    $_lys[$y[$d]] = true;
-    $res[] = dfs($k, $d + 1, $_lxs, $lys);
-    $res[] = dfs($k, $d + 1, $lxs, $_lys);
-    $res[] = dfs($k, $d + 1, $_lxs, $_lys);
-    return min($res);
-}
-function calc($lxs, $lys)
-{
-    global $n, $x, $y, $p;
     $res = 0;
-    $lxs = array_keys($lxs);
-    $lys = array_keys($lys);
-    for ($i = 0; $i < $n; ++$i) {
-        $dist = PHP_INT_MAX;
-        foreach ($lxs as $lx)
-            $dist = min($dist, abs($x[$i] - $lx));
-        foreach ($lys as $ly)
-            $dist = min($dist, abs($y[$i] - $ly));
-        $res += $dist * $p[$i];
+    while ($x > 0) {
+        $x &= $x - 1;
+        ++$res;
     }
     return $res;
+}
+function calcCost($bitx, $bity)
+{
+    global $n, $distx, $disty, $p;
+    $cost = 0;
+    for ($i = 0; $i < $n; ++$i)
+        $cost += min($distx[$bitx][$i], $disty[$bity][$i]) * $p[$i];
+    return $cost;
 }
 function ints()
 {
