@@ -27,3 +27,19 @@ function dfs($v = 0)
         dfs($to);
     }
 }
+exit;
+
+// 閉路検出
+$seen = array_fill(0, $n, 0); // 0:未探索 1:行きがけ 2:探索済
+function dfs2($v = 0)
+{
+    global $g, $seen;
+    $seen[$v] = 1; // 行きがけ
+    if (is_null($g[$v])) return;
+    foreach ($g[$v] as $to) {
+        if ($seen[$to] === 1) exit('-1'); // 閉路検出
+        if ($seen[$to] === 2) continue;
+        dfs($to);
+    }
+    $seen[$v] = 2; // 探索済
+}
