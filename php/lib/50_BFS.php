@@ -13,8 +13,8 @@ for ($i  = 0; $i < $m; $i++) {
 $q = new SplQueue(); // キューを用意
 $dist = array_fill(0, $n, -1); // 距離を格納する配列（-1の場合はその頂点が未発見）
 
-$dist[0] = 0; // 頂点0からの距離格納配列
-$q->enqueue(0); // キューに0を追加
+$dist[0] = 0; // 始点からの距離格納配列
+$q->enqueue(0); // キューに始点を追加
 
 while (!$q->isEmpty()) {
     $v = $q->dequeue();
