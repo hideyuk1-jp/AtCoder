@@ -5,44 +5,28 @@ for ($i = 0; $i < $n; ++$i) --$p[$i];
 $c = ints();
 $max = PHP_INT_MIN;
 for ($i = 0; $i < $n; ++$i) {
-    $_k = $k;
-    $visited = [];
-    $visited[$i] = true;
-    $ss = [];
     $s = 0;
     $cur = $i;
-    $d = [];
-    $d[$i] = 0;
     $cnt = 0;
-    $loop = false;
-    while ($cnt < $_k) {
+    $_max = [PHP_INT_MIN];
+    while (true) {
         ++$cnt;
         $cur = $p[$cur];
         $s += $c[$cur];
-        if (isset($visited[$cur])) {
-            $loop = true;
-            $_k -= $d[$cur];
-            $loop_d = $cnt - $d[$cur];
-            $loop_s = $s - $ss[$cur];
-            break;
-        }
-        $ss[$cur] = $s;
-        $visited[$cur] = true;
-        $d[$cur] = $cnt;
+        $_max[] = max($_max[$cnt - 1], $s);
+        if ($cur === $i) break;
     }
-    if ($loop && $loop_s > 0) {
-        $_max = $ss[$cur] + intdiv($_k, $loop_d) * $loop_s;
-        $_k %= $loop_d;
-        $s = $_max;
-        for ($j = 0; $j < $_k; ++$j) {
-            $cur = $p[$cur];
-            $s += $c[$cur];
-            $_max = max($_max, $s);
-        }
-        $max = max($max, $_max);
-    } else {
-        if (count($ss) > 0) $max = max($max, max($ss));
+    if ($k <= $cnt) {
+        $max = max($max, $_max[$k]);
+        continue;
     }
+    if ($s <= 0) {
+        $max = max($max, $_max[$cnt]);
+        continue;
+    }
+    $t = $k % $cnt;
+    $tt = intdiv($k - $cnt, $cnt);
+    $max = max($max, max($_max[$cnt], $s + $_max[$t]) + $s * $tt);
 }
 echo $max;
 function ints()
