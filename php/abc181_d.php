@@ -2,11 +2,12 @@
 // 下3桁が8の倍数であれば8の倍数
 [$S] = strs();
 $s = count_chars($S);
-// 3桁以下の場合
-if (strlen($S) <= 3) {
+$ans = 'No';
+
+// 2桁以下の場合
+if (strlen($S) <= 2) {
     $n = 0;
-    $ans = 'No';
-    while ($n < 1000) {
+    while ($n < 100) {
         $n += 8;
         if ($s == count_chars($n)) $ans = 'Yes';
     }
@@ -14,16 +15,13 @@ if (strlen($S) <= 3) {
     exit();
 }
 
-// 4桁以上の場合
+// 3桁以上の場合
 $n = 96;
 while ($n < 1000) {
     $n += 8;
-    $arr[] = count_chars($n);
-}
-$ans = 'No';
-foreach ($arr as $a) {
     $flag = true;
-    foreach ($a as $i => $c) {
+    $cn = count_chars($n);
+    foreach ($cn as $i => $c) {
         if ($s[$i] < $c) {
             $flag = false;
             break;
