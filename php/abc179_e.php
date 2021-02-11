@@ -7,7 +7,7 @@ for ($i = 0; $i < $N; ++$i) {
     if (DEBUG) echo "i=${i}: ${a} ${ans}" . PHP_EOL;
     if (isset($exits[$a])) {
         // ループ区間発見
-        if (DEBUG) echo '[loop is find]' . PHP_EOL;
+        if (DEBUG) echo '[loop is found]' . PHP_EOL;
         $li = $i - $exits[$a][0];
         $ld = $ans - $exits[$a][1];
         $ln = intdiv($N - 1 - $i, $li);
