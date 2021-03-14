@@ -2,36 +2,21 @@
 [$N] = ints();
 [$S] = strs();
 [$X] = strs();
-$d = 10 ** ($N - 1);
-$t = 0;
+$S = strrev($S);
+$X = strrev($X);
+$dp = array_fill(0, $N + 1, array_fill(0, 7, false));
+$dp[0][0] = true;
+$d = 1;
 for ($i = 0; $i < $N; ++$i) {
-    $t += intval($S[$i]) * $d;
-    if ($i === $N - 1 || $X[$i] !== $X[$i + 1]) {
-        $a[] = $t % 7;
-        $t = 0;
-        $x[] = $X[$i];
-    }
-    $d /= 10;
-}
-var_dump($a, $x);
-$n = count($a);
-$win = array_fill(0, 7, false);
-$win[0] = true;
-for ($i = $n - 1; $i >= 0; --$i) {
+    $num = (intval($S[$i]) * $d) % 7;
     for ($k = 0; $k < 7; ++$k) {
-        if ($win[$k]) {
-            $win[($k + $a[$i]) % 7] = true;
-        }
+        if ($X[$i] === 'T') $dp[$i + 1][$k] = $dp[$i][$k] || $dp[$i][($k + 7 - $num) % 7];
+        else $dp[$i + 1][$k] = $dp[$i][$k] && $dp[$i][($k + 7 - $num) % 7];
     }
-    $wincnt = 0;
-    for ($k = 0; $k < 7; ++$k)
-        if ($win[$k]) $wincnt++;
-
-    if ($x[$i] === 'A') {
-        if ($wincnt < 7) $ans = 'AOKI';
-    } else {
-    }
+    $d *= 10;
+    $d %= 7;
 }
+echo $dp[$N][0] ? 'Takahashi' : 'Aoki';
 function strs()
 {
     return explode(' ', trim(fgets(STDIN)));
