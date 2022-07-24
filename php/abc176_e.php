@@ -1,14 +1,21 @@
 <?php
+
 list($H, $W, $M) = ints();
 for ($i = 0; $i < $M; ++$i) {
     list($h, $w) = ints();
     --$h;
     --$w;
     $exist[$h][$w] = true;
-    if (isset($row[$h])) ++$row[$h];
-    else $row[$h] = 1;
-    if (isset($col[$w])) ++$col[$w];
-    else $col[$w] = 1;
+    if (isset($row[$h])) {
+        ++$row[$h];
+    } else {
+        $row[$h] = 1;
+    }
+    if (isset($col[$w])) {
+        ++$col[$w];
+    } else {
+        $col[$w] = 1;
+    }
 }
 $rowMax = 0;
 foreach ($row as $i => $cnt) {

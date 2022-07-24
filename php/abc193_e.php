@@ -1,4 +1,5 @@
 <?php
+
 [$N] = ints();
 for ($i = 0; $i < $N; ++$i) {
     [$x, $y, $p, $q] = ints();

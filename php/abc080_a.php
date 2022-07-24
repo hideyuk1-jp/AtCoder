@@ -1,4 +1,5 @@
 <?php
+
 list($n, $a, $b) = ints();
 echo min($a * $n, $b);
 

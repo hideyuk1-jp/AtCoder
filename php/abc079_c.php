@@ -1,4 +1,5 @@
 <?php
+
 $a = array_map('intval', str_split(trim(fgets(STDIN))));
 $n = 3;
 for ($i = 0; $i < 2 ** $n; ++$i) {
@@ -14,6 +15,8 @@ for ($i = 0; $i < 2 ** $n; ++$i) {
         }
     }
     $ans .= '=7';
-    if ($cnt === 7) break;
+    if ($cnt === 7) {
+        break;
+    }
 }
 echo $ans;

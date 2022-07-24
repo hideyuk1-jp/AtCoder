@@ -1,9 +1,13 @@
 <?php
+
 [$N, $X] = ints();
 [$S] = strs();
 for ($i = 0; $i < $N; ++$i) {
-    if ($S[$i] === "o") ++$X;
-    else --$X;
+    if ($S[$i] === "o") {
+        ++$X;
+    } else {
+        --$X;
+    }
     $X = max(0, $X);
 }
 echo $X;

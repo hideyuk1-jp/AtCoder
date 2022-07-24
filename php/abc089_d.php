@@ -1,4 +1,5 @@
 <?php
+
 list($h, $w, $d) = ints();
 for ($i = 0; $i < $h; $i++) {
     $a[] = ints();

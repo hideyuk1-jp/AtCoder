@@ -1,6 +1,7 @@
 <?php
+
 [$q] = ints();
-$pq = new SplPriorityQueue;
+$pq = new SplPriorityQueue();
 $add = [];
 $ans = [];
 for ($i = 0; $i < $q; ++$i) {
@@ -8,7 +9,7 @@ for ($i = 0; $i < $q; ++$i) {
     $add[$i] = $add[$i - 1] ?? 0;
     if ($query[0] === 1) {
         $pq->insert([$query[1], $i], -$query[1] + $add[$i]);
-    } else if ($query[0] === 2) {
+    } elseif ($query[0] === 2) {
         $add[$i] += $query[1];
     } else {
         [$num, $j] = $pq->extract();

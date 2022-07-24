@@ -1,4 +1,5 @@
 <?php
+
 list($x) = ints();
 echo $x < 1200 ? 'ABC' : 'ARC';
 function ints()

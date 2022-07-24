@@ -1,7 +1,12 @@
 <?php
+
 list($a, $b, $c, $d) = ints();
-if ($a + $b > $c + $d) exit('Left');
-if ($a + $b === $c + $d) exit('Balanced');
+if ($a + $b > $c + $d) {
+    exit('Left');
+}
+if ($a + $b === $c + $d) {
+    exit('Balanced');
+}
 echo 'Right';
 function ints()
 {

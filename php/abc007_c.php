@@ -1,4 +1,5 @@
 <?php
+
 define('WALL', '#');
 define('ROAD', '.');
 list($h, $w) = ints();
@@ -6,13 +7,17 @@ list($sy, $sx) = ints();
 $start = ($sy - 1) * $w + $sx - 1;
 list($gy, $gx) = ints();
 $goal = ($gy - 1) * $w + $gx - 1;
-for ($i  = 0; $i < $h; $i++) list($c[]) = strs();
+for ($i  = 0; $i < $h; $i++) {
+    list($c[]) = strs();
+}
 $g = array_fill(0, $h * $w, []);
 for ($i  = 0; $i < $h * $w; $i++) {
     $l = intdiv($i, $w);
     $m = $i % $w;
 
-    if ($c[$l][$m] === WALL) continue;
+    if ($c[$l][$m] === WALL) {
+        continue;
+    }
 
     if ($m < $w - 1 && $c[$l][$m + 1] === ROAD) {
         $g[$i][] = $i + 1;
@@ -37,7 +42,9 @@ while (!$q->isEmpty()) {
     $v = $q->dequeue();
 
     foreach ($g[$v] as $next_v) {
-        if ($dist[$next_v] !== -1) continue; // 発見済み
+        if ($dist[$next_v] !== -1) {
+            continue;
+        } // 発見済み
 
         $dist[$next_v] = $dist[$v] + 1;
         $q->enqueue($next_v);

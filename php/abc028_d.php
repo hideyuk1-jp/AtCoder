@@ -1,4 +1,5 @@
 <?php
+
 list($n, $k) = ints();
 $ans = 1 / $n * 1 / $n * 1 / $n; // k k k
 $ans += 3 * ($k - 1) / $n * 1 / $n * 1 / $n; // k未満 k k

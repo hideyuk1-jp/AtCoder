@@ -1,4 +1,5 @@
 <?php
+
 list($q) = ints();
 $n = pow(10, 5);
 $isPrime = isPrimeArr($n);

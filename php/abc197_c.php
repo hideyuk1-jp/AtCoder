@@ -1,4 +1,5 @@
 <?php
+
 [$n] = ints();
 $a = ints();
 $min = PHP_INT_MAX;

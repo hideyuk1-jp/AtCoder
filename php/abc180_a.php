@@ -1,4 +1,5 @@
 <?php
+
 [$N, $A, $B] = ints();
 echo $N - $A + $B;
 echo PHP_EOL;

@@ -1,4 +1,5 @@
 <?php
+
 // C
 fscanf(STDIN, '%d', $n);
 fscanf(STDIN, '%s', $s);
@@ -10,8 +11,9 @@ for ($i = 1; $i <= $n; $i++) {
     $cusum[$s[$i - 1]][$i]++;
 }
 $ans = PHP_INT_MAX;
-for ($i = 0; $i < $n; $i++)
+for ($i = 0; $i < $n; $i++) {
     $ans = min($ans, $n - 1 - ($cusum['E'][$i] + ($cusum['W'][$n] - $cusum['W'][$i + 1])));
+}
 echo $ans;
 
 exit;
@@ -25,7 +27,9 @@ for ($i = 1; $i < $n; $i++) {
     $x = count_chars(substr($s, 0, $i), 1);
     $y = count_chars(substr($s, $i, $n - $i), 1);
     foreach ($x as $idx => $v) {
-        if (isset($y[$idx])) $cnt++;
+        if (isset($y[$idx])) {
+            $cnt++;
+        }
     }
     $ans = max($ans, $cnt);
 }

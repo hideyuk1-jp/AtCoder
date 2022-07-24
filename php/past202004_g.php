@@ -1,4 +1,5 @@
 <?php
+
 list($q) = ints();
 $strs = [];
 $top = 0;
@@ -9,7 +10,9 @@ for ($i = 0; $i < $q; ++$i) {
     } elseif ($type === '2') {
         $x = (int)$a;
         $cnt = [];
-        for ($j = 0; $j < 26; ++$j) $cnt[chr(97 + $j)] = 0;
+        for ($j = 0; $j < 26; ++$j) {
+            $cnt[chr(97 + $j)] = 0;
+        }
         while ($x > 0 && $top < count($strs)) {
             list($c, $n) = $strs[$top];
             if ($x >= $n) {
@@ -23,7 +26,9 @@ for ($i = 0; $i < $q; ++$i) {
             }
         }
         $res = 0;
-        foreach ($cnt as $v) $res += $v ** 2;
+        foreach ($cnt as $v) {
+            $res += $v ** 2;
+        }
         $ans[] = $res;
     }
 }

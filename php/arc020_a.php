@@ -1,8 +1,13 @@
 <?php
+
 list($a, $b) = ints();
-if (abs($a) < abs($b)) echo 'Ant';
-elseif (abs($a) > abs($b)) echo 'Bug';
-else echo 'Draw';
+if (abs($a) < abs($b)) {
+    echo 'Ant';
+} elseif (abs($a) > abs($b)) {
+    echo 'Bug';
+} else {
+    echo 'Draw';
+}
 echo PHP_EOL;
 function ints()
 {

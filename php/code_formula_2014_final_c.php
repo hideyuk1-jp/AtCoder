@@ -1,4 +1,5 @@
 <?php
+
 $s = trim(fgets(STDIN));
 preg_match_all('/@([a-z]+)/', $s, $m);
 $m = array_unique($m[1]);

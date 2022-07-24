@@ -1,4 +1,5 @@
 <?php
+
 [$N, $M, $Q] = ints();
 for ($i = 0; $i < $N; ++$i) {
     [$w[], $v[]] = ints();
@@ -20,7 +21,9 @@ for ($i = 0; $i < $Q; ++$i) {
     $used = [];
     for ($j = 0; $j < count($_x); ++$j) {
         for ($k = 0; $k < $N; ++$k) {
-            if (isset($used[$k])) continue;
+            if (isset($used[$k])) {
+                continue;
+            }
             if ($_x[$j] >= $w[$k]) {
                 $_ans += $v[$k];
                 $used[$k] = true;

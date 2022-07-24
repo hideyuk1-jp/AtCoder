@@ -1,4 +1,5 @@
 <?php
+
 // BFSで解いてみる（多点スタートな最短経路問題）
 list($h, $w) = ints();
 $q = new SplQueue(); // キューを用意
@@ -21,14 +22,20 @@ while (!$q->isEmpty()) {
     for ($dir = 0; $dir < 4; ++$dir) {
         $ny = $y + $dy[$dir];
         $nx = $x + $dx[$dir];
-        if ($ny > $h - 1 || $ny < 0 || $nx > $w - 1 || $nx < 0) continue; // 範囲外
-        if ($dist[$ny][$nx] !== -1) continue; // 発見済み
+        if ($ny > $h - 1 || $ny < 0 || $nx > $w - 1 || $nx < 0) {
+            continue;
+        } // 範囲外
+        if ($dist[$ny][$nx] !== -1) {
+            continue;
+        } // 発見済み
         $dist[$ny][$nx] = $dist[$y][$x] + 1;
         $q->enqueue([$ny, $nx]);
     }
 }
 $max = 0;
-for ($i = 0; $i < $h; ++$i) $max = max($max, max($dist[$i]));
+for ($i = 0; $i < $h; ++$i) {
+    $max = max($max, max($dist[$i]));
+}
 echo $max;
 function ints()
 {

@@ -1,4 +1,5 @@
 <?php
+
 // 縦h x 横w の迷路を木構造に変換（壁=# 道=.）
 define('BLACK', '#');
 define('WHITE', '.');
@@ -12,7 +13,9 @@ for ($i  = 0; $i < $h * $w; $i++) {
     $l = intdiv($i, $w);
     $m = $i % $w;
 
-    if ($s[$l][$m] === BLACK) continue;
+    if ($s[$l][$m] === BLACK) {
+        continue;
+    }
 
     $cnt_w++;
     if ($m < $w - 1 && $s[$l][$m + 1] === WHITE) {
@@ -38,11 +41,15 @@ while (!$q->isEmpty()) {
     $v = $q->dequeue();
 
     foreach ($g[$v] as $next_v) {
-        if ($dist[$next_v] !== -1) continue; // 発見済み
+        if ($dist[$next_v] !== -1) {
+            continue;
+        } // 発見済み
 
         $dist[$next_v] = $dist[$v] + 1;
         $q->enqueue($next_v);
     }
 }
-if ($dist[$h * $w - 1] === -1) exit('-1');
+if ($dist[$h * $w - 1] === -1) {
+    exit('-1');
+}
 echo $cnt_w - 2 - ($dist[$h * $w - 1] - 1);

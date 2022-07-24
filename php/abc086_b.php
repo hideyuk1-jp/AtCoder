@@ -1,4 +1,5 @@
 <?php
+
 list($a, $b) = ints();
 $n = intval(strval($a) . strval($b));
 echo pow(intval(sqrt($n)), 2) === $n ? 'Yes' : 'No';

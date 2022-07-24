@@ -1,4 +1,5 @@
 <?php
+
 define('MOD', 10 ** 9 + 7);
 list($n) = ints();
 list($a, $b) = ints();
@@ -27,9 +28,12 @@ while (!$q->isEmpty()) {
 
     foreach ($g[$v] as $next_v) {
         // 最短経路の場合は親の組み合わせ数を加算
-        if ($dist[$next_v] === -1 || $dist[$next_v] === $dist[$v] + 1)
+        if ($dist[$next_v] === -1 || $dist[$next_v] === $dist[$v] + 1) {
             $comb[$next_v] = ($comb[$next_v] + $comb[$v]) % MOD;
-        if ($dist[$next_v] !== -1) continue; // 発見済み
+        }
+        if ($dist[$next_v] !== -1) {
+            continue;
+        } // 発見済み
         $dist[$next_v] = $dist[$v] + 1;
         $q->enqueue($next_v);
     }

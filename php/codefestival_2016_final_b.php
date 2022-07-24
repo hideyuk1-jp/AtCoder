@@ -1,4 +1,5 @@
 <?php
+
 list($n) = ints();
 $sum = 0;
 for ($i = 1; $i <= $n; ++$i) {
@@ -6,7 +7,9 @@ for ($i = 1; $i <= $n; ++$i) {
     $ans[] = $i;
     if ($sum >= $n) {
         $diff = $sum - $n;
-        if ($diff) unset($ans[array_search($diff, $ans)]);
+        if ($diff) {
+            unset($ans[array_search($diff, $ans)]);
+        }
         break;
     }
 }

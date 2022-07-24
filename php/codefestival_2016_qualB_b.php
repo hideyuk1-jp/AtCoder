@@ -1,4 +1,5 @@
 <?php
+
 list($n, $a, $b) = ints();
 list($s) = strs();
 $cnt = $cntb = 0;

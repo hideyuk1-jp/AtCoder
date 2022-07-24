@@ -1,10 +1,13 @@
 <?php
+
 list($n) = ints();
 $a = ints();
 sort($a);
 $ans = 0;
 for ($i = 0; $i < $n; ++$i) {
-    while ($a[$i] % 2 === 0) $a[$i] = intdiv($a[$i], 2);
+    while ($a[$i] % 2 === 0) {
+        $a[$i] = intdiv($a[$i], 2);
+    }
     if (!isset($c[$a[$i]])) {
         $ans++;
         $c[$a[$i]] = true;

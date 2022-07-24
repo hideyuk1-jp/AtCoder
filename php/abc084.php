@@ -1,4 +1,5 @@
 <?php
+
 fscanf(STDIN, '%d', $q);
 for ($i  = 0; $i < $q; $i++) {
     fscanf(STDIN, '%d %d', $l[], $r[]);
@@ -19,14 +20,15 @@ for ($i = 1; $i <= $max; $i++) {
 }
 
 for ($i = 0; $i < $q; $i++) {
-    echo ($s[$r[$i]] - $s[$l[$i] - 1]).PHP_EOL;
+    echo($s[$r[$i]] - $s[$l[$i] - 1]).PHP_EOL;
 }
 
 /**
  * エラトステネスのふるい
  * $maxまでの整数が素数かどうかboolを格納した配列を返す
  */
-function is_prime($max) {
+function is_prime($max)
+{
     $arr = array_fill(0, $max + 1, true);
     $arr[0]  = $arr[1] = false;
     $rmax = floor(sqrt($max));

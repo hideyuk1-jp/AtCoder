@@ -1,4 +1,5 @@
 <?php
+
 // C
 fscanf(STDIN, '%d %d', $n, $k);
 $a = array_map('intval', explode(' ', trim(fgets(STDIN))));
@@ -16,5 +17,7 @@ exit;
 // A
 fscanf(STDIN, '%s', $s);
 $ans = 0;
-for ($i = 0; $i < strlen($s); $i++) $ans += $s[$i] === '+' ? 1 : -1;
+for ($i = 0; $i < strlen($s); $i++) {
+    $ans += $s[$i] === '+' ? 1 : -1;
+}
 echo $ans;

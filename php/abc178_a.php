@@ -1,4 +1,5 @@
 <?php
+
 list($n) = ints();
 echo 1 - $n;
 function ints()

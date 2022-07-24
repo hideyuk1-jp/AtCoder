@@ -1,6 +1,7 @@
 <?php
+
 list($a, $b) = strs();
-echo ($a . $b) * 2;
+echo($a . $b) * 2;
 echo PHP_EOL;
 function strs()
 {

@@ -1,10 +1,13 @@
 <?php
+
 // D その2
 fscanf(STDIN, '%d %d', $n, $k);
 fscanf(STDIN, '%s', $s);
 $ans = 0;
 for ($i = 0; $i < $n - 1; $i++) {
-    if ($s[$i] === $s[$i + 1]) $ans++;
+    if ($s[$i] === $s[$i + 1]) {
+        $ans++;
+    }
 }
 $ans = min($n - 1, $ans + $k * 2);
 echo $ans . PHP_EOL;
@@ -16,14 +19,21 @@ fscanf(STDIN, '%d %d', $n, $k);
 fscanf(STDIN, '%s', $s);
 $i = $top = $cnt = $ans = 0;
 $top_s = $s[$top];
-while($top < $n) {
+while ($top < $n) {
     $next_s = ($top_s === 'L') ? 'R' : 'L';
     $next_top = strpos($s, $next_s, $top);
-    if ($next_top === false) $next_top = $n;
+    if ($next_top === false) {
+        $next_top = $n;
+    }
     $cnt_s = $next_top - $top;
-    if ($i % 2 === 1) $cnt++;
-    if ($cnt <= $k && $i !== 0) $ans += $cnt_s;
-    else $ans += $cnt_s - 1;
+    if ($i % 2 === 1) {
+        $cnt++;
+    }
+    if ($cnt <= $k && $i !== 0) {
+        $ans += $cnt_s;
+    } else {
+        $ans += $cnt_s - 1;
+    }
     $i++;
     $top_s = $next_s;
     $top = $next_top;

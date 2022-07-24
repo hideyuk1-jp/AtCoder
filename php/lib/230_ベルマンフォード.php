@@ -1,4 +1,5 @@
 <?php
+
 // ABC061_D
 list($n, $m) = ints();
 $bf = new BellmanFord($n, $m);
@@ -10,8 +11,11 @@ for ($i = 0; $i < $m; ++$i) {
     $bf->connect($a, $b, $c);
 }
 $bf->solve();
-if (!$bf->negative[0][$n - 1]) echo -$bf->dist(0, $n - 1);
-else echo 'inf';
+if (!$bf->negative[0][$n - 1]) {
+    echo -$bf->dist(0, $n - 1);
+} else {
+    echo 'inf';
+}
 function ints()
 {
     return array_map('intval', explode(' ', trim(fgets(STDIN))));
@@ -29,19 +33,19 @@ class BellmanFord
     private $cost; // ノード間の距離を格納
     public $negative;
 
-    function __construct($n, $m)
+    public function __construct($n, $m)
     {
         $this->n = $n;
         $this->m = $m;
     }
-    function connect($x, $y, $w)
+    public function connect($x, $y, $w)
     {
         $this->from[] = $x;
         $this->to[] = $y;
         $this->cost[] = $w;
     }
 
-    function solve($s = 0)
+    public function solve($s = 0)
     {
         $n = $this->n;
         $d = $this->d;
@@ -51,10 +55,13 @@ class BellmanFord
         $cost = $this->cost;
         $d[$s] = array_fill(0, $n, INF);
         $d[$s][$s] = 0;
-        for ($k = 1; $k <= $n - 1; ++$k)
-            for ($i = 0; $i < $m; ++$i)
-                if ($d[$s][$to[$i]] > $d[$s][$from[$i]] + $cost[$i])
+        for ($k = 1; $k <= $n - 1; ++$k) {
+            for ($i = 0; $i < $m; ++$i) {
+                if ($d[$s][$to[$i]] > $d[$s][$from[$i]] + $cost[$i]) {
                     $d[$s][$to[$i]] = $d[$s][$from[$i]] + $cost[$i];
+                }
+            }
+        }
 
         $negative = $this->negative;
         $negative[$s] = array_fill(0, $n, false);
@@ -71,7 +78,7 @@ class BellmanFord
         $this->negative = $negative;
     }
 
-    function dist($x, $y)
+    public function dist($x, $y)
     {
         return $this->d[$x][$y];
     }

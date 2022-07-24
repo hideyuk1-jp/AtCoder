@@ -1,6 +1,9 @@
 <?php
+
 list($n, $d, $a) = ints();
-for ($i = 0; $i < $n; ++$i) list($x[], $h[]) = ints();
+for ($i = 0; $i < $n; ++$i) {
+    list($x[], $h[]) = ints();
+}
 array_multisort($x, SORT_ASC, $h);
 $cusum = array_fill(0, $n + 1, 0);
 $cnt = 0;
@@ -9,7 +12,9 @@ $cnt = 0;
 for ($i = 0; $i < $n; ++$i) {
     $cusum[$i + 1] += $cusum[$i];
     $h[$i] -= $cusum[$i + 1];
-    if ($h[$i] <= 0) continue;
+    if ($h[$i] <= 0) {
+        continue;
+    }
 
     // この座標での爆発回数計算
     $tcnt = intdiv($h[$i], $a) + min(1, $h[$i] % $a);
@@ -19,13 +24,18 @@ for ($i = 0; $i < $n; ++$i) {
     $ng = $n;
     while (abs($ok - $ng) > 1) {
         $mid = intdiv($ok + $ng, 2);
-        if ($x[$mid] - $x[$i] <= 2 * $d) $ok = $mid;
-        else $ng = $mid;
+        if ($x[$mid] - $x[$i] <= 2 * $d) {
+            $ok = $mid;
+        } else {
+            $ng = $mid;
+        }
     }
     if ($ok !== $i) {
         // imos法で今回の爆発で減らした体力量を管理
         $cusum[$i + 1] += $a * $tcnt;
-        if ($ok + 2 <= $n) $cusum[$ok + 2] -= $a * $tcnt;
+        if ($ok + 2 <= $n) {
+            $cusum[$ok + 2] -= $a * $tcnt;
+        }
     }
 
     $cnt += $tcnt;

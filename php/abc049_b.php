@@ -1,4 +1,5 @@
 <?php
+
 list($h, $w) = ints();
 for ($i = 0; $i < $h; ++$i) {
     list($s) = strs();

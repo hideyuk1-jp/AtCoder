@@ -1,4 +1,5 @@
 <?php
+
 // 入出力
 
 // 入力
@@ -17,15 +18,21 @@ $a = array_map('intval', explode(' ', trim(fgets(STDIN))));
 
 // 総数のあと、（数字＋改行）の繰り返し
 fscanf(STDIN, '%d', $n);
-for ($i  = 0; $i < $n; $i++) fscanf(STDIN, '%d', $a[]);
+for ($i  = 0; $i < $n; $i++) {
+    fscanf(STDIN, '%d', $a[]);
+}
 
 // 総数のあと、（スペース区切りの複数数字＋改行）の繰り返し
 fscanf(STDIN, '%d', $n);
-for ($i  = 0; $i < $n; $i++) fscanf(STDIN, '%d %d', $a[], $b[]);
+for ($i  = 0; $i < $n; $i++) {
+    fscanf(STDIN, '%d %d', $a[], $b[]);
+}
 
 // 総数のあと、（スペース区切りの数字の繰り返し＋改行）の繰り返し
 fscanf(STDIN, '%d', $n);
-for ($i  = 0; $i < $n; $i++) $a[] = array_map('intval', explode(' ', trim(fgets(STDIN))));
+for ($i  = 0; $i < $n; $i++) {
+    $a[] = array_map('intval', explode(' ', trim(fgets(STDIN))));
+}
 
 // 縦h x 横w の迷路を木構造に変換（壁=# 道=.）
 define('WALL', '#');
@@ -39,7 +46,9 @@ for ($i  = 0; $i < $h * $w; $i++) {
     $l = intdiv($i, $w);
     $m = $i % $w;
 
-    if ($s[$l][$m] === WALL) continue;
+    if ($s[$l][$m] === WALL) {
+        continue;
+    }
 
     if ($m < $w - 1 && $s[$l][$m + 1] === ROAD) {
         $g[$i][] = $i + 1;
@@ -61,4 +70,6 @@ echo $ans . PHP_EOL;
 echo implode(' ', $ans) . PHP_EOL;
 
 // 配列を改行区切り
-foreach ($ans as $v) echo $v . PHP_EOL;
+foreach ($ans as $v) {
+    echo $v . PHP_EOL;
+}

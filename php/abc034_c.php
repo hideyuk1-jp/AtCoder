@@ -1,4 +1,5 @@
 <?php
+
 define('MOD', 10 ** 9 + 7);
 list($w, $h) = ints();
 echo nCr($w - 1 + $h - 1, $w - 1);
@@ -34,23 +35,31 @@ function modDiv($x, $y)
 // 累乗（繰り返し二乗法）
 function modPow($n, $x)
 {
-    if ($x === 0) return 1;
+    if ($x === 0) {
+        return 1;
+    }
     $res = (modPow($n, $x >> 1) ** 2) % MOD;
-    if ($x % 2 === 1) $res = modMul($res, $n);
+    if ($x % 2 === 1) {
+        $res = modMul($res, $n);
+    }
     return $res;
 }
 
 // 階乗
 function modFac($n)
 {
-    if ($n === 0) return 1;
+    if ($n === 0) {
+        return 1;
+    }
     return modMul($n, modFac($n - 1));
 }
 
 // 順列
 function nPr($n, $r)
 {
-    if ($r === 0) return 1;
+    if ($r === 0) {
+        return 1;
+    }
     return modMul(nPr($n, $r - 1), $n - $r + 1);
 }
 
@@ -58,6 +67,8 @@ function nPr($n, $r)
 function nCr($n, $r)
 {
     $r = min($r, $n - $r);
-    if ($r === 0) return 1;
+    if ($r === 0) {
+        return 1;
+    }
     return modDiv(nPr($n, $r), modFac($r));
 }

@@ -1,9 +1,15 @@
 <?php
+
 list($n) = ints();
-if ($n <= 59) echo 'Bad';
-elseif ($n <= 89) echo 'Good';
-elseif ($n <= 99) echo 'Great';
-else echo 'Perfect';
+if ($n <= 59) {
+    echo 'Bad';
+} elseif ($n <= 89) {
+    echo 'Good';
+} elseif ($n <= 99) {
+    echo 'Great';
+} else {
+    echo 'Perfect';
+}
 echo PHP_EOL;
 function ints()
 {

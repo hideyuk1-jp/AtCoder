@@ -1,4 +1,5 @@
 <?php
+
 list($n, $m, $q) = ints();
 for ($i = 0; $i < $m; ++$i) {
     list($u, $v) = ints();
@@ -13,8 +14,12 @@ for ($i = 0; $i < $q; ++$i) {
     --$x;
     $ans[] = $c[$x];
     if ($type === 1) {
-        if (!isset($g[$x])) continue;
-        foreach ($g[$x] as $nx) $c[$nx] = $c[$x];
+        if (!isset($g[$x])) {
+            continue;
+        }
+        foreach ($g[$x] as $nx) {
+            $c[$nx] = $c[$x];
+        }
     } else {
         $c[$x] = $y;
     }

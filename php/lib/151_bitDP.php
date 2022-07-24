@@ -1,4 +1,5 @@
 <?php
+
 // bitDP abc142_e
 list($n, $m) = ints();
 for ($i = 0; $i < $m; ++$i) {

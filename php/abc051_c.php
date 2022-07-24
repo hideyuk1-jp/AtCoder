@@ -1,4 +1,5 @@
 <?php
+
 list($sx, $sy, $tx, $ty) = ints();
 echo str_repeat('R', $tx - $sx) .
     str_repeat('U', $ty - $sy) .

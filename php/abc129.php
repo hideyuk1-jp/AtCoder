@@ -1,17 +1,20 @@
 <?php
+
 fscanf(STDIN, '%d %d', $h, $w);
-for($i = 1; $i <= $h; $i++) {
+for ($i = 1; $i <= $h; $i++) {
     fscanf(STDIN, '%s', $s);
     $map[$i] = '#' . $s . '#';
 }
 $map[0] = $map[$h + 1] = str_repeat('#', $w + 2);
 
 // 横方向
-for($i = 1; $i <= $h; $i++) {
+for ($i = 1; $i <= $h; $i++) {
     $dw = 0;
-    for($j = 1; $j <= $w + 1; $j++) {
+    for ($j = 1; $j <= $w + 1; $j++) {
         if ($map[$i][$j] === '#') {
-            for ($k = $j - $dw; $k < $j; $k++) $hlight[$i][$k] = $dw;
+            for ($k = $j - $dw; $k < $j; $k++) {
+                $hlight[$i][$k] = $dw;
+            }
             $dw = 0;
         } else {
             $dw++;
@@ -21,9 +24,9 @@ for($i = 1; $i <= $h; $i++) {
 
 // 縦方向
 $max = 0;
-for($j = 1; $j <= $w; $j++) {
+for ($j = 1; $j <= $w; $j++) {
     $dw = 0;
-    for($i = 1; $i <= $h + 1; $i++) {
+    for ($i = 1; $i <= $h + 1; $i++) {
         if ($map[$i][$j] === '#') {
             for ($k = $i - $dw; $k < $i; $k++) {
                 $vlight[$k][$j] = $dw;
@@ -42,13 +45,13 @@ exit();
 
 $up_dp[0] = array_fill(1, $w, 0);
 $down_dp[$h + 1] = array_fill(1, $w, 0);
-for($i = 1; $i <= $h; $i++) {
+for ($i = 1; $i <= $h; $i++) {
     $left_dp[$i][0] = 0;
     $right_dp[$i][$w + 1] = 0;
 }
 
-for($i = 1; $i <= $h; $i++) {
-    for($j = 1; $j <= $w; $j++) {
+for ($i = 1; $i <= $h; $i++) {
+    for ($j = 1; $j <= $w; $j++) {
         if ($s[$i-1][$j-1] === '#') {
             $up_dp[$i][$j] = 0;
             $left_dp[$i][$j] = 0;
@@ -70,9 +73,11 @@ for($i = 1; $i <= $h; $i++) {
 }
 
 $max = 0;
-for($i = 1; $i <= $h; $i++) {
-    for($j = 1; $j <= $w; $j++) {
-        if ($s[$i-1][$j-1] === '#') continue;
+for ($i = 1; $i <= $h; $i++) {
+    for ($j = 1; $j <= $w; $j++) {
+        if ($s[$i-1][$j-1] === '#') {
+            continue;
+        }
         $num = $up_dp[$i][$j] + $left_dp[$i][$j] + $down_dp[$i][$j] + $right_dp[$i][$j] - 3;
         $max = max($max, $num);
     }
@@ -89,7 +94,7 @@ for ($i  = 1; $i <= $n; $i++) {
     fscanf(STDIN, '%d', $a);
     $step[$a] = false;
     if (!($step[$a - 1] ?? true)) {
-        echo (0) . PHP_EOL;
+        echo(0) . PHP_EOL;
         exit();
     }
 }
@@ -111,11 +116,11 @@ fscanf(STDIN, '%d', $n);
 $w = array_map('intval', explode(' ', trim(fgets(STDIN))));
 
 $sum[0] = 0;
-for($i = 1; $i <= $n; $i++) {
+for ($i = 1; $i <= $n; $i++) {
     $sum[$i] = $sum[$i - 1] + $w[$i - 1];
 }
 $min = 100000;
-for($i = 1; $i < $n; $i++) {
+for ($i = 1; $i < $n; $i++) {
     $s1 = $sum[$i];
     $s2 = $sum[$n] - $sum[$i];
     $d = abs($s1- $s2);

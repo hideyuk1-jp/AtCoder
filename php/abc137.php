@@ -1,6 +1,7 @@
 <?php
+
 fscanf(STDIN, '%d %d', $n, $m);
-$s = array_fill(1, $m, NULL);
+$s = array_fill(1, $m, null);
 for ($i  = 0; $i < $n; $i++) {
     fscanf(STDIN, '%d %d', $a, $b);
     $s[$a][] = $b;
@@ -12,7 +13,9 @@ for ($i = 1; $i <= $m; $i++) {
     foreach ($s[$i] as $v) {
         $q->insert($v, $v);
     }
-    if (!$q->isEmpty()) $cnt += $q->extract();
+    if (!$q->isEmpty()) {
+        $cnt += $q->extract();
+    }
 }
 echo $cnt.PHP_EOL;
 
@@ -61,8 +64,11 @@ $start = $x - $k + 1;
 $end = $x + $k - 1;
 for ($i = $start; $i <= $end; $i++) {
     echo $i;
-    if ($i === $end) echo PHP_EOL;
-    else echo ' ';
+    if ($i === $end) {
+        echo PHP_EOL;
+    } else {
+        echo ' ';
+    }
 }
 
 exit();

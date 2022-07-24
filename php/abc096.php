@@ -1,11 +1,16 @@
 <?php
+
 // D
 fscanf(STDIN, '%d', $n);
 $primes = primesArr(55555);
 $ans = [];
 foreach ($primes as $p) {
-    if ($p % 5 === 1) $ans[] = $p;
-    if (count($ans) === $n) break;
+    if ($p % 5 === 1) {
+        $ans[] = $p;
+    }
+    if (count($ans) === $n) {
+        break;
+    }
 }
 echo implode(' ', $ans);
 
@@ -18,7 +23,9 @@ function primesArr($max)
     $arr = array_fill(2, $max - 1, true);
     $rmax = (int) floor(sqrt($max));
     for ($i = 2; $i <= $rmax; $i++) {
-        if (!isset($arr[$i])) continue;
+        if (!isset($arr[$i])) {
+            continue;
+        }
         for ($j = 2 * $i; $j <= $max; $j += $i) {
             unset($arr[$j]);
         }
@@ -40,16 +47,26 @@ for ($i  = 0; $i < $h * $w; $i++) {
     $l = intval(floor($i / $w));
     $m = $i % $w;
 
-    if ($s[$l][$m] === WHITE) continue;
+    if ($s[$l][$m] === WHITE) {
+        continue;
+    }
 
     // 上
-    if ($l > 0 && $s[$l - 1][$m] === BLACK) continue;
+    if ($l > 0 && $s[$l - 1][$m] === BLACK) {
+        continue;
+    }
     // 右
-    if ($m < $w - 1 && $s[$l][$m + 1] === BLACK) continue;
+    if ($m < $w - 1 && $s[$l][$m + 1] === BLACK) {
+        continue;
+    }
     // 下
-    if ($l < $h - 1 && $s[$l + 1][$m] === BLACK) continue;
+    if ($l < $h - 1 && $s[$l + 1][$m] === BLACK) {
+        continue;
+    }
     // 右
-    if ($m > 0 && $s[$l][$m - 1] === BLACK) continue;
+    if ($m > 0 && $s[$l][$m - 1] === BLACK) {
+        continue;
+    }
 
     exit('No');
 }

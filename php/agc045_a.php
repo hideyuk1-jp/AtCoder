@@ -1,4 +1,5 @@
 <?php
+
 list($t) = ints();
 for ($i = 0; $i < $t; ++$i) {
     list($n) = ints();
@@ -14,7 +15,9 @@ function solve()
     for ($i = $n - 1; $i >= 0; --$i) {
         // ai が ai+1 ~ an の基底で表現できるかどうか
         $x = $a[$i];
-        foreach ($base as $b) $x = min($x, $x ^ $b);
+        foreach ($base as $b) {
+            $x = min($x, $x ^ $b);
+        }
         if ($x) { // 0でなけれな表現不可能
             if ($s[$i] === '0') { // 0の番であれば基底追加
                 $base[] = $x;

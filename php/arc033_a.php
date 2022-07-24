@@ -1,6 +1,7 @@
 <?php
+
 list($n) = ints();
-echo ($n + 1) * $n / 2;
+echo($n + 1) * $n / 2;
 echo PHP_EOL;
 function ints()
 {

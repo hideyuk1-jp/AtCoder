@@ -1,4 +1,5 @@
 <?php
+
 // 入力
 $s = trim(fgets(STDIN));
 
@@ -42,7 +43,7 @@ $result = array_fill(0, $n, 0);
 
 $r_top = 0;
 // 'R...RL...L'ごとに処理
-while($r_top < $n) {
+while ($r_top < $n) {
     $l_top = strpos($s, 'L', $r_top);
     $r_last = $l_top - 1;
     $r_next = strpos($s, 'R', $l_top);
@@ -112,7 +113,7 @@ for ($i = 0; $i < count($s); $i++) {
                 break;
             }
             $x--;
-        } elseif($s[$x] === 'R') {
+        } elseif ($s[$x] === 'R') {
             if ($s[$x + 1] === 'L') { // 循環
                 if ($j % 2 === 0) { //残り偶数回移動
                     $res[$x]++;
@@ -149,7 +150,7 @@ for ($i = 0; $i < count($s); $i++) {
                 break;
             }
             $x--;
-        } elseif($s[$x] === 'R') {
+        } elseif ($s[$x] === 'R') {
             if ($s[$x + 1] === 'L') { // 循環
                 if ($j % 2 === 0) { //残り偶数回移動
                     $res[$x]++;
@@ -173,7 +174,7 @@ for ($i = $n - 1; $i >= 1; $i--) {
     if ($h[$i - 1] === $h[$i] + 1) {
         $h[$i - 1]--;
     } elseif ($h[$i - 1] > $h[$i] + 1) {
-        exit ('No'.PHP_EOL);
+        exit('No'.PHP_EOL);
     }
 }
 echo 'Yes'.PHP_EOL;
@@ -190,7 +191,7 @@ echo $cnt.PHP_EOL;
 
 exit();
 fscanf(STDIN, "%d %d %d", $a, $b, $c);
-echo ($c - min($a - $b, $c)).PHP_EOL;
+echo($c - min($a - $b, $c)).PHP_EOL;
 
 exit();
 $d = array_map('intval', explode(' ', trim(fgets(STDIN))));
@@ -200,6 +201,5 @@ $i = $n / 2 - 1;
 if ($d[$i] === $d[$i + 1]) {
     echo '0'.PHP_EOL;
 } else {
-    echo ($d[$i + 1] - $d[$i]).PHP_EOL;
+    echo($d[$i + 1] - $d[$i]).PHP_EOL;
 }
-?>

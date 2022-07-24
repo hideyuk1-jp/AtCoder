@@ -1,4 +1,5 @@
 <?php
+
 list($h, $w, $k) = ints();
 $n = $h + $w;
 for ($i = 0; $i < $h; ++$i) {

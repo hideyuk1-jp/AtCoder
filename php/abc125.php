@@ -1,4 +1,5 @@
 <?php
+
 fscanf(STDIN, '%d', $n);
 $a = array_map('intval', explode(' ', trim(fgets(STDIN))));
 $abs_sum = 0;
@@ -8,10 +9,15 @@ for ($i = 0; $i < $n; $i++) {
     $abs = abs($a[$i]);
     $abs_sum += $abs;
     $abs_min = min($abs_min, $abs);
-    if ($a[$i] < 0) $minus_cnt++;
+    if ($a[$i] < 0) {
+        $minus_cnt++;
+    }
 }
-if ($minus_cnt % 2 === 1) $ans = $abs_sum - $abs_min * 2;
-else $ans = $abs_sum;
+if ($minus_cnt % 2 === 1) {
+    $ans = $abs_sum - $abs_min * 2;
+} else {
+    $ans = $abs_sum;
+}
 echo $ans . PHP_EOL;
 
 exit();
@@ -22,7 +28,9 @@ $c = array_map('intval', explode(' ', trim(fgets(STDIN))));
 $ans = 0;
 for ($i = 0; $i < $n; $i++) {
     $val = $v[$i] - $c[$i];
-    if ($val > 0) $ans += $val;
+    if ($val > 0) {
+        $ans += $val;
+    }
 }
 echo $ans . PHP_EOL;
 
@@ -53,9 +61,15 @@ for ($i = 0; $i < $n; $i++) {
 echo $max . PHP_EOL;
 
 // 最大公約数
-function gcd($m, $n){
-    if($n > $m) list($m, $n) = [$n, $m];
+function gcd($m, $n)
+{
+    if ($n > $m) {
+        list($m, $n) = [$n, $m];
+    }
 
-    if ($m % $n === 0) return $n;
-    else return gcd($n, $m % $n);
+    if ($m % $n === 0) {
+        return $n;
+    } else {
+        return gcd($n, $m % $n);
+    }
 }

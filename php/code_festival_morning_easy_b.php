@@ -1,4 +1,5 @@
 <?php
+
 list($n) = ints();
 --$n;
 echo intdiv($n, 20) % 2 ? 20 - $n % 20 : $n % 20 + 1;

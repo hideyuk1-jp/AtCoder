@@ -1,4 +1,5 @@
 <?php
+
 list($n, $h) = ints();
 list($a, $b, $c, $d, $e) = ints();
 $cost = PHP_INT_MAX;
@@ -11,10 +12,15 @@ for ($i = 0; $i <= $n; ++$i) {
     $ng = -1;
     while (abs($ok - $ng) > 1) {
         $mid = intdiv($ok + $ng, 2);
-        if ($h + $i * $b + $mid * $d > ($n - $i - $mid) * $e) $ok = $mid;
-        else $ng = $mid;
+        if ($h + $i * $b + $mid * $d > ($n - $i - $mid) * $e) {
+            $ok = $mid;
+        } else {
+            $ng = $mid;
+        }
     }
-    if ($ok !== $n - $i + 1) $cost = min($cost, $i * $a + $ok * $c);
+    if ($ok !== $n - $i + 1) {
+        $cost = min($cost, $i * $a + $ok * $c);
+    }
 }
 echo $cost . PHP_EOL;
 function ints()

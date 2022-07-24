@@ -1,4 +1,5 @@
 <?php
+
 list($s) = strs();
 $n = strlen($s);
 $cnt = 0;

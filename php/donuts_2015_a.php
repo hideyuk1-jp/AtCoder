@@ -1,6 +1,7 @@
 <?php
+
 list($r, $d) = ints();
-echo ($r * $r * pi()) * (2 * $d * pi());
+echo($r * $r * pi()) * (2 * $d * pi());
 echo PHP_EOL;
 function ints()
 {

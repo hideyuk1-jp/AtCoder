@@ -1,4 +1,5 @@
 <?php
+
 list($a) = strs();
 list($b) = ints();
 echo $a[($b - 1) % strlen($a)] . PHP_EOL;

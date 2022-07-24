@@ -1,6 +1,9 @@
 <?php
+
 list($n) = ints();
-for ($i = 0; $i < $n; ++$i) list($a[]) = ints();
+for ($i = 0; $i < $n; ++$i) {
+    list($a[]) = ints();
+}
 // 同じ色で塗れるマスをグループ分けした時のグループごとの末尾の値を格納
 // この数より大きい数字であればこのグループに入れられる
 $ends = [$a[0]];
@@ -12,8 +15,11 @@ for ($i = 1; $i < $n; ++$i) {
     $ng = -1;
     while (abs($ok - $ng) > 1) {
         $mid = intdiv($ok + $ng, 2);
-        if ($ends[$mid] < $a[$i]) $ok = $mid;
-        else $ng = $mid;
+        if ($ends[$mid] < $a[$i]) {
+            $ok = $mid;
+        } else {
+            $ng = $mid;
+        }
     }
     // 見つからない場合はok=lなので要素が追加される
     $ends[$ok] = $a[$i];

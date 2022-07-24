@@ -1,9 +1,12 @@
 <?php
+
 // D
 fscanf(STDIN, '%d %d', $n, $m);
 $x = intdiv($m, $n);
 while (true) {
-    if (($m - $x * ($n - 1)) % $x === 0) break;
+    if (($m - $x * ($n - 1)) % $x === 0) {
+        break;
+    }
     $x--;
 }
 echo $x;
@@ -13,14 +16,18 @@ exit;
 // C
 fscanf(STDIN, '%d', $n);
 $ans = 1001;
-for ($i  = 0; $i < $n; $i++) fscanf(STDIN, '%d %d %d', $x[], $y[], $h[]);
+for ($i  = 0; $i < $n; $i++) {
+    fscanf(STDIN, '%d %d %d', $x[], $y[], $h[]);
+}
 
 for ($p = 0; $p <= 100; $p++) {
     for ($q = 0; $q <= 100; $q++) {
         $flag = true;
         $pH = null;
         for ($i = 0; $i < $n; $i++) {
-            if ($h[$i] === 0) continue;
+            if ($h[$i] === 0) {
+                continue;
+            }
             $H  = $h[$i] + abs($x[$i] - $p) + abs($y[$i] - $q);
             if (isset($pH)) {
                 if ($H !== $pH) {
@@ -33,7 +40,9 @@ for ($p = 0; $p <= 100; $p++) {
         if ($flag) {
             for ($i = 0; $i < $n; $i++) {
                 $ht = max($H - abs($x[$i] - $p) - abs($y[$i] - $q), 0);
-                if ($ht !== $h[$i]) $flag = false;
+                if ($ht !== $h[$i]) {
+                    $flag = false;
+                }
             }
             if ($flag) {
                 $ans = [$p, $q, $H];

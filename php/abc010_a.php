@@ -1,4 +1,5 @@
 <?php
+
 list($s) = strs();
 echo $s . 'pp' . PHP_EOL;
 function strs()

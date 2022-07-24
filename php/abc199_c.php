@@ -1,4 +1,5 @@
 <?php
+
 [$N] = ints();
 [$S] = strs();
 [$Q] = ints();
@@ -8,11 +9,17 @@ for ($i = 0; $i < $Q; ++$i) {
     --$a[$i];
     --$b[$i];
     $cnts[$i] = ($cnts[$i - 1] ?? 0);
-    if ($t[$i] === 2) $cnts[$i]++;
+    if ($t[$i] === 2) {
+        $cnts[$i]++;
+    }
 }
-if ($cnts[$Q - 1] % 2) $S = substr($S, $N) . substr($S, 0, $N);
+if ($cnts[$Q - 1] % 2) {
+    $S = substr($S, $N) . substr($S, 0, $N);
+}
 for ($i = 0; $i < $Q; ++$i) {
-    if ($t[$i] === 2) continue;
+    if ($t[$i] === 2) {
+        continue;
+    }
     if (($cnts[$Q - 1] - $cnts[$i]) % 2) {
         $a[$i] = ($a[$i] + $N) % (2 * $N);
         $b[$i] = ($b[$i] + $N) % (2 * $N);

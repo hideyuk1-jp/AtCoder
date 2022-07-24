@@ -1,4 +1,5 @@
 <?php
+
 [$N] = ints();
 $a = ints();
 $sum = array_sum($a);
@@ -6,7 +7,9 @@ $harf = $sum / 2;
 $dp[0] = true;
 for ($i = 0; $i < $N; ++$i) {
     foreach ($dp as $j => $_) {
-        if ($j + $a[$i] > $harf) continue;
+        if ($j + $a[$i] > $harf) {
+            continue;
+        }
         $dp[$j + $a[$i]] = true;
     }
 }

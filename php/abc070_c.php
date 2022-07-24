@@ -1,9 +1,13 @@
 <?php
+
 list($n) = ints();
 for ($i = 0; $i < $n; ++$i) {
     list($t) = ints();
-    if ($i > 0) $ans = lcm($ans, $t);
-    else $ans = $t;
+    if ($i > 0) {
+        $ans = lcm($ans, $t);
+    } else {
+        $ans = $t;
+    }
 }
 echo $ans;
 function ints()
@@ -14,7 +18,9 @@ function ints()
 // 最大公約数（2つ）
 function gcd($m, $n)
 {
-    if (!$n) return $m;
+    if (!$n) {
+        return $m;
+    }
     return gcd($n, $m % $n);
 }
 

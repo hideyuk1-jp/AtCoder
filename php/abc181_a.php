@@ -1,4 +1,5 @@
 <?php
+
 [$N] = ints();
 echo $N % 2 ? 'Black' : 'White';
 echo PHP_EOL;

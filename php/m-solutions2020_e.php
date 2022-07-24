@@ -1,6 +1,9 @@
 <?php
+
 list($n) = ints();
-for ($i = 0; $i < $n; ++$i) list($x[], $y[], $p[]) = ints();
+for ($i = 0; $i < $n; ++$i) {
+    list($x[], $y[], $p[]) = ints();
+}
 for ($i = 0; $i < 2 ** $n; ++$i) {
     $pc[$i] = popcount($i);
     for ($j = 0; $j < $n; ++$j) {
@@ -10,8 +13,12 @@ for ($i = 0; $i < 2 ** $n; ++$i) {
                 $disty[$i][$k] = min($disty[$i][$k] ?? abs($y[$k]), abs($y[$j] - $y[$k]));
             }
         } else {
-            if (!isset($distx[$i][$j])) $distx[$i][$j] = abs($x[$j]);
-            if (!isset($disty[$i][$j])) $disty[$i][$j] = abs($y[$j]);
+            if (!isset($distx[$i][$j])) {
+                $distx[$i][$j] = abs($x[$j]);
+            }
+            if (!isset($disty[$i][$j])) {
+                $disty[$i][$j] = abs($y[$j]);
+            }
         }
     }
 }
@@ -40,8 +47,9 @@ function calcCost($bitx, $bity)
 {
     global $n, $distx, $disty, $p;
     $cost = 0;
-    for ($i = 0; $i < $n; ++$i)
+    for ($i = 0; $i < $n; ++$i) {
         $cost += min($distx[$bitx][$i], $disty[$bity][$i]) * $p[$i];
+    }
     return $cost;
 }
 function ints()

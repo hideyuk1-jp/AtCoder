@@ -1,9 +1,12 @@
 <?php
+
 [$N] = ints();
 $divisors = divisors(2 * $N);
 $cnt = 0;
 foreach ($divisors as $d) {
-    if (abs($N - ($d % 2 ? 0 : $d / 2)) % $d === 0) ++$cnt;
+    if (abs($N - ($d % 2 ? 0 : $d / 2)) % $d === 0) {
+        ++$cnt;
+    }
 }
 echo $cnt;
 function ints()

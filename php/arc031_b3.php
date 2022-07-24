@@ -1,4 +1,5 @@
 <?php
+
 // 島が一つになっているかの判定をBFSを使って解き直し
 define('ROAD', 'o');
 define('WALL', 'x');
@@ -7,22 +8,35 @@ $n = $h * $w;
 $cntRoad = 0;
 for ($i = 0; $i < $h; ++$i) {
     list($a[$i]) = strs();
-    for ($j = 0; $j < $w; ++$j)
-        if ($a[$i][$j] === ROAD) ++$cntRoad;
+    for ($j = 0; $j < $w; ++$j) {
+        if ($a[$i][$j] === ROAD) {
+            ++$cntRoad;
+        }
+    }
 }
 $sg = new SGraph($h, $w, $a);
 for ($i = 0; $i < $h; ++$i) {
     for ($j = 0; $j < $w; ++$j) {
-        if ($a[$i][$j] === ROAD) continue;
+        if ($a[$i][$j] === ROAD) {
+            continue;
+        }
         $sgt = clone $sg;
         $from = $i * $w + $j;
         $sgt->connectGraph4($i, $j, $a);
         $g = $sgt->graph();
-        if (!isset($g[$from])) continue;
+        if (!isset($g[$from])) {
+            continue;
+        }
         $d = bfs($from);
         $cnt = 0;
-        for ($k = 0; $k < $n; ++$k) if ($d[$k] > 0) ++$cnt;
-        if ($cnt === $cntRoad) exit('YES' . PHP_EOL);
+        for ($k = 0; $k < $n; ++$k) {
+            if ($d[$k] > 0) {
+                ++$cnt;
+            }
+        }
+        if ($cnt === $cntRoad) {
+            exit('YES' . PHP_EOL);
+        }
     }
 }
 echo 'NO' . PHP_EOL;
@@ -39,7 +53,9 @@ function bfs($s = 0)
     while (!$q->isEmpty()) {
         $v = $q->dequeue();
         foreach ($g[$v] as $next_v => $cost) {
-            if ($dist[$next_v] !== -1) continue; // 発見済み
+            if ($dist[$next_v] !== -1) {
+                continue;
+            } // 発見済み
 
             $dist[$next_v] = $dist[$v] + $cost;
             $q->enqueue($next_v);
@@ -56,7 +72,7 @@ class SGraph
     private $w;
 
     // マス目の文字列からグラフを作成
-    function __construct($h, $w, $a)
+    public function __construct($h, $w, $a)
     {
         $this->h = $h;
         $this->w = $w;
@@ -65,14 +81,16 @@ class SGraph
         $this->g = array_fill(0, $h * $w, []);
         for ($i = 0; $i < $h; ++$i) {
             for ($j = 0; $j < $w; ++$j) {
-                if ($a[$i][$j] === WALL) continue;
+                if ($a[$i][$j] === WALL) {
+                    continue;
+                }
                 $this->connectGraphRD($i, $j, $a);
             }
         }
     }
 
     // 右と下が道の場合にグラフの辺をはる
-    function connectGraphRD($i, $j, $a)
+    public function connectGraphRD($i, $j, $a)
     {
         $g = $this->g;
         $h = $this->h;
@@ -92,7 +110,7 @@ class SGraph
     }
 
     // 4方向（上下左右）が道の場合にグラフの辺をはる
-    function connectGraph4($i, $j, $a)
+    public function connectGraph4($i, $j, $a)
     {
         $g = $this->g;
         $h = $this->h;
@@ -122,7 +140,7 @@ class SGraph
     }
 
     // 4方向（斜め）が道の場合にグラフの辺をはる
-    function connectGraph4d($i, $j, $a)
+    public function connectGraph4d($i, $j, $a)
     {
         $g = $this->g;
         $h = $this->h;
@@ -152,13 +170,13 @@ class SGraph
     }
 
     // 8方向が道の場合にグラフの辺をはる
-    function connectGraph8($i, $j, $a)
+    public function connectGraph8($i, $j, $a)
     {
         $this->connectGraph4($i, $j, $a);
         $this->connectGraph4d($i, $j, $a);
     }
 
-    function graph()
+    public function graph()
     {
         return $this->g;
     }

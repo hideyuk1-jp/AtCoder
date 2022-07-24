@@ -1,4 +1,5 @@
 <?php
+
 fscanf(STDIN, '%d', $n);
 $l = array_map('intval', explode(' ', trim(fgets(STDIN))));
 sort($l);
@@ -18,8 +19,11 @@ for ($i = 0; $i < $n-2; $i++) {
 
             while ($right - $left > 1) {
                 $mid = floor(($left + $right) / 2);
-                if ($l[$mid] > abs($l[$i]-$l[$j])) $right = $mid;
-                else $left = $mid;
+                if ($l[$mid] > abs($l[$i]-$l[$j])) {
+                    $right = $mid;
+                } else {
+                    $left = $mid;
+                }
             }
             $start = $right;
         }
@@ -32,8 +36,11 @@ for ($i = 0; $i < $n-2; $i++) {
 
             while ($right - $left > 1) {
                 $mid = floor(($left + $right) / 2);
-                if ($l[$mid] < $l[$i]+$l[$j]) $left = $mid;
-                else $right = $mid;
+                if ($l[$mid] < $l[$i]+$l[$j]) {
+                    $left = $mid;
+                } else {
+                    $right = $mid;
+                }
             }
             $end = $left;
         }
@@ -50,7 +57,9 @@ fscanf(STDIN, '%s', $s);
 $ans = 0;
 $s[$n] = "";
 for ($i = 0; $i < $n; $i++) {
-    if ($s[$i] !== $s[$i+1]) $ans++;
+    if ($s[$i] !== $s[$i+1]) {
+        $ans++;
+    }
 }
 echo $ans.PHP_EOL;
 
@@ -69,5 +78,5 @@ echo $ans.PHP_EOL;
 exit;
 
 fscanf(STDIN, '%d %d', $a, $b);
-$ans = max($a-$b*2,0);
+$ans = max($a-$b*2, 0);
 echo $ans.PHP_EOL;

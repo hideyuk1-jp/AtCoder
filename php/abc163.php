@@ -1,4 +1,5 @@
 <?php
+
 // D
 define("MOD", 10 ** 9 + 7);
 fscanf(STDIN, '%d %d', $n, $k);

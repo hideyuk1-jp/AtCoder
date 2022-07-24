@@ -1,4 +1,5 @@
 <?php
+
 list($n) = ints();
 for ($i = 0; $i < $n; ++$i) {
     list($a[]) = ints();
@@ -7,7 +8,9 @@ for ($i = 0; $i < $n; ++$i) {
 $keys = array_keys($cnt);
 sort($keys);
 $comb = array_flip($keys);
-for ($i = 0; $i < $n; ++$i) $b[] = $comb[$a[$i]];
+for ($i = 0; $i < $n; ++$i) {
+    $b[] = $comb[$a[$i]];
+}
 echo implode(PHP_EOL, $b);
 function ints()
 {

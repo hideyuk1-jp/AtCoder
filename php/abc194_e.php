@@ -1,4 +1,5 @@
 <?php
+
 // mex
 [$N, $M] = ints();
 $a = ints();

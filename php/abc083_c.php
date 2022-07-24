@@ -1,4 +1,5 @@
 <?php
+
 list($x, $y) = ints();
 $ans = 0;
 while ($x <= $y) {

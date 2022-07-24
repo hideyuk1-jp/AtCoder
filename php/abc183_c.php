@@ -1,4 +1,5 @@
 <?php
+
 [$N, $K] = ints();
 for ($i = 0; $i < $N; ++$i) {
     $T = ints();
@@ -21,7 +22,9 @@ function dfs($cur = 0, $d = 0, $visited = [])
     }
     $cnt = 0;
     for ($i = 0; $i < $N; ++$i) {
-        if (isset($visited[$i])) continue;
+        if (isset($visited[$i])) {
+            continue;
+        }
         $cnt += dfs($i, $d + $g[$cur][$i], $visited);
     }
     return $cnt;

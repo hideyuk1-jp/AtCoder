@@ -1,4 +1,5 @@
 <?php
+
 list($x) = ints();
 echo sqrt(sqrt($x));
 function ints()

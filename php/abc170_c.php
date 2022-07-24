@@ -1,7 +1,10 @@
 <?php
+
 list($x, $n) = ints();
 $p = ints();
-for ($i = 0; $i < $n; ++$i) $a[$p[$i]] = true;
+for ($i = 0; $i < $n; ++$i) {
+    $a[$p[$i]] = true;
+}
 $d = 0;
 while (true) {
     if (!isset($a[$x - $d])) {

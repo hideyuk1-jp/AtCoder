@@ -1,4 +1,5 @@
 <?php
+
 $l  = ints();
 $R = array_sum($l);
 $r = max(0, max($l) - (array_sum($l) - max($l)));

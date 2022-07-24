@@ -1,4 +1,5 @@
 <?php
+
 list($n, $a, $b) = ints();
 $ans = 0;
 for ($i = 0; $i < $n; ++$i) {
@@ -6,8 +7,12 @@ for ($i = 0; $i < $n; ++$i) {
     $d = (int) $d;
     $ans = $s === 'East' ? $ans + max(min($d, $b), $a) : $ans - max(min($d, $b), $a);
 }
-if ($ans === 0) exit('0' . PHP_EOL);
-if ($ans > 0) exit('East ' . $ans . PHP_EOL);
+if ($ans === 0) {
+    exit('0' . PHP_EOL);
+}
+if ($ans > 0) {
+    exit('East ' . $ans . PHP_EOL);
+}
 echo 'West ' . (-$ans) . PHP_EOL;
 function strs()
 {

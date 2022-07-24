@@ -1,13 +1,20 @@
 <?php
+
 list($s) = strs();
 $n = strlen($s);
 $kai = [];
-for ($i = 0; $i < intdiv($n, 2) + $n % 2; ++$i) if ($s[$i] === $s[$n - 1 - $i]) $kai[$i] = true;
+for ($i = 0; $i < intdiv($n, 2) + $n % 2; ++$i) {
+    if ($s[$i] === $s[$n - 1 - $i]) {
+        $kai[$i] = true;
+    }
+}
 $cntkai = count($kai);
 $cnt = 0;
 for ($i = 0; $i < intdiv($n, 2) + $n % 2; ++$i) {
     $m = 2;
-    if ($n % 2 && $i === intdiv($n, 2) + $n % 2 - 1) $m = 1;
+    if ($n % 2 && $i === intdiv($n, 2) + $n % 2 - 1) {
+        $m = 1;
+    }
     if (isset($kai[$i])) { // 1文字が回文の条件を満たしている場合
         if ($n % 2 && $i === intdiv($n, 2) + $n % 2 - 1) { // 文字数が奇数の時の中心の文字の場合
             if ($cntkai < intdiv($n, 2) + $n % 2) {

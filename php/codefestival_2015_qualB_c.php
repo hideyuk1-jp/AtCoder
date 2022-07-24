@@ -1,4 +1,5 @@
 <?php
+
 list($n, $m) = ints();
 $a = ints();
 $b = ints();
@@ -7,7 +8,9 @@ sort($b);
 for ($i = 0, $j = 0; $i < $m; ++$i) {
     while ($b[$i] > $a[$j]) {
         ++$j;
-        if ($j >= $n) exit('NO' . PHP_EOL);
+        if ($j >= $n) {
+            exit('NO' . PHP_EOL);
+        }
     }
     ++$j;
 }

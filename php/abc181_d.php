@@ -1,4 +1,5 @@
 <?php
+
 // 下3桁が8の倍数であれば8の倍数
 [$S] = strs();
 $s = count_chars($S);
@@ -9,7 +10,9 @@ if (strlen($S) <= 2) {
     $n = 0;
     while ($n < 100) {
         $n += 8;
-        if ($s == count_chars($n)) $ans = 'Yes';
+        if ($s == count_chars($n)) {
+            $ans = 'Yes';
+        }
     }
     echo $ans . PHP_EOL;
     exit();

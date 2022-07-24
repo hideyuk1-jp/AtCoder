@@ -1,11 +1,15 @@
 <?php
+
 list($n, $l) = ints();
 list($s) = strs();
 $tab = 1;
 $cnt = 0;
 for ($i = 0; $i < $n; ++$i) {
-    if ($s[$i] === '+') ++$tab;
-    elseif ($s[$i] === '-') --$tab;
+    if ($s[$i] === '+') {
+        ++$tab;
+    } elseif ($s[$i] === '-') {
+        --$tab;
+    }
     if ($tab > $l) {
         ++$cnt;
         $tab = 1;

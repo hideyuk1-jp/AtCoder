@@ -1,10 +1,15 @@
 <?php
+
 // bitdp
 list($n, $m) = ints();
 for ($i = 0; $i < $m; ++$i) {
     list($s, $c[]) = strs();
     $d = 0;
-    for ($j = 0; $j < $n; ++$j) if ($s[$j] === 'Y') $d |= 1 << $j;
+    for ($j = 0; $j < $n; ++$j) {
+        if ($s[$j] === 'Y') {
+            $d |= 1 << $j;
+        }
+    }
     $t[] = $d;
 }
 $dp = array_fill(0, $m + 1, array_fill(0, 1 << $n, INF));

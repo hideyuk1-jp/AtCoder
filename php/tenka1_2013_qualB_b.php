@@ -1,11 +1,14 @@
 <?php
+
 list($q, $l) = ints();
 $s = new MyStack($l);
 $ans = [];
 for ($i = 0; $i < $q; ++$i) {
     list($type, $n, $v) = strs();
     $n = (int) $n;
-    if (isset($e)) continue;
+    if (isset($e)) {
+        continue;
+    }
     if ($type === 'Push') {
         if (!$s->push($v, $n)) {
             $ans[] = 'FULL';
@@ -28,7 +31,9 @@ for ($i = 0; $i < $q; ++$i) {
         $ans[] = $s->size();
     }
 }
-if (!isset($e)) $ans[] = 'SAFE';
+if (!isset($e)) {
+    $ans[] = 'SAFE';
+}
 echo implode(PHP_EOL, $ans);
 class MyStack
 {
@@ -36,50 +41,64 @@ class MyStack
     private $a;
     private $size;
 
-    function __construct($l)
+    public function __construct($l)
     {
         $this->l = $l;
         $this->a = [];
         $this->size = 0;
     }
 
-    function push($v, $n)
+    public function push($v, $n)
     {
-        if ($this->l < $this->size + $n) return false;
+        if ($this->l < $this->size + $n) {
+            return false;
+        }
         $this->a[] = [$v, $n];
         $this->size += $n;
         return true;
     }
 
-    function pop($n)
+    public function pop($n)
     {
         $a = $this->a;
         $size = $this->size;
-        if ($size < $n) return false;
-        if (count($a) === 0) return false;
+        if ($size < $n) {
+            return false;
+        }
+        if (count($a) === 0) {
+            return false;
+        }
         list($v, $m) = array_pop($a);
         $size -= $m;
         while ($m < $n) {
             $n -= $m;
-            if (count($a) === 0) return false;
+            if (count($a) === 0) {
+                return false;
+            }
             list($v, $m) = array_pop($a);
             $size -= $m;
         }
-        if ($size < 0) return false;
+        if ($size < 0) {
+            return false;
+        }
         $this->a = $a;
         $this->size = $size;
-        if ($m > $n) $this->push($v, $m - $n);
+        if ($m > $n) {
+            $this->push($v, $m - $n);
+        }
         return true;
     }
 
-    function top()
+    public function top()
     {
         $a = $this->a;
-        if (count($a) === 0) return false;
+        if (count($a) === 0) {
+            return false;
+        }
         return $a[count($a) - 1][0];
     }
 
-    function size()
+    public function size()
     {
         return $this->size;
     }

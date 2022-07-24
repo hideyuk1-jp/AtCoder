@@ -1,4 +1,5 @@
 <?php
+
 [$n] = ints();
 $c = ints();
 for ($i = 0; $i < $n - 1; ++$i) {
@@ -17,10 +18,14 @@ function dfs($s = 0)
 {
     global $g, $c, $visited, $cnt, $ans;
     $visited[$s] = true;
-    if ($cnt[$c[$s]] === 0) $ans[] = $s + 1;
+    if ($cnt[$c[$s]] === 0) {
+        $ans[] = $s + 1;
+    }
     $cnt[$c[$s]]++;
     foreach ($g[$s] as $next) {
-        if ($visited[$next]) continue;
+        if ($visited[$next]) {
+            continue;
+        }
         dfs($next);
     }
     $cnt[$c[$s]]--;

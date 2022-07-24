@@ -1,4 +1,5 @@
 <?php
+
 list($n) = ints();
 $min = PHP_INT_MAX;
 for ($a = (int) sqrt($n); $a >= 1; --$a) {

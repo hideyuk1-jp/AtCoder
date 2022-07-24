@@ -1,4 +1,5 @@
 <?php
+
 list($x, $y) = ints();
 list($k) = ints();
 echo min($y, $k) + $x - max(0, $k - $y) . PHP_EOL;

@@ -1,4 +1,5 @@
 <?php
+
 list($n, $m) = ints();
 for ($i  = 0; $i < $m; $i++) {
     fscanf(STDIN, '%d %d', $a, $b);
@@ -19,7 +20,9 @@ while (!$q->isEmpty()) {
     $v = $q->dequeue();
 
     foreach ($g[$v] as $next_v) {
-        if ($dist[$next_v] !== -1) continue; // 発見済み
+        if ($dist[$next_v] !== -1) {
+            continue;
+        } // 発見済み
 
         $dist[$next_v] = $dist[$v] + 1;
         $q->enqueue($next_v);

@@ -1,9 +1,12 @@
 <?php
+
 list($n) = ints();
 $s = (string) $n;
 $l = strlen($s);
 for ($i = 0; $i < intdiv($l, 2); ++$i) {
-    if ($s[$i] !== $s[$l - $i - 1]) exit('No');
+    if ($s[$i] !== $s[$l - $i - 1]) {
+        exit('No');
+    }
 }
 echo 'Yes';
 function ints()

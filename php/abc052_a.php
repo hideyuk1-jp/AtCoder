@@ -1,4 +1,5 @@
 <?php
+
 list($a, $b, $c, $d) = ints();
 echo max($a * $b, $c * $d);
 function ints()

@@ -1,11 +1,16 @@
 <?php
+
 define('MOD', 10 ** 9 + 7);
 list($n, $m) = ints();
-if ($n < $m) list($n, $m) = [$m, $n];
-if ($n - $m > 1) exit('0');
+if ($n < $m) {
+    list($n, $m) = [$m, $n];
+}
+if ($n - $m > 1) {
+    exit('0');
+}
 if ($n - $m === 1) {
     echo modmul(modFac($n), modFac($m));
-    // nの間（両端含む）n+1個のうちm個を選ぶ、選んだ場所に並べる
+// nの間（両端含む）n+1個のうちm個を選ぶ、選んだ場所に並べる
 } elseif ($n - $m === 0) {
     echo modMul(2, modmul(modFac($n), modFac($m)));
 }
@@ -42,23 +47,31 @@ function modDiv($x, $y)
 // 累乗（繰り返し二乗法）
 function modPow($n, $x)
 {
-    if ($x === 0) return 1;
+    if ($x === 0) {
+        return 1;
+    }
     $res = (modPow($n, $x >> 1) ** 2) % MOD;
-    if ($x % 2 === 1) $res = modMul($res, $n);
+    if ($x % 2 === 1) {
+        $res = modMul($res, $n);
+    }
     return $res;
 }
 
 // 階乗
 function modFac($n)
 {
-    if ($n === 0) return 1;
+    if ($n === 0) {
+        return 1;
+    }
     return modMul($n, modFac($n - 1));
 }
 
 // 順列
 function nPr($n, $r)
 {
-    if ($r === 0) return 1;
+    if ($r === 0) {
+        return 1;
+    }
     return modDiv(modFac($n), modFac($n - $r));
 }
 
@@ -66,6 +79,8 @@ function nPr($n, $r)
 function nCr($n, $r)
 {
     $r = min($r, $n - $r);
-    if ($r === 0) return 1;
+    if ($r === 0) {
+        return 1;
+    }
     return modDiv(nPr($n, $r), modFac($r));
 }

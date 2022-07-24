@@ -1,9 +1,11 @@
 <?php
+
 list($n) = ints();
 $a = ints();
 $cnt = 0;
-foreach (array_info($a) as $v)
+foreach (array_info($a) as $v) {
     $cnt += intdiv($v[1], 2);
+}
 echo $cnt;
 function ints()
 {

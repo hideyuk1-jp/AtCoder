@@ -1,4 +1,5 @@
 <?php
+
 list($n, $x) = ints();
 echo min($x - 1, $n - $x);
 function ints()

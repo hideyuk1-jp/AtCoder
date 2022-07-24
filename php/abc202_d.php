@@ -1,11 +1,14 @@
 <?php
+
 [$a, $b, $k] = ints();
 $nCr = nCr($a + $b - 1);
 echo dfs($a, $b, $k);
 function dfs($a, $b, $k, $s = '')
 {
     global $nCr;
-    if ($a + $b === 0) return $s;
+    if ($a + $b === 0) {
+        return $s;
+    }
     $cnt = $nCr[$a + $b - 1][$a - 1] ?? 0;
     if ($cnt >= $k) {
         return dfs($a - 1, $b, $k, $s . 'a');

@@ -1,4 +1,5 @@
 <?php
+
 [$N] = ints();
 $a = ints();
 $ans = $max = $sum = $cusum = 0;

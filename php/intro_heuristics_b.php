@@ -1,9 +1,12 @@
 <?php
+
 list($n) = ints();
 $k = 26;
 $c = ints();
 $last = array_fill(0, $k, 0);
-for ($i = 1; $i <= $n; ++$i) $s[$i] = ints();
+for ($i = 1; $i <= $n; ++$i) {
+    $s[$i] = ints();
+}
 for ($i = 1; $i <= $n; ++$i) {
     list($t) = ints();
     --$t;

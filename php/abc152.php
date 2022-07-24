@@ -1,4 +1,5 @@
 <?php
+
 fscanf(STDIN, '%d', $n);
 $cnt = [];
 for ($i = 0; $i < 10; $i++) {
@@ -26,7 +27,9 @@ $min = 10 ** 9 + 7;
 $ans = 0;
 for ($i = 0; $i < $n; $i++) {
     $min = min($p[$i], $min);
-    if ($p[$i] === $min) $ans++;
+    if ($p[$i] === $min) {
+        $ans++;
+    }
 }
 echo $ans . PHP_EOL;
 

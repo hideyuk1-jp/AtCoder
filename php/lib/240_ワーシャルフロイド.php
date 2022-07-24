@@ -1,14 +1,21 @@
 <?php
+
 // ワーシャルフロイド
 // abc079_d
 list($h, $w) = ints();
 $wf = new WarshallFloyd(10);
-for ($i = 0; $i < 10; ++$i)
-    foreach (ints() as $j => $v) $wf->connect($i, $j, $v);
+for ($i = 0; $i < 10; ++$i) {
+    foreach (ints() as $j => $v) {
+        $wf->connect($i, $j, $v);
+    }
+}
 $wf->solve();
 $ans = 0;
-for ($i = 0; $i < $h; ++$i)
-    foreach (ints() as $v) $ans += $v !== -1 ? $wf->dist($v, 1) : 0;
+for ($i = 0; $i < $h; ++$i) {
+    foreach (ints() as $v) {
+        $ans += $v !== -1 ? $wf->dist($v, 1) : 0;
+    }
+}
 echo $ans;
 
 function ints()
@@ -23,19 +30,21 @@ class WarshallFloyd
     private $n;
     private $d;
 
-    function __construct($n)
+    public function __construct($n)
     {
         $this->n = $n;
         $this->d = array_fill(0, $this->n, array_fill(0, $this->n, INF));
-        for ($i = 0; $i < $this->n; ++$i) $this->d[$i][$i] = 0;
+        for ($i = 0; $i < $this->n; ++$i) {
+            $this->d[$i][$i] = 0;
+        }
     }
 
-    function connect($x, $y, $w)
+    public function connect($x, $y, $w)
     {
         $this->d[$x][$y] = $w;
     }
 
-    function solve()
+    public function solve()
     {
         $n = $this->n;
         $d = $this->d;
@@ -49,7 +58,7 @@ class WarshallFloyd
         $this->d = $d;
     }
 
-    function dist($x, $y)
+    public function dist($x, $y)
     {
         return $this->d[$x][$y];
     }

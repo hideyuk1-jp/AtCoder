@@ -1,4 +1,5 @@
 <?php
+
 [$N] = ints();
 $p = new SplPriorityQueue();
 $t = 0;

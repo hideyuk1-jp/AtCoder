@@ -1,4 +1,5 @@
 <?php
+
 list($s) = strs();
 list($i) = ints();
 echo $s[$i - 1];

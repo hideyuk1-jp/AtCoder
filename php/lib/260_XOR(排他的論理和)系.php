@@ -1,4 +1,5 @@
 <?php
+
 // 排他的論理和の重要な性質
 $a = 3312;
 
@@ -18,7 +19,9 @@ $b = [1, 2, 5];
 $base[0] = $b[0];
 for ($i = 1; $i < count($b); ++$i) {
     $x = $b[$i];
-    foreach ($base as $bb) $x = min($x, $x ^ $bb);
+    foreach ($base as $bb) {
+        $x = min($x, $x ^ $bb);
+    }
     if ($x) {
         $base[] = $x;
         rsort($base);
@@ -32,6 +35,8 @@ var_dump(solve(9, $base));
 // xを基底baseで表現可能か、可能な場合0を返し、不可能な場合は必要な基底を返す
 function solve($x, $base)
 {
-    foreach ($base as $b) $x = min($x, $x ^ $b);
+    foreach ($base as $b) {
+        $x = min($x, $x ^ $b);
+    }
     return $x;
 }

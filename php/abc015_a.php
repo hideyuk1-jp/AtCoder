@@ -1,4 +1,5 @@
 <?php
+
 list($a) = strs();
 list($b) = strs();
 echo strlen($a) > strlen($b) ? $a : $b;

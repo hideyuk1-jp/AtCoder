@@ -1,8 +1,11 @@
 <?php
+
 list($h, $w) = ints();
 list($si, $sj) = ints();
 list($gi, $gj) = ints();
-for ($i = 0; $i < $h; ++$i) list($c[]) = strs();
+for ($i = 0; $i < $h; ++$i) {
+    list($c[]) = strs();
+}
 $score = bfs($h, $w, $c, $si - 1, $sj - 1);
 echo $score[$gi - 1][$gj - 1] !== INF ? $score[$gi - 1][$gj - 1] : -1;
 function bfs($h, $w, $c, $si, $sj)
@@ -15,24 +18,36 @@ function bfs($h, $w, $c, $si, $sj)
     $score[$si][$sj] = 0;
     while (!$q_top->isEmpty() || !$q_end->isEmpty()) {
         list($i, $j) = !$q_top->isEmpty() ? $q_top->dequeue() : $q_end->dequeue();
-        if (isset($visited[$i][$j])) continue;
+        if (isset($visited[$i][$j])) {
+            continue;
+        }
         for ($di = -2; $di <= 2; ++$di) {
             for ($dj = -2; $dj <= 2; ++$dj) {
-                if ($di === 0 && $dj === 0) continue;
+                if ($di === 0 && $dj === 0) {
+                    continue;
+                }
                 $ni = $i + $di;
                 $nj = $j + $dj;
                 // 範囲外であればコンテニュー
-                if ($ni < 0 || $ni > $h - 1 || $nj < 0 || $nj > $w - 1) continue;
+                if ($ni < 0 || $ni > $h - 1 || $nj < 0 || $nj > $w - 1) {
+                    continue;
+                }
                 // 壁であればコンティニュー
-                if ($c[$ni][$nj] === '#') continue;
+                if ($c[$ni][$nj] === '#') {
+                    continue;
+                }
                 $warpFrag = (abs($di) + abs($dj)) > 1;
                 if ($warpFrag) {
-                    if ($score[$ni][$nj] <= $score[$i][$j] + 1) continue;
+                    if ($score[$ni][$nj] <= $score[$i][$j] + 1) {
+                        continue;
+                    }
                     // 末尾に追加
                     $q_end->enqueue([$ni, $nj]);
                     $score[$ni][$nj] = $score[$i][$j] + 1;
                 } else {
-                    if ($score[$ni][$nj] <= $score[$i][$j]) continue;
+                    if ($score[$ni][$nj] <= $score[$i][$j]) {
+                        continue;
+                    }
                     // 先頭に追加
                     $q_top->enqueue([$ni, $nj]);
                     $score[$ni][$nj] = $score[$i][$j];

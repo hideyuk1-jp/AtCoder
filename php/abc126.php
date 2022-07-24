@@ -1,4 +1,5 @@
 <?php
+
 // グラフ：頂点と辺の総数のあと改行して改行区切りの辺の集合
 fscanf(STDIN, '%d', $n);
 for ($i  = 0; $i < $n - 1; $i++) {
@@ -16,19 +17,24 @@ $dist = array_fill(0, $n, -1); // 距離を格納する配列（-1の場合は�
 $dist[0] = 0; // 頂点0からの距離格納配列
 $q->enqueue(0); // キューに0を追加
 
-while(!$q->isEmpty()) {
+while (!$q->isEmpty()) {
     $v = $q->dequeue();
 
     foreach ($g[$v] as $next_v) {
-        if ($dist[$next_v[0]] !== -1) continue; // 発見済み
+        if ($dist[$next_v[0]] !== -1) {
+            continue;
+        } // 発見済み
 
         $dist[$next_v[0]] = $dist[$v] + $next_v[1];
         $q->enqueue($next_v[0]);
     }
 }
 foreach ($dist as $i => $v) {
-    if ($dist[$i] % 2 === 0) echo (0) . PHP_EOL;
-    else echo (1) . PHP_EOL;
+    if ($dist[$i] % 2 === 0) {
+        echo(0) . PHP_EOL;
+    } else {
+        echo(1) . PHP_EOL;
+    }
 }
 
 exit();
@@ -36,7 +42,7 @@ exit();
 fscanf(STDIN, '%d %d', $n, $k);
 
 $ans = 0;
-for($i = 1; $i <= $n; $i++) {
+for ($i = 1; $i <= $n; $i++) {
     $p = $i;
     $j = 0;
     while ($p <= $k - 1) {
@@ -71,8 +77,11 @@ fscanf(STDIN, '%d %d', $n, $k);
 fscanf(STDIN, '%s', $s);
 
 $ans = '';
-for($i = 0; $i < $n; $i++) {
-    if ($i === $k - 1) $ans = $ans . strtolower($s[$i]);
-    else $ans = $ans . $s[$i];
+for ($i = 0; $i < $n; $i++) {
+    if ($i === $k - 1) {
+        $ans = $ans . strtolower($s[$i]);
+    } else {
+        $ans = $ans . $s[$i];
+    }
 }
 echo $ans . PHP_EOL;

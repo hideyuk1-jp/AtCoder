@@ -1,8 +1,12 @@
 <?php
+
 list($s) = strs();
 for ($i = 0; $i < strlen($s); ++$i) {
-    if (isset($cnt[$s[$i]])) ++$cnt[$s[$i]];
-    else $cnt[$s[$i]] = 1;
+    if (isset($cnt[$s[$i]])) {
+        ++$cnt[$s[$i]];
+    } else {
+        $cnt[$s[$i]] = 1;
+    }
 }
 arsort($cnt);
 echo array_keys($cnt)[0];

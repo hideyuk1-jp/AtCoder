@@ -1,4 +1,5 @@
 <?php
+
 list($n) = ints();
 echo  intdiv($n, 2) + $n % 2 - 1;
 function ints()

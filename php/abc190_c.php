@@ -1,4 +1,5 @@
 <?php
+
 [$N, $M] = ints();
 for ($i = 0; $i < $M; ++$i) {
     [$a[], $b[]] = ints();
@@ -20,7 +21,9 @@ for ($i = 0; $i < 2 ** $K; ++$i) {
     // 満たされる条件の個数の計算
     $tmp = 0;
     for ($j = 0; $j < $M; ++$j) {
-        if ($cnt[$a[$j]] && $cnt[$b[$j]]) ++$tmp;
+        if ($cnt[$a[$j]] && $cnt[$b[$j]]) {
+            ++$tmp;
+        }
     }
     $max = max($max, $tmp);
 }

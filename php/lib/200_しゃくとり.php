@@ -1,4 +1,5 @@
 <?php
+
 // ARC022_B 同じ数字が現れない部分区間の最大長を求める
 list($n) = ints();
 $a = ints();
@@ -54,8 +55,11 @@ $ok = -10 ** 18 - 1;
 $ng = 10 ** 18 + 1;
 while (abs($ok - $ng) > 1) {
     $mid = intdiv($ok + $ng, 2);
-    if (cnt($mid) < $k) $ok = $mid;
-    else $ng = $mid;
+    if (cnt($mid) < $k) {
+        $ok = $mid;
+    } else {
+        $ng = $mid;
+    }
 }
 echo $ok;
 
@@ -78,7 +82,9 @@ function cnt($x)
                 $r--;
             }
             $res += $r - $l;
-            if ($l >= $r) break;
+            if ($l >= $r) {
+                break;
+            }
         }
 
         // しゃくとり マイナスxマイナス
@@ -88,7 +94,9 @@ function cnt($x)
                 $r--;
             }
             $res += $r - $l;
-            if ($l >= $r) break;
+            if ($l >= $r) {
+                break;
+            }
         }
 
         return $res;

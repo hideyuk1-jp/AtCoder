@@ -1,24 +1,37 @@
 <?php
+
 // 島が一つになっているかの判定をBFSを使って解き直し
 define('ROAD', 'o');
 define('WALL', 'x');
 list($h, $w) = [10, 10];
 $n = $h * $w;
-for ($i = 0; $i < $h; ++$i) list($a[]) = strs();
+for ($i = 0; $i < $h; ++$i) {
+    list($a[]) = strs();
+}
 $cntRoad = 0;
 squares2Gragh($a);
 $gb = $g;
 for ($i = 0; $i < $h; ++$i) {
     for ($j = 0; $j < $w; ++$j) {
-        if ($a[$i][$j] === ROAD) continue;
+        if ($a[$i][$j] === ROAD) {
+            continue;
+        }
         $g = $gb;
         $from = $i * $w + $j;
         connectGraph4($i, $j, $a);
-        if (!isset($g[$from])) continue;
+        if (!isset($g[$from])) {
+            continue;
+        }
         $d = bfs($from);
         $cnt = 0;
-        for ($k = 0; $k < $n; ++$k) if ($d[$k] > 0) ++$cnt;
-        if ($cnt === $cntRoad) exit('YES' . PHP_EOL);
+        for ($k = 0; $k < $n; ++$k) {
+            if ($d[$k] > 0) {
+                ++$cnt;
+            }
+        }
+        if ($cnt === $cntRoad) {
+            exit('YES' . PHP_EOL);
+        }
     }
 }
 echo 'NO' . PHP_EOL;
@@ -35,7 +48,9 @@ function bfs($s = 0)
     while (!$q->isEmpty()) {
         $v = $q->dequeue();
         foreach ($g[$v] as $next_v => $cost) {
-            if ($dist[$next_v] !== -1) continue; // 発見済み
+            if ($dist[$next_v] !== -1) {
+                continue;
+            } // 発見済み
 
             $dist[$next_v] = $dist[$v] + $cost;
             $q->enqueue($next_v);
@@ -52,7 +67,9 @@ function squares2Gragh($a)
     $g = array_fill(0, $h * $w, []);
     for ($i = 0; $i < $h; ++$i) {
         for ($j = 0; $j < $w; ++$j) {
-            if ($a[$i][$j] === WALL) continue;
+            if ($a[$i][$j] === WALL) {
+                continue;
+            }
             ++$cntRoad;
             connectGraphRD($i, $j, $a);
         }

@@ -1,17 +1,25 @@
 <?php
+
 list($n) = ints();
 for ($i = 0; $i < $n; ++$i) {
     for ($j = 0; $j <= $i; ++$j) {
-        if ($i === $j) $a[$i][$j] = 0;
-        else $a[$i][$j] = $a[$j][$i];
+        if ($i === $j) {
+            $a[$i][$j] = 0;
+        } else {
+            $a[$i][$j] = $a[$j][$i];
+        }
     }
-    if ($i < $n - 1) $a[$i] = array_merge($a[$i], ints());
+    if ($i < $n - 1) {
+        $a[$i] = array_merge($a[$i], ints());
+    }
 }
 echo dfs();
 function dfs($d = 0, $g = [[], [], []])
 {
     global $n;
-    if ($d === $n) return calcHappiness($g);
+    if ($d === $n) {
+        return calcHappiness($g);
+    }
     for ($i = 0; $i < 3; ++$i) {
         $_g = $g;
         $_g[$i][] = $d;

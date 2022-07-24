@@ -1,4 +1,5 @@
 <?php
+
 list($x, $y) = ints();
 echo max($x, $y) . PHP_EOL;
 function ints()

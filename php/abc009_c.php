@@ -1,4 +1,5 @@
 <?php
+
 list($n, $k) = ints();
 list($s) = strs();
 $ss = str_split($s);
@@ -24,7 +25,9 @@ function cntStrDiff($s, $t)
 {
     for ($i = 0; $i < strlen($s); ++$i) {
         $pos = strpos($t, $s[$i]);
-        if ($pos === false) continue;
+        if ($pos === false) {
+            continue;
+        }
         $t = substr_replace($t, '', $pos, 1);
     }
     return strlen($t);

@@ -1,11 +1,15 @@
 <?php
+
 list($n) = ints();
 for ($i = 0; $i < $n; $i++) {
     list($s[]) = strs();
 }
 for ($i = 0; $i < $n; $i++) {
-    if (isset($a[$s[$i][0]])) $a[$s[$i][0]]++;
-    else $a[$s[$i][0]] = 1;
+    if (isset($a[$s[$i][0]])) {
+        $a[$s[$i][0]]++;
+    } else {
+        $a[$s[$i][0]] = 1;
+    }
 }
 $m = ['M', 'A', 'R', 'C', 'H'];
 $cnt = 0;

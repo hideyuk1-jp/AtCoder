@@ -1,11 +1,14 @@
 <?php
+
 echo gcd(45, 27) . PHP_EOL;
 echo lcm(45, 27) . PHP_EOL;
 
 // 最大公約数（2つ）
 function gcd($m, $n)
 {
-    if (!$n) return $m;
+    if (!$n) {
+        return $m;
+    }
     return gcd($n, $m % $n);
 }
 

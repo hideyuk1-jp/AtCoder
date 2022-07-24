@@ -1,7 +1,12 @@
 <?php
+
 fscanf(STDIN, '%d %d %d %d', $h, $w, $a, $b);
-for ($i = 0; $i < $b; $i++) echo str_repeat('1', $a) . str_repeat('0', $w - $a) . PHP_EOL;
-for ($i = $b; $i < $h; $i++) echo str_repeat('0', $a) . str_repeat('1', $w - $a) . PHP_EOL;
+for ($i = 0; $i < $b; $i++) {
+    echo str_repeat('1', $a) . str_repeat('0', $w - $a) . PHP_EOL;
+}
+for ($i = $b; $i < $h; $i++) {
+    echo str_repeat('0', $a) . str_repeat('1', $w - $a) . PHP_EOL;
+}
 
 exit();
 
@@ -24,7 +29,8 @@ for ($i = 0; $i < $n - $k + 1; $i++) {
 }
 echo count($x) . PHP_EOL;
 
-function quickSort(&$list, $first, $last) {
+function quickSort(&$list, $first, $last)
+{
     $firstPointer = $first;
     $lastPointer  = $last;
     //枢軸値を決める。配列の中央値
@@ -80,16 +86,21 @@ if ($arr === false) {
 }
 for ($i = 0; $i < $n; $i++) {
     echo $arr[$i];
-    if ($i % $w === $w - 1) echo PHP_EOL;
+    if ($i % $w === $w - 1) {
+        echo PHP_EOL;
+    }
 }
 
-function func($h, $w, $arr) {
+function func($h, $w, $arr)
+{
     global $b, $arr_w;
     $n = $h * $w;
     if (count($arr) < $n) {
         foreach ($arr_w as $v) {
             $arr0 = func($h, $w, array_merge($arr, $v));
-            if ($arr0 !== false) return $arr0;
+            if ($arr0 !== false) {
+                return $arr0;
+            }
         }
         return false;
     }
@@ -98,17 +109,22 @@ function func($h, $w, $arr) {
         for ($j = 0; $j < $h; $j++) {
             $sum += $arr[$j * $w + $i];
         }
-        if ($b !== min($sum, $h - $sum)) return false;
+        if ($b !== min($sum, $h - $sum)) {
+            return false;
+        }
     }
     return $arr;
 }
 
-function func2($w, $a) {
+function func2($w, $a)
+{
     $res = [];
     for ($i = 0; $i < 2 ** $w; $i++) {
         $arr = array_map('intval', str_split(str_pad(decbin($i), $w, 0, STR_PAD_LEFT)));
         $sum = array_sum($arr);
-        if ($a === min($sum, $w - $sum)) $res[] = $arr;
+        if ($a === min($sum, $w - $sum)) {
+            $res[] = $arr;
+        }
     }
     return $res;
 }

@@ -1,4 +1,5 @@
 <?php
+
 list($a) = ints();
 list($b) = ints();
 echo $a % $b ? $b - $a % $b : 0;

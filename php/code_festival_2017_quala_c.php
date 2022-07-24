@@ -1,10 +1,14 @@
 <?php
+
 list($h, $w) = ints();
 for ($i = 0; $i < $h; ++$i) {
     list($a) = strs();
     for ($j = 0; $j < $w; ++$j) {
-        if (isset($cnt[$a[$j]])) ++$cnt[$a[$j]];
-        else $cnt[$a[$j]] = 1;
+        if (isset($cnt[$a[$j]])) {
+            ++$cnt[$a[$j]];
+        } else {
+            $cnt[$a[$j]] = 1;
+        }
     }
 }
 

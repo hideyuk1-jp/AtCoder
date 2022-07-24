@@ -1,4 +1,5 @@
 <?php
+
 fscanf(STDIN, '%d %d %d', $n, $a, $b);
 define('MOD', 10 ** 9 + 7);
 
@@ -32,23 +33,31 @@ function modDiv($x, $y)
 // 累乗（繰り返し二乗法）
 function modPow($n, $x)
 {
-    if ($x === 0) return 1;
+    if ($x === 0) {
+        return 1;
+    }
     $res = (modPow($n, $x >> 1) ** 2) % MOD;
-    if ($x % 2 === 1) $res = ($res * $n) % MOD;
+    if ($x % 2 === 1) {
+        $res = ($res * $n) % MOD;
+    }
     return $res;
 }
 
 // 階乗
 function modFac($n)
 {
-    if ($n === 0) return 1;
+    if ($n === 0) {
+        return 1;
+    }
     return $n * modFac($n - 1) % MOD;
 }
 
 // 順列
 function nPr($n, $r)
 {
-    if ($r === 0) return 1;
+    if ($r === 0) {
+        return 1;
+    }
     return nPr($n, $r - 1) * ($n - $r + 1) % MOD;
 }
 
@@ -56,8 +65,12 @@ function nPr($n, $r)
 function nCr($n, $r)
 {
     $r = min($r, $n - $r);
-    if ($r === 0) return 1;
-    if ($r === 1) return $n;
+    if ($r === 0) {
+        return 1;
+    }
+    if ($r === 1) {
+        return $n;
+    }
     return modDiv(nPr($n, $r), modFac($r));
 }
 
@@ -85,7 +98,9 @@ exit;
 fscanf(STDIN, '%d %d', $n, $k);
 $ans = 1;
 while (true) {
-    if ($n / $k < 1) break;
+    if ($n / $k < 1) {
+        break;
+    }
     $ans++;
     $n = floor($n / $k);
 }

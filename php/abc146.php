@@ -1,4 +1,5 @@
 <?php
+
 // バーチャル参加でCまでAC 600 38:16 => 推定パフォ1013
 
 fscanf(STDIN, '%d', $n);
@@ -26,12 +27,18 @@ function dfs($v = 0, $par_color)
     global $g, $seen, $color;
 
     $seen[$v] = true;
-    if (is_null($g[$v])) return;
+    if (is_null($g[$v])) {
+        return;
+    }
 
     $i = 1;
     foreach ($g[$v] as $to) {
-        if ($seen[$to]) continue;
-        if ($i === $par_color) $i++;
+        if ($seen[$to]) {
+            continue;
+        }
+        if ($i === $par_color) {
+            $i++;
+        }
         // 彩色
         $color[$v][$to] = $color[$to][$v] = $i;
         dfs($to, $i);
@@ -48,8 +55,11 @@ $right = 10 ** 9 + 1;
 while ($right - $left > 1) {
     $mid = (int) floor(($left + $right) / 2);
     $p = $a * $mid + $b * strlen($mid);
-    if ($p <= $x) $left = $mid;
-    else $right = $mid;
+    if ($p <= $x) {
+        $left = $mid;
+    } else {
+        $right = $mid;
+    }
 }
 echo $left . PHP_EOL;
 
@@ -71,4 +81,4 @@ exit;
 
 fscanf(STDIN, '%s', $s);
 $youbi = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
-echo (7 - array_search($s, $youbi)) . PHP_EOL;
+echo(7 - array_search($s, $youbi)) . PHP_EOL;

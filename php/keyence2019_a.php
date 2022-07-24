@@ -1,4 +1,5 @@
 <?php
+
 $n = ints();
 sort($n);
 echo $n === [1, 4, 7, 9] ? 'YES' : 'NO';

@@ -1,4 +1,5 @@
 <?php
+
 [$N, $W] = ints();
 $sum = array_fill(0, 2 * 10 ** 5 + 1, 0);
 for ($i = 0; $i < $N; ++$i) {

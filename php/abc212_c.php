@@ -1,4 +1,5 @@
 <?php
+
 [$n, $m] = ints();
 $a = ints();
 $b = ints();

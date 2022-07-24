@@ -1,4 +1,5 @@
 <?php
+
 list($n) = ints();
 list($k) = ints();
 echo $n >= $k * 2 ? 'YES' : 'NO';

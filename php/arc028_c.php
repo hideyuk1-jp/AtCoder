@@ -1,4 +1,5 @@
 <?php
+
 // 親方向のノードと、子方向のノードの数を1回のdfsで求める
 fscanf(STDIN, '%d', $n);
 for ($i  = 1; $i < $n; $i++) {
@@ -16,7 +17,9 @@ function dfs($parent = -1, $d = 0)
     // 子方向
     $cnt = 1; // d の分
     foreach ($g[$d] as $next) {
-        if ($parent === $next) continue;
+        if ($parent === $next) {
+            continue;
+        }
         $tmp = dfs($d, $next);
         $cnt += $tmp;
         $ans[$d] = max($ans[$d], $tmp);

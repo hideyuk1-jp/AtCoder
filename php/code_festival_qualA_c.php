@@ -1,4 +1,5 @@
 <?php
+
 list($a, $b) = ints();
 echo uruu($b) - uruu($a - 1);
 echo PHP_EOL;

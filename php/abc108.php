@@ -1,8 +1,11 @@
 <?php
+
 // C
 fscanf(STDIN, '%d %d', $n, $k);
 $ans = intdiv($n, $k) ** 3;
-if ($k % 2 === 0) $ans += intdiv($n + $k / 2, $k) ** 3;
+if ($k % 2 === 0) {
+    $ans += intdiv($n + $k / 2, $k) ** 3;
+}
 echo $ans;
 
 exit;
@@ -17,4 +20,4 @@ exit;
 
 // A
 fscanf(STDIN, '%d', $k);
-echo ((int) floor($k / 2) * (int) ceil($k / 2));
+echo((int) floor($k / 2) * (int) ceil($k / 2));

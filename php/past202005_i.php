@@ -1,6 +1,9 @@
 <?php
+
 list($n) = ints();
-for ($i = 0; $i < $n; ++$i) $is[$i] = $js[$i] = $i;
+for ($i = 0; $i < $n; ++$i) {
+    $is[$i] = $js[$i] = $i;
+}
 list($q) = ints();
 $tenchi = 0;
 $output = [];
@@ -17,7 +20,9 @@ for ($i = 0; $i < $q; ++$i) {
     } elseif ($type === 3) {
         ++$tenchi;
     } else {
-        if ($tenchi % 2) list($a, $b) = [$b, $a];
+        if ($tenchi % 2) {
+            list($a, $b) = [$b, $a];
+        }
         $output[] = $n * $is[$a] + $js[$b];
     }
 }

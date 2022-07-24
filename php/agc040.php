@@ -1,4 +1,5 @@
 <?php
+
 fscanf(STDIN, '%s', $s);
 
 $n = strlen($s);
@@ -10,7 +11,9 @@ while ($i<$n) {
     $nv = ($s[$i] == '>') ? '<' : '>';
     $pv = $nv;
     $ni = strpos($s, $nv, $i);
-    if (empty($ni)) $ni = $n;
+    if (empty($ni)) {
+        $ni = $n;
+    }
 
     $cnt = $ni - $i;
 
@@ -28,6 +31,7 @@ while ($i<$n) {
 }
 echo $ans.PHP_EOL;
 
-function factorial ($n) {
+function factorial($n)
+{
     return ($n + 1) * $n / 2;
 }

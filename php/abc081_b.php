@@ -1,4 +1,5 @@
 <?php
+
 list($n) = ints();
 $a = ints();
 $num = gcdAll($a);
@@ -17,7 +18,9 @@ function ints()
 // 最大公約数（2つ）
 function gcd($m, $n)
 {
-    if (!$n) return $m;
+    if (!$n) {
+        return $m;
+    }
     return gcd($n, $m % $n);
 }
 

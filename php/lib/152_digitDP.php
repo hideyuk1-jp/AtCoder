@@ -1,4 +1,5 @@
 <?php
+
 // digitDP
 // N以下の整数で、ある条件を満たすものの個数を求める場合や
 // N以下の整数で、ある条件を満たすものの最大値を求める場合などに使える
@@ -6,7 +7,7 @@
 // abc007_d
 // A以上B以下の整数でいずれかの桁に4か9を含むものの個数を求める問題
 list($a, $b) = strs();
-echo (countHateNum($b) - countHateNum($a - 1)) . PHP_EOL;
+echo(countHateNum($b) - countHateNum($a - 1)) . PHP_EOL;
 function countHateNum(String $s): int
 {
     $l = strlen($s);

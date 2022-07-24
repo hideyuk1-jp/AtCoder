@@ -1,7 +1,10 @@
 <?php
+
 // D
 fscanf(STDIN, '%d %d', $h, $w);
-for ($i = 0; $i < $h; $i++) $a[] = array_map('intval', explode(' ', trim(fgets(STDIN))));
+for ($i = 0; $i < $h; $i++) {
+    $a[] = array_map('intval', explode(' ', trim(fgets(STDIN))));
+}
 $moving = false;
 $his = [];
 for ($i = 0; $i < $h; $i++) {
@@ -48,7 +51,9 @@ echo $gcd;
 // 最大公約数（2つ）
 function gcd($m, $n)
 {
-    if (!$n) return $m;
+    if (!$n) {
+        return $m;
+    }
     return gcd($n, $m % $n);
 }
 

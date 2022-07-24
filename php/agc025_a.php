@@ -1,7 +1,11 @@
 <?php
+
 list($n) = ints();
-for ($i = 1; $i <= 5; ++$i)
-    if ($n === 10 ** $i) exit('10');
+for ($i = 1; $i <= 5; ++$i) {
+    if ($n === 10 ** $i) {
+        exit('10');
+    }
+}
 echo digitSum($n);
 function ints()
 {

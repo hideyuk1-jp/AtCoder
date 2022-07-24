@@ -1,4 +1,5 @@
 <?php
+
 // バーチャル参加 Cまで自力AC 600 61:34 => 推定パフォ1103
 
 // C
@@ -20,8 +21,8 @@ for ($i = 0; $i < $n; $i++) {
         }
     }
 }
-$qk = new SplPriorityQueue;
-$qg = new SplPriorityQueue;
+$qk = new SplPriorityQueue();
+$qg = new SplPriorityQueue();
 
 foreach ($vk_cnt as $i => $cnt) {
     $qk->insert([$i, $cnt], $cnt);

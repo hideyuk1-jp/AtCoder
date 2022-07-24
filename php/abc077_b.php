@@ -1,7 +1,10 @@
 <?php
+
 list($n) = ints();
 for ($i = $n; $i >= 1; --$i) {
-    if (pow((int) sqrt($i), 2) === $i) break;
+    if (pow((int) sqrt($i), 2) === $i) {
+        break;
+    }
 }
 echo $i;
 function ints()

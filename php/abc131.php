@@ -1,4 +1,5 @@
 <?php
+
 fscanf(STDIN, '%d', $n);
 $q = new SplPriorityQueue();
 for ($i  = 0; $i < $n; $i++) {
@@ -16,8 +17,11 @@ while (!$q->isEmpty()) {
         break;
     }
 }
-if ($flag) echo 'Yes'.PHP_EOL;
-else  echo 'No'.PHP_EOL;
+if ($flag) {
+    echo 'Yes'.PHP_EOL;
+} else {
+    echo 'No'.PHP_EOL;
+}
 
 exit();
 
@@ -35,14 +39,21 @@ $ans += intdiv($b, $e) - intdiv($a - 1, $e);
 
 echo $ans.PHP_EOL;
 
-function gcd($m, $n){
-    if($n > $m) list($m, $n) = [$n, $m];
+function gcd($m, $n)
+{
+    if ($n > $m) {
+        list($m, $n) = [$n, $m];
+    }
 
-    if ($m % $n === 0) return $n;
-    else return gcd($n, $m % $n);
+    if ($m % $n === 0) {
+        return $n;
+    } else {
+        return gcd($n, $m % $n);
+    }
 }
 
-function lcm($m, $n){
+function lcm($m, $n)
+{
     return $m * $n / gcd($m, $n);
 }
 
@@ -55,9 +66,11 @@ $sum = 0;
 for ($i = 0; $i < $n; $i++) {
     $aji = $l + $i;
     $sum += $aji;
-    if (abs($aji) < abs($absmin)) $absmin = $aji;
+    if (abs($aji) < abs($absmin)) {
+        $absmin = $aji;
+    }
 }
-echo ($sum - $absmin).PHP_EOL;
+echo($sum - $absmin).PHP_EOL;
 
 exit();
 
@@ -65,7 +78,7 @@ const MOD = 10 ** 9 + 7;
 // 入力
 fscanf(STDIN, '%s', $pass);
 
-for ($i = 0; $i < strlen($pass) - 1; $i++) { 
+for ($i = 0; $i < strlen($pass) - 1; $i++) {
     if ($pass[$i] === $pass[$i + 1]) {
         echo 'Bad'.PHP_EOL;
         exit();

@@ -1,4 +1,5 @@
 <?php
+
 [$N] = ints();
 $a = ints();
 sort($a);

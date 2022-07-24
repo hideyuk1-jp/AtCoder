@@ -1,4 +1,5 @@
 <?php
+
 list($d, $t, $s) = ints();
 echo $d > $t * $s ? 'No' : 'Yes';
 function ints()

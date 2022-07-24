@@ -1,4 +1,5 @@
 <?php
+
 list($n, $va, $vb, $l) = ints();
 for ($i = 0; $i < $n; ++$i) {
     $t = $l / $va;

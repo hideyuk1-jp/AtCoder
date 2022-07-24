@@ -1,4 +1,5 @@
 <?php
+
 list($s) = strs();
 $n = strlen($s);
 list($k) = ints();
@@ -8,7 +9,9 @@ if (count($a) === 1) {
     exit;
 }
 $cnt = 0;
-foreach ($a as $i => list($v, $c)) $cnt += intdiv($c, 2) * $k;
+foreach ($a as $i => list($v, $c)) {
+    $cnt += intdiv($c, 2) * $k;
+}
 if ($s[0] === $s[$n - 1]) {
     $cnt -= intdiv($a[0][1], 2) * ($k - 1);
     $cnt -= intdiv($a[count($a) - 1][1], 2) * ($k - 1);

@@ -1,4 +1,5 @@
 <?php
+
 list($x, $y) = ints();
 echo intdiv($y, $x) . PHP_EOL;
 function ints()

@@ -1,4 +1,5 @@
 <?php
+
 list($n, $m) = ints();
 for ($i = 0; $i < $m; ++$i) {
     list($a, $b) = ints();
@@ -21,15 +22,23 @@ for ($i = 0; $i < $m; ++$i) {
         $v = $q->dequeue();
 
         foreach ($g[$v] as $next_v) {
-            if ($h[$i][0] === $v && $h[$i][1] === $next_v) continue;
-            if ($h[$i][1] === $v && $h[$i][0] === $next_v) continue;
-            if ($dist[$next_v] !== -1) continue; // 発見済み
+            if ($h[$i][0] === $v && $h[$i][1] === $next_v) {
+                continue;
+            }
+            if ($h[$i][1] === $v && $h[$i][0] === $next_v) {
+                continue;
+            }
+            if ($dist[$next_v] !== -1) {
+                continue;
+            } // 発見済み
 
             $dist[$next_v] = $dist[$v] + 1;
             $q->enqueue($next_v);
         }
     }
-    if (array_search(-1, $dist)) $ans++;
+    if (array_search(-1, $dist)) {
+        $ans++;
+    }
 }
 echo $ans;
 

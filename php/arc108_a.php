@@ -1,9 +1,12 @@
 <?php
+
 [$s, $p] = ints();
 $d = divisors($p);
 for ($i = 0; $i < count($d); ++$i) {
     $tmp = $p / $d[$i];
-    if ($d[$i] + $tmp === $s) exit('Yes');
+    if ($d[$i] + $tmp === $s) {
+        exit('Yes');
+    }
 }
 echo 'No';
 function ints()

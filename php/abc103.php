@@ -1,4 +1,5 @@
 <?php
+
 // D
 fscanf(STDIN, '%d %d', $n, $m);
 for ($i  = 0; $i < $m; $i++) {
@@ -36,7 +37,9 @@ fscanf(STDIN, '%s', $s);
 fscanf(STDIN, '%s', $t);
 for ($i = 0; $i < strlen($s); $i++) {
     $ss = substr($s, $i) . substr($s, 0, $i);
-    if ($ss === $t) exit('Yes');
+    if ($ss === $t) {
+        exit('Yes');
+    }
 }
 echo 'No';
 

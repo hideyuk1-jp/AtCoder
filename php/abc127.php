@@ -1,4 +1,5 @@
 <?php
+
 // 2019-08-14 09:16 開始 ABCをAC 2019-08-14 09:27
 
 fscanf(STDIN, '%d %d', $n, $m);
@@ -14,7 +15,9 @@ foreach ($x as $k => $v) {
     $min = min($v, $n);
     $ans += $k * $min;
     $n -= $min;
-    if ($n === 0) break;
+    if ($n === 0) {
+        break;
+    }
 }
 echo $ans . PHP_EOL;
 
@@ -27,7 +30,7 @@ for ($i  = 0; $i < $m; $i++) {
 
 $left = $l[0];
 $right = $r[0];
-for($i = 1; $i < $m; $i++) {
+for ($i = 1; $i < $m; $i++) {
     $left = max($left, $l[$i]);
     $right = min($right, $r[$i]);
 }
@@ -45,7 +48,11 @@ for ($i = 1; $i <= 10; $i++) {
 exit();
 
 fscanf(STDIN, '%d %d', $a, $b);
-if ($a >= 13) $ans = $b;
-elseif ($a >= 6) $ans = $b / 2;
-else $ans = 0;
+if ($a >= 13) {
+    $ans = $b;
+} elseif ($a >= 6) {
+    $ans = $b / 2;
+} else {
+    $ans = 0;
+}
 echo $ans . PHP_EOL;

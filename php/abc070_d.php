@@ -1,4 +1,5 @@
 <?php
+
 list($n) = ints();
 for ($i = 0; $i < $n - 1; ++$i) {
     list($a, $b, $c) = ints();
@@ -20,7 +21,9 @@ while (!$q->isEmpty()) {
     $v = $q->dequeue();
 
     foreach ($g[$v] as $next_v => $d) {
-        if ($dist[$next_v] !== -1) continue; // 発見済み
+        if ($dist[$next_v] !== -1) {
+            continue;
+        } // 発見済み
 
         $dist[$next_v] = $dist[$v] + $d;
         $q->enqueue($next_v);
@@ -30,7 +33,7 @@ for ($i = 0; $i < $Q; ++$i) {
     list($x, $y) = ints();
     --$x;
     --$y;
-    echo ($dist[$x] + $dist[$y]) . PHP_EOL;
+    echo($dist[$x] + $dist[$y]) . PHP_EOL;
 }
 
 function ints()

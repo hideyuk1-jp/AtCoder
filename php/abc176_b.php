@@ -1,4 +1,5 @@
 <?php
+
 list($s) = strs();
 $sum = 0;
 for ($i = 0; $i < strlen($s); ++$i) {

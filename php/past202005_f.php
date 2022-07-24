@@ -1,10 +1,14 @@
 <?php
+
 list($n) = ints();
 for ($i = 0; $i < $n; ++$i) {
     list($s) = strs();
     for ($j = 0; $j < $n; ++$j) {
-        if (isset($cnt[$i][$s[$j]])) ++$cnt[$i][$s[$j]];
-        else $cnt[$i][$s[$j]] = 1;
+        if (isset($cnt[$i][$s[$j]])) {
+            ++$cnt[$i][$s[$j]];
+        } else {
+            $cnt[$i][$s[$j]] = 1;
+        }
     }
 }
 $s = '';
@@ -17,8 +21,11 @@ for ($i = 0; $i < intdiv($n, 2) + $n % 2; ++$i) {
     }
     exit('-1');
 }
-if ($n % 2) $s .= strrev(substr($s, 0, -1));
-else $s .= strrev($s);
+if ($n % 2) {
+    $s .= strrev(substr($s, 0, -1));
+} else {
+    $s .= strrev($s);
+}
 echo $s;
 function strs()
 {

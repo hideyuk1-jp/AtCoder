@@ -1,4 +1,5 @@
 <?php
+
 // コンテスト参加 Dまで自力AC 1000 22:24 => パフォ 1060
 // E 解説見て
 fscanf(STDIN, '%d %d %d', $n, $k, $c);
@@ -34,7 +35,9 @@ for ($i = $n; $i >= 1 && $cnt >= 1; $i--) {
 
 $ans = [];
 for ($i = 1; $i <= $k; $i++) {
-    if (isset($l[$i]) && isset($r[$i]) && $l[$i] === $r[$i]) $ans[] = $l[$i];
+    if (isset($l[$i]) && isset($r[$i]) && $l[$i] === $r[$i]) {
+        $ans[] = $l[$i];
+    }
 }
 echo implode(PHP_EOL, $ans);
 
@@ -52,12 +55,16 @@ $ans += count($divisors) - 1;
 $divisors = divisors($n);
 // var_dump($divisors);
 foreach ($divisors as $d) {
-    if ($d === 1) continue;
+    if ($d === 1) {
+        continue;
+    }
     $n2 = $n;
     while ($n2 % $d === 0) {
         $n2 = intdiv($n2, $d);
     }
-    if ($n2 % $d === 1) $ans++;
+    if ($n2 % $d === 1) {
+        $ans++;
+    }
 }
 
 echo $ans;
@@ -71,7 +78,9 @@ function primesArr($max)
     $is_prime = isPrimeArr($max);
     $res = [];
     for ($i = 1; $i <= $max; $i++) {
-        if ($is_prime[$i]) $res[] = $i;
+        if ($is_prime[$i]) {
+            $res[] = $i;
+        }
     }
     return $res;
 }
@@ -98,7 +107,9 @@ function primeFactorization($n)
 {
     $res = [];
     $res[1] = 1;
-    if ($n === 1) return $res;
+    if ($n === 1) {
+        return $res;
+    }
 
     $primes = primesArr((int) sqrt($n) + 1);
 
@@ -128,17 +139,23 @@ function primes($max)
 {
     $arr = [];
     for ($i = 2; $i <= $max; $i++) {
-        if (isPrime($i)) $arr[] = $i;
+        if (isPrime($i)) {
+            $arr[] = $i;
+        }
     }
     return $arr;
 }
 
 function isPrime($n)
 {
-    if ($n === 1) return false;
+    if ($n === 1) {
+        return false;
+    }
     $rmax = (int) floor(sqrt($n));
     for ($i = 2; $i <= $rmax; $i++) {
-        if ($n % $i === 0) return false;
+        if ($n % $i === 0) {
+            return false;
+        }
     }
     return true;
 }
@@ -164,18 +181,26 @@ fscanf(STDIN, '%d %d %d', $n, $k, $c);
 fscanf(STDIN, '%s', $s);
 
 for ($i = 0; $i < $n; $i++) {
-    if ($s[$i] === 'o') $sa[] = $i;
+    if ($s[$i] === 'o') {
+        $sa[] = $i;
+    }
 }
 
 function proc($prev, $nissuu)
 {
     global $sa, $n, $c;
-    if ($prev + $c >= $n) return [];
+    if ($prev + $c >= $n) {
+        return [];
+    }
     foreach ($sa as $v) {
-        if ($v <= $prev + $c) continue;
+        if ($v <= $prev + $c) {
+            continue;
+        }
         $arr[] = $v;
     }
-    if (count($arr) === 0) return [];
+    if (count($arr) === 0) {
+        return [];
+    }
 }
 
 
@@ -208,7 +233,9 @@ function f()
 function getRunrun($n, $keta)
 {
     static $memo;
-    if (isset($memo[$n][$keta])) return $memo[$n][$keta];
+    if (isset($memo[$n][$keta])) {
+        return $memo[$n][$keta];
+    }
     for ($i = max($n - 1, 0); $i <= min($n + 1, 9); $i++) {
         $arr[] = (int) (strval($n) . strval($i));
     }
@@ -235,7 +262,9 @@ if ($n === 0 || $n % $k === 0) {
     echo 0;
     exit;
 }
-if ($n > $k) $n %= $k;
+if ($n > $k) {
+    $n %= $k;
+}
 echo ($n <= $k / 2) ? $n : $k - $n;
 
 exit;

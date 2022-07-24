@@ -1,9 +1,12 @@
 <?php
+
 list($n, $q) = ints();
 for ($i = 0; $i < $q; ++$i) {
     list($type, $a, $b) = ints();
     --$a;
-    if (isset($b)) --$b;
+    if (isset($b)) {
+        --$b;
+    }
     if ($type === 1) {
         $follow[$a][$b] = true;
         $follower[$b][$a] = true;
@@ -17,7 +20,9 @@ for ($i = 0; $i < $q; ++$i) {
     if ($type === 3) {
         foreach ($follow[$a] as $k => $_) {
             foreach ($follow[$k] as $x => $_) {
-                if ($a === $x) continue;
+                if ($a === $x) {
+                    continue;
+                }
                 $follow[$a][$x] = true;
                 $follower[$x][$a] = true;
             }

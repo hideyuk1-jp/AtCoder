@@ -1,4 +1,5 @@
 <?php
+
 list($n, $k, $m, $r) = ints();
 for ($i = 0; $i < $n - 1; ++$i) {
     list($s[$i]) = ints();
@@ -9,11 +10,17 @@ if ($k === $n) {
 } else {
     rsort($s);
     $sum = 0;
-    for ($i = 0; $i < $k - 1; ++$i) $sum += $s[$i];
-    if ($sum + $s[$k - 1] >= 0) exit('0' . PHP_EOL);
+    for ($i = 0; $i < $k - 1; ++$i) {
+        $sum += $s[$i];
+    }
+    if ($sum + $s[$k - 1] >= 0) {
+        exit('0' . PHP_EOL);
+    }
     $x = -$sum;
 }
-if ($x + $r > $m) exit('-1' . PHP_EOL);
+if ($x + $r > $m) {
+    exit('-1' . PHP_EOL);
+}
 echo max(0, $x + $r) . PHP_EOL;
 function ints()
 {

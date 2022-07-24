@@ -1,10 +1,11 @@
 <?php
+
 list($y) = ints();
 list($m) = ints();
 list($d) = ints();
 $start = f($y, $m, $d);
 $end = f(2014, 5, 17);
-echo ($end - $start) . PHP_EOL;
+echo($end - $start) . PHP_EOL;
 function f($y, $m, $d)
 {
     if ($m <= 2) {

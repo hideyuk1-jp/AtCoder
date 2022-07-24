@@ -1,4 +1,5 @@
 <?php
+
 // D
 fscanf(STDIN, '%d %d %d', $N, $M, $Q);
 $l = array_fill(0, $N, array_fill(0, $N, 0));
@@ -50,7 +51,9 @@ exit;
 fscanf(STDIN, '%d', $n);
 $ans = 0;
 for ($i = 1; $i <= $n; $i += 2) {
-    if (count(divisors($i)) === 8) $ans++;
+    if (count(divisors($i)) === 8) {
+        $ans++;
+    }
 }
 echo $ans;
 
@@ -73,4 +76,4 @@ exit;
 
 // A
 fscanf(STDIN, '%d %d', $a, $b);
-echo ($a - 1) * ($b - 1);
+echo($a - 1) * ($b - 1);

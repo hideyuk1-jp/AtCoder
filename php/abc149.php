@@ -1,4 +1,5 @@
 <?php
+
 fscanf(STDIN, '%d %d', $n, $k);
 fscanf(STDIN, '%d %d %d', $r, $s, $p);
 fscanf(STDIN, '%s', $t);
@@ -11,7 +12,9 @@ $cnt = [
 $flg = array_fill(0, $n, 0);
 
 for ($i = $n - 1; $i >= $k; $i--) {
-    if ($flg[$i]) continue;
+    if ($flg[$i]) {
+        continue;
+    }
     if ($t[$i] == $t[$i-$k]) {
         $flg[$i-$k] = 1;
         $cnt[$t[$i]]--;
@@ -26,16 +29,19 @@ exit();
 fscanf(STDIN, '%d', $x);
 
 while (true) {
-    if (!is_prime($x)) $x++;
-    else break;
+    if (!is_prime($x)) {
+        $x++;
+    } else {
+        break;
+    }
 }
 
 echo $x.PHP_EOL;
 
-function is_prime($n) {
+function is_prime($n)
+{
     $lim = floor(sqrt($n));
     for ($i = 2; $i <= $lim; $i++) {
-
         if ($n % $i == 0) {
             return false;
         }

@@ -1,4 +1,5 @@
 <?php
+
 $p = (float)trim(fgets(STDIN));
 // 三分探索
 $l = 0;
@@ -6,8 +7,11 @@ $r = 100;
 while (abs($r - $l) > 10 ** (-5)) {
     $ld = $l + abs($r - $l) / 3;
     $rd = $r - abs($r - $l) / 3;
-    if (f($ld) > f($rd)) $l = $ld;
-    else $r = $rd;
+    if (f($ld) > f($rd)) {
+        $l = $ld;
+    } else {
+        $r = $rd;
+    }
 }
 echo f($l), PHP_EOL;
 function f($x)

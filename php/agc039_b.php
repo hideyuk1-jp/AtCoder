@@ -1,4 +1,5 @@
 <?php
+
 list($n) = ints();
 
 $wf = new WarshallFloyd($n);
@@ -11,12 +12,16 @@ for ($i = 0; $i < $n; ++$i) {
         }
     }
 }
-if (!isNipartite()) exit('-1');
+if (!isNipartite()) {
+    exit('-1');
+}
 $wf->solve();
 $max = 0;
-for ($i = 0; $i < $n - 1; ++$i)
-    for ($j = $i + 1; $j < $n; ++$j)
+for ($i = 0; $i < $n - 1; ++$i) {
+    for ($j = $i + 1; $j < $n; ++$j) {
         $max = max($max, $wf->dist($i, $j));
+    }
+}
 echo $max + 1;
 function isNipartite()
 {
@@ -27,7 +32,9 @@ function isNipartite()
     $dist = array_fill(0, $n, -1); // 距離を格納する配列（-1の場合はその頂点が未発見）
 
     for ($i = 0; $i < $n; $i++) {
-        if ($dist[$i] !== -1) continue; // 発見済み
+        if ($dist[$i] !== -1) {
+            continue;
+        } // 発見済み
         $dist[$i] = 0; // 頂点$iからの距離格納配列
         $q->enqueue($i); // キューに$iを追加
         while (!$q->isEmpty()) {
@@ -55,19 +62,21 @@ class WarshallFloyd
     private $n;
     private $d;
 
-    function __construct($n)
+    public function __construct($n)
     {
         $this->n = $n;
         $this->d = array_fill(0, $this->n, array_fill(0, $this->n, INF));
-        for ($i = 0; $i < $this->n; ++$i) $this->d[$i][$i] = 0;
+        for ($i = 0; $i < $this->n; ++$i) {
+            $this->d[$i][$i] = 0;
+        }
     }
 
-    function connect($x, $y, $w)
+    public function connect($x, $y, $w)
     {
         $this->d[$x][$y] = $w;
     }
 
-    function solve()
+    public function solve()
     {
         $n = $this->n;
         $d = $this->d;
@@ -81,7 +90,7 @@ class WarshallFloyd
         $this->d = $d;
     }
 
-    function dist($x, $y)
+    public function dist($x, $y)
     {
         return $this->d[$x][$y];
     }

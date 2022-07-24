@@ -1,4 +1,5 @@
 <?php
+
 list($s) = strs();
 echo str_replace(',', ' ', $s);
 function strs()

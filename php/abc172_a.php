@@ -1,4 +1,5 @@
 <?php
+
 list($a) = ints();
 echo $a + $a ** 2 + $a ** 3;
 function ints()

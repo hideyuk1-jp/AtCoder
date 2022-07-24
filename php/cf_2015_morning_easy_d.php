@@ -1,4 +1,5 @@
 <?php
+
 list($n) = ints();
 list($s) = strs();
 $min = $n;
@@ -25,8 +26,11 @@ function lcs($x, $y)
     }
     $lcs = '';
     $i = $lx;
-    for ($j = $ly; $j >= 1; --$j)
-        if ($dp[$i][$j] !== $dp[$i][$j - 1]) $lcs .= $y[$j - 1];
+    for ($j = $ly; $j >= 1; --$j) {
+        if ($dp[$i][$j] !== $dp[$i][$j - 1]) {
+            $lcs .= $y[$j - 1];
+        }
+    }
     return strrev($lcs);
 }
 function strs()

@@ -1,7 +1,12 @@
 <?php
+
 list($n) = ints();
 $ans = [];
-for ($i = $n - 9 * 17; $i <= $n - 1; ++$i) if ($i + digitSum($i) === $n) $ans[] = $i;
+for ($i = $n - 9 * 17; $i <= $n - 1; ++$i) {
+    if ($i + digitSum($i) === $n) {
+        $ans[] = $i;
+    }
+}
 echo count($ans) . PHP_EOL;
 if (count($ans) > 0) {
     echo implode(PHP_EOL, $ans);

@@ -1,11 +1,16 @@
 <?php
+
 list($n) = ints();
 for ($i = 0; $i < $n; ++$i) {
     list($a) = ints();
     if ($i > 0) {
-        if ($a === $pre) $ans[] = 'stay';
-        elseif ($a < $pre) $ans[] = 'down ' . abs($a - $pre);
-        else $ans[] = 'up ' . abs($a - $pre);
+        if ($a === $pre) {
+            $ans[] = 'stay';
+        } elseif ($a < $pre) {
+            $ans[] = 'down ' . abs($a - $pre);
+        } else {
+            $ans[] = 'up ' . abs($a - $pre);
+        }
     }
     $pre = $a;
 }

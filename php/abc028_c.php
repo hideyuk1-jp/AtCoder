@@ -1,4 +1,5 @@
 <?php
+
 list($a, $b, $c, $d, $e) = ints();
 echo $b - $a > $d - $c ? $b + $c + $e : $a + $d + $e;
 echo PHP_EOL;

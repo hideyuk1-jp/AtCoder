@@ -1,12 +1,19 @@
 <?php
+
 list($n) = ints();
 list($c) = strs();
 $btns = ['A', 'B', 'X', 'Y'];
-foreach ($btns as $b1) foreach ($btns as $b2) $combBtns[] = $b1 . $b2;
+foreach ($btns as $b1) {
+    foreach ($btns as $b2) {
+        $combBtns[] = $b1 . $b2;
+    }
+}
 $min = PHP_INT_MAX;
 foreach ($combBtns as $l) {
     foreach ($combBtns as $r) {
-        if ($l === $r) continue;
+        if ($l === $r) {
+            continue;
+        }
         $cnt = 0;
         for ($i = 0; $i < $n - 1; ++$i) {
             if ($c[$i] . $c[$i + 1] === $l || $c[$i] . $c[$i + 1] === $r) {

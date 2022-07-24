@@ -1,4 +1,5 @@
 <?php
+
 // C2
 fscanf(STDIN, '%d %s', $a, $b);
 $b = intval(str_replace('.', '', $b));
@@ -14,8 +15,11 @@ foreach ($prime_fac as $c) {
     $cnt = $t = 0;
     for ($i = 1; $i <= $c; $i++) {
         $t += $i;
-        if ($t <= $c) $cnt++;
-        else break;
+        if ($t <= $c) {
+            $cnt++;
+        } else {
+            break;
+        }
     }
     $ans += $cnt;
 }
@@ -30,7 +34,9 @@ function primesArr($max)
     $is_prime = isPrimeArr($max);
     $res = [];
     for ($i = 1; $i <= $max; $i++) {
-        if ($is_prime[$i]) $res[] = $i;
+        if ($is_prime[$i]) {
+            $res[] = $i;
+        }
     }
     return $res;
 }
@@ -58,7 +64,9 @@ function isPrimeArr($max)
 function primeFactorization($n)
 {
     $res = [];
-    if ($n === 1) return $res;
+    if ($n === 1) {
+        return $res;
+    }
 
     $primes = primesArr((int) sqrt($n) + 1);
 
@@ -89,7 +97,9 @@ function primes($max)
 {
     $arr = [];
     for ($i = 2; $i <= $max; $i++) {
-        if (isPrime($i)) $arr[] = $i;
+        if (isPrime($i)) {
+            $arr[] = $i;
+        }
     }
     return $arr;
 }
@@ -97,10 +107,14 @@ function primes($max)
 // 素数判定（試し割り）
 function isPrime($n)
 {
-    if ($n === 1) return false;
+    if ($n === 1) {
+        return false;
+    }
     $rmax = (int) floor(sqrt($n));
     for ($i = 2; $i <= $rmax; $i++) {
-        if ($n % $i === 0) return false;
+        if ($n % $i === 0) {
+            return false;
+        }
     }
     return true;
 }
@@ -128,9 +142,13 @@ $a = array_map('intval', explode(' ', trim(fgets(STDIN))));
 $ans = 1;
 sort($a);
 for ($i = 0; $i < $n; $i++) {
-    if ($a[$i] === 0) exit('0');
+    if ($a[$i] === 0) {
+        exit('0');
+    }
     $ans *= $a[$i];
-    if ($ans > 10 ** 18) exit('-1');
+    if ($ans > 10 ** 18) {
+        exit('-1');
+    }
 }
 echo $ans;
 

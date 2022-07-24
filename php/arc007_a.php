@@ -1,4 +1,5 @@
 <?php
+
 list($x) = strs();
 list($s) = strs();
 echo str_replace($x, '', $s) . PHP_EOL;

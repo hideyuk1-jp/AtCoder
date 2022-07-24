@@ -1,4 +1,5 @@
 <?php
+
 list($a) = ints();
 list($b) = ints();
 echo min(abs($a - $b), abs(($a + 10) - $b), abs($a - ($b + 10))) . PHP_EOL;

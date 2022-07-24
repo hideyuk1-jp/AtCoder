@@ -1,4 +1,5 @@
 <?php
+
 list($n) = ints();
 $a = ints();
 $money = 1000;

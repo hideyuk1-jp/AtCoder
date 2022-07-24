@@ -1,8 +1,11 @@
 <?php
+
 list($n, $p) = ints();
 $ps = primeFactorization($p);
 $ans = 1;
-foreach ($ps as $i => $v) $ans *= $i ** intdiv($v, $n);
+foreach ($ps as $i => $v) {
+    $ans *= $i ** intdiv($v, $n);
+}
 echo $ans;
 function ints()
 {
@@ -22,7 +25,7 @@ for ($i = 1; $i <= $max; $i++) {
 }
 
 for ($i = 0; $i < $q; $i++) {
-    echo ($s[$r[$i]] - $s[$l[$i] - 1]) . PHP_EOL;
+    echo($s[$r[$i]] - $s[$l[$i] - 1]) . PHP_EOL;
 }
 
 /**
@@ -34,7 +37,9 @@ function primesArr($max)
     $arr = array_fill(2, $max - 1, true);
     $rmax = (int) floor(sqrt($max));
     for ($i = 2; $i <= $rmax; $i++) {
-        if (!isset($arr[$i])) continue;
+        if (!isset($arr[$i])) {
+            continue;
+        }
         for ($j = 2 * $i; $j <= $max; $j += $i) {
             unset($arr[$j]);
         }
@@ -65,7 +70,9 @@ function isPrimeArr($max)
 function primeFactorization($n)
 {
     $res = [];
-    if ($n === 1) return $res;
+    if ($n === 1) {
+        return $res;
+    }
 
     $primes = primesArr((int) sqrt($n) + 1);
 
@@ -96,7 +103,9 @@ function primes($max)
 {
     $arr = [];
     for ($i = 2; $i <= $max; $i++) {
-        if (isPrime($i)) $arr[] = $i;
+        if (isPrime($i)) {
+            $arr[] = $i;
+        }
     }
     return $arr;
 }
@@ -104,10 +113,14 @@ function primes($max)
 // 素数判定（試し割り）
 function isPrime($n)
 {
-    if ($n === 1) return false;
+    if ($n === 1) {
+        return false;
+    }
     $rmax = (int) floor(sqrt($n));
     for ($i = 2; $i <= $rmax; $i++) {
-        if ($n % $i === 0) return false;
+        if ($n % $i === 0) {
+            return false;
+        }
     }
     return true;
 }

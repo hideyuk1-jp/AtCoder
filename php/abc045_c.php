@@ -1,4 +1,5 @@
 <?php
+
 list($s) = strs();
 $n = strlen($s) - 1;
 // bit全探索

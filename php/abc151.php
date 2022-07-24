@@ -1,4 +1,5 @@
 <?php
+
 define('WALL', '#');
 define('ROAD', '.');
 fscanf(STDIN, '%d %d', $h, $w);
@@ -10,7 +11,9 @@ for ($i  = 0; $i < $h * $w; $i++) {
     $l = intval(floor($i / $w));
     $m = $i % $w;
 
-    if ($s[$l][$m] === WALL) continue;
+    if ($s[$l][$m] === WALL) {
+        continue;
+    }
 
     if ($m < $w - 1 && $s[$l][$m + 1] === ROAD) {
         $g[$i][] = $i + 1;
@@ -35,7 +38,9 @@ for ($i = 0; $i < $h * $w; $i++) {
         $v = $q->dequeue();
 
         foreach ($g[$v] as $next_v) {
-            if ($dist[$next_v] !== -1) continue; // 発見済み
+            if ($dist[$next_v] !== -1) {
+                continue;
+            } // 発見済み
 
             $dist[$next_v] = $dist[$v] + 1;
             $q->enqueue($next_v);
@@ -54,7 +59,9 @@ fscanf(STDIN, '%d %d', $n, $m);
 $arr = array_fill(1, $n, [false, 0]);
 for ($i  = 0; $i < $m; $i++) {
     fscanf(STDIN, '%d %s', $p, $s);
-    if ($arr[$p][0]) continue;
+    if ($arr[$p][0]) {
+        continue;
+    }
 
     if ($s === 'AC') {
         $arr[$p][0] = true;
@@ -80,14 +87,18 @@ for ($i = 0; $i < $n - 1; $i++) {
     $score += $a[$i];
 }
 $ans = max($n * $m - $score, 0);
-if ($ans > $k) $ans = -1;
+if ($ans > $k) {
+    $ans = -1;
+}
 echo $ans . PHP_EOL;
 
 exit;
 
 fscanf(STDIN, '%s', $c);
 for ($i = 0; $i < 26; $i++) { // アルファベットの数(=26)だけ処理ループ
-    if (chr(97 + $i) === $c) break;
+    if (chr(97 + $i) === $c) {
+        break;
+    }
 }
 $ans = chr(97 + $i + 1);
 echo $ans . PHP_EOL;

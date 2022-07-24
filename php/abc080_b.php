@@ -1,4 +1,5 @@
 <?php
+
 list($n) = ints();
 echo isHarshad($n) ? 'Yes' : 'No';
 

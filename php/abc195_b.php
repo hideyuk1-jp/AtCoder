@@ -1,4 +1,5 @@
 <?php
+
 [$a, $b, $w] = ints();
 $w *= 1000;
 $min = PHP_INT_MAX;

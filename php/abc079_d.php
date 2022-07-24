@@ -1,11 +1,18 @@
 <?php
+
 list($h, $w) = ints();
-for ($i = 0; $i < 10; ++$i)
-    foreach (ints() as $j => $v) $d[$i][$j] = $v;
+for ($i = 0; $i < 10; ++$i) {
+    foreach (ints() as $j => $v) {
+        $d[$i][$j] = $v;
+    }
+}
 warshallFloyd(10);
 $ans = 0;
-for ($i = 0; $i < $h; ++$i)
-    foreach (ints() as $v) $ans += $v !== -1 ? $d[$v][1] : 0;
+for ($i = 0; $i < $h; ++$i) {
+    foreach (ints() as $v) {
+        $ans += $v !== -1 ? $d[$v][1] : 0;
+    }
+}
 echo $ans;
 
 function ints()

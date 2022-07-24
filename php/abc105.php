@@ -1,7 +1,10 @@
 <?php
+
 // C
 fscanf(STDIN, '%d', $n);
-if (!$n) exit('0');
+if (!$n) {
+    exit('0');
+}
 $b = '';
 while ($n) {
     if ($n % 2) {

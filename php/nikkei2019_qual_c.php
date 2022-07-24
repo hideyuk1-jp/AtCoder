@@ -1,4 +1,5 @@
 <?php
+
 list($n) = ints();
 for ($i = 0; $i < $n; ++$i) {
     list($a[$i], $b[$i]) = ints();
@@ -7,8 +8,11 @@ for ($i = 0; $i < $n; ++$i) {
 array_multisort($x, SORT_DESC, $a, $b);
 $ascore = $bscore = 0;
 for ($i = 0; $i < $n; ++$i) {
-    if ($i % 2 === 0) $ascore += $a[$i];
-    else $bscore += $b[$i];
+    if ($i % 2 === 0) {
+        $ascore += $a[$i];
+    } else {
+        $bscore += $b[$i];
+    }
 }
 echo $ascore - $bscore;
 function ints()

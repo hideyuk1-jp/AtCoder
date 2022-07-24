@@ -1,6 +1,9 @@
 <?php
+
 list($n, $l) = ints();
-for ($i = 0; $i < $n; ++$i) list($s[]) = strs();
+for ($i = 0; $i < $n; ++$i) {
+    list($s[]) = strs();
+}
 natsort($s);
 echo implode('', $s);
 function strs()

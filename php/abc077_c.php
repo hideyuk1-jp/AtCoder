@@ -1,4 +1,5 @@
 <?php
+
 list($n) = ints();
 $a = ints();
 $b = ints();
@@ -8,8 +9,12 @@ sort($b);
 sort($c);
 $ans = $i = $j = $k = 0;
 while ($j < $n) {
-    while ($i < $n && $b[$j] > $a[$i]) ++$i;
-    while ($k < $n && $b[$j] >= $c[$k]) ++$k;
+    while ($i < $n && $b[$j] > $a[$i]) {
+        ++$i;
+    }
+    while ($k < $n && $b[$j] >= $c[$k]) {
+        ++$k;
+    }
     $ans += $i * ($n - $k);
     ++$j;
 }

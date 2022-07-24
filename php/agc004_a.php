@@ -1,8 +1,13 @@
 <?php
+
 $a = ints();
 sort($a);
 $isOdd = true;
-for ($i = 0; $i < 3; ++$i) if ($a[$i] % 2 === 0) $isOdd = false;
+for ($i = 0; $i < 3; ++$i) {
+    if ($a[$i] % 2 === 0) {
+        $isOdd = false;
+    }
+}
 echo $isOdd ? $a[0] * $a[1] : 0;
 function ints()
 {

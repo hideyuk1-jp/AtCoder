@@ -1,4 +1,5 @@
 <?php
+
 [$N] = ints();
 echo implode(PHP_EOL, divisors($N));
 function ints()

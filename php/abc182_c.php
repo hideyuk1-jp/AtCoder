@@ -1,4 +1,5 @@
 <?php
+
 [$S] = strs();
 $n = strlen($S);
 $min = $n;

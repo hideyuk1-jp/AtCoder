@@ -1,4 +1,5 @@
 <?php
+
 // バーチャル CまでAC 600 24:38 => 推定パフォ 1307
 // D
 fscanf(STDIN, '%d', $n);
@@ -40,7 +41,9 @@ function primesArr($max)
     $is_prime = isPrimeArr($max);
     $res = [];
     for ($i = 1; $i <= $max; $i++) {
-        if ($is_prime[$i]) $res[] = $i;
+        if ($is_prime[$i]) {
+            $res[] = $i;
+        }
     }
     return $res;
 }
@@ -67,7 +70,9 @@ function primeFactorization($n)
 {
     $res = [];
     $res[1] = 1;
-    if ($n === 1) return $res;
+    if ($n === 1) {
+        return $res;
+    }
 
     $primes = primesArr((int) sqrt($n) + 1);
 
@@ -104,7 +109,9 @@ function cnt753($x)
 {
     global $n;
 
-    if ($x > $n) return 0;
+    if ($x > $n) {
+        return 0;
+    }
     $sx = strval($x);
 
     $cnt = 0;

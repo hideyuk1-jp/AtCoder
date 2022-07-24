@@ -1,4 +1,5 @@
 <?php
+
 list($a, $b, $c) = ints();
 echo $b - $a === $c - $b ? 'YES' : 'NO';
 function ints()

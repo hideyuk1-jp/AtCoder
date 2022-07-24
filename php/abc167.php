@@ -1,4 +1,5 @@
 <?php
+
 // ABC167 コンテスト参加 DまでAC => 1000 71:28
 // E
 define('MOD', 998244353);
@@ -26,7 +27,9 @@ function dp($n, $repeat = 0)
 
     $ret = 0;
     $ret += dp($n - 1, 0) * ($m - 1);
-    if ($repeat + 1 < $k) $ret += dp($n - 1, $repeat + 1);
+    if ($repeat + 1 < $k) {
+        $ret += dp($n - 1, $repeat + 1);
+    }
 
     $memo[$n][$repeat] = $ret;
     return $ret;
@@ -50,7 +53,9 @@ while (true) {
     } else {
         $x[$cur] = $cnt;
     }
-    if ($k === 0) break;
+    if ($k === 0) {
+        break;
+    }
 }
 echo $cur;
 
@@ -73,7 +78,9 @@ for ($i = 0; $i < 2 ** $n; $i++) {
         }
     }
     for ($j = 1; $j < $m + 1; $j++) {
-        if ($sum[$j] < $x) continue 2;
+        if ($sum[$j] < $x) {
+            continue 2;
+        }
     }
     if ($ans === -1) {
         $ans = $sum[0];
@@ -87,9 +94,13 @@ exit;
 
 // B
 fscanf(STDIN, '%d %d %d %d', $a, $b, $c, $k);
-if ($k <= $a)  $ans = $k;
-elseif ($k <= $a + $b) $ans = $a;
-else $ans = $a - ($k - $a - $b);
+if ($k <= $a) {
+    $ans = $k;
+} elseif ($k <= $a + $b) {
+    $ans = $a;
+} else {
+    $ans = $a - ($k - $a - $b);
+}
 echo $ans;
 
 exit;

@@ -1,4 +1,5 @@
 <?php
+
 $a = ints();
 echo count(array_unique($a)) === 1 ? 'Yes' : 'No';
 function ints()

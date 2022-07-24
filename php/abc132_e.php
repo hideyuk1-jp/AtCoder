@@ -1,4 +1,5 @@
 <?php
+
 list($n, $m) = ints();
 for ($i = 0; $i < $m; ++$i) {
     list($u, $v) = ints();
@@ -24,9 +25,13 @@ $q->enqueue($s); // キューに始点を追加
 
 while (!$q->isEmpty()) {
     $v = $q->dequeue();
-    if (!isset($g[$v])) continue;
+    if (!isset($g[$v])) {
+        continue;
+    }
     foreach ($g[$v] as $next_v) {
-        if ($dist[$next_v] !== -1) continue; // 発見済み
+        if ($dist[$next_v] !== -1) {
+            continue;
+        } // 発見済み
 
         $dist[$next_v] = $dist[$v] + 1;
         $q->enqueue($next_v);

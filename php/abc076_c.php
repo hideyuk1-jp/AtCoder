@@ -1,4 +1,5 @@
 <?php
+
 list($_s) = strs();
 list($t) = strs();
 $len_s = strlen($_s);

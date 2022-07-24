@@ -1,4 +1,5 @@
 <?php
+
 [$N] = ints();
 for ($i = 0; $i < $N; ++$i) {
     [$a[], $b[]] = ints();
@@ -8,12 +9,19 @@ asort($b);
 $ca = 0;
 $min = PHP_INT_MAX;
 foreach ($a as $ia => $va) {
-    if ($ca > 1) break;
+    if ($ca > 1) {
+        break;
+    }
     $cb = 0;
     foreach ($b as $ib => $vb) {
-        if ($cb > 1) break;
-        if ($ia === $ib) $min = min($min, $va + $vb);
-        else $min = min($min, max($va, $vb));
+        if ($cb > 1) {
+            break;
+        }
+        if ($ia === $ib) {
+            $min = min($min, $va + $vb);
+        } else {
+            $min = min($min, max($va, $vb));
+        }
         $cb++;
     }
     $ca++;

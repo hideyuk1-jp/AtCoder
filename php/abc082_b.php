@@ -1,4 +1,5 @@
 <?php
+
 list($s) = strs();
 list($t) = strs();
 $s = str_split($s);

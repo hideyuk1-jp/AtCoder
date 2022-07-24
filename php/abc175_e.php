@@ -1,4 +1,5 @@
 <?php
+
 list($R, $C, $K) = ints();
 for ($i = 0; $i < $K; ++$i) {
     list($r, $c, $v) = ints();
@@ -15,7 +16,9 @@ for ($i = 1; $i <= $R; ++$i) {
                 $dp[$j][$k] = $dp[$j][3];
             }
         }
-        if (!isset($val[$i][$j])) continue;
+        if (!isset($val[$i][$j])) {
+            continue;
+        }
         for ($k = 3; $k >= 1; --$k) {
             if ($dp[$j][$k - 1] + $val[$i][$j] > $dp[$j][$k]) {
                 $dp[$j][$k] = $dp[$j][$k - 1] + $val[$i][$j];

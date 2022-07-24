@@ -1,4 +1,5 @@
 <?php
+
 list($h, $w) = ints();
 echo str_repeat('#', $w + 2) . PHP_EOL;
 for ($i = 0; $i < $h; ++$i) {

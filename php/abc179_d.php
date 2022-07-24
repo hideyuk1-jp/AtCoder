@@ -1,4 +1,5 @@
 <?php
+
 define("MOD", 998244353);
 [$N, $K] = ints();
 for ($i = 0; $i < $K; ++$i) {
@@ -12,10 +13,14 @@ $cnt = 0;
 for ($d = 1; $d <= $N; ++$d) {
     $cnt += $s[$d] + MOD;
     $cnt %= MOD;
-    if ($cnt < 1) continue;
+    if ($cnt < 1) {
+        continue;
+    }
 
     for ($i = 0; $i < $K; ++$i) {
-        if ($d + $L[$i] > $N) break;
+        if ($d + $L[$i] > $N) {
+            break;
+        }
         $s[$d + $L[$i]] += $cnt;
         $s[$d + $L[$i]] %= MOD;
         if ($d + $R[$i] + 1 <= $N) {

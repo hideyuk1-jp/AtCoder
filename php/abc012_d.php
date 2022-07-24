@@ -1,4 +1,5 @@
 <?php
+
 list($n, $m) = ints();
 $d = new Dijkstra($n);
 for ($i = 0; $i < $m; ++$i) {
@@ -8,11 +9,15 @@ for ($i = 0; $i < $m; ++$i) {
     $d->connect($a, $b, $t);
     $d->connect($b, $a, $t);
 }
-for ($i = 0; $i < $n; ++$i) $d->solve($i);
+for ($i = 0; $i < $n; ++$i) {
+    $d->solve($i);
+}
 $ans = PHP_INT_MAX;
 for ($i = 0; $i < $n; ++$i) {
     $max = 0;
-    for ($j = 0; $j < $n; ++$j) $max = max($max, $d->dist($i, $j));
+    for ($j = 0; $j < $n; ++$j) {
+        $max = max($max, $d->dist($i, $j));
+    }
     $ans = min($ans, $max);
 }
 echo $ans . PHP_EOL;
@@ -31,18 +36,18 @@ class Dijkstra
     private $cost; // ノード間の距離を格納
     //private $root; // 最短経路を格納
 
-    function __construct($n)
+    public function __construct($n)
     {
         $this->n = $n;
         $this->cost = array_fill(0, $this->n, array_fill(0, $this->n, INF));
     }
 
-    function connect($x, $y, $w)
+    public function connect($x, $y, $w)
     {
         $this->cost[$x][$y] = $w;
     }
 
-    function solve($s = 0)
+    public function solve($s = 0)
     {
         $this->d[$s] = array_fill(0, $this->n, INF);
         $this->d[$s][$s] = 0;
@@ -52,10 +57,15 @@ class Dijkstra
             $v = -1;
             // 残りのノードのうち最短で到達出来るノードを選択
             for ($i = 0; $i < $this->n; ++$i) {
-                if (!$used[$i] && $v === -1) $v = $i;
-                elseif (!$used[$i] && $this->d[$s][$i] < $this->d[$s][$v]) $v = $i;
+                if (!$used[$i] && $v === -1) {
+                    $v = $i;
+                } elseif (!$used[$i] && $this->d[$s][$i] < $this->d[$s][$v]) {
+                    $v = $i;
+                }
             }
-            if ($v === -1) break;
+            if ($v === -1) {
+                break;
+            }
             for ($i = 0; $i < $this->n; ++$i) {
                 if ($this->d[$s][$i] > $this->d[$s][$v] + $this->cost[$v][$i]) {
                     $this->d[$s][$i] = $this->d[$s][$v] + $this->cost[$v][$i];
@@ -66,7 +76,7 @@ class Dijkstra
         }
     }
 
-    function dist($x, $y)
+    public function dist($x, $y)
     {
         return $this->d[$x][$y];
     }

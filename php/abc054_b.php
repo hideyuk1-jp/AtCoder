@@ -1,6 +1,9 @@
 <?php
+
 list($n, $m) = ints();
-for ($i = 0; $i < $n; ++$i) list($a[]) = strs();
+for ($i = 0; $i < $n; ++$i) {
+    list($a[]) = strs();
+}
 $bb = '';
 for ($i = 0; $i < $m; ++$i) {
     list($b[]) = strs();
@@ -9,8 +12,12 @@ for ($i = 0; $i < $m; ++$i) {
 for ($i = 0; $i <= $n - $m; ++$i) {
     for ($j = 0; $j <= $n - $m; ++$j) {
         $aa = '';
-        for ($k = 0; $k < $m; ++$k) $aa .= substr($a[$k + $i], $j, $m);
-        if ($aa === $bb) exit('Yes');
+        for ($k = 0; $k < $m; ++$k) {
+            $aa .= substr($a[$k + $i], $j, $m);
+        }
+        if ($aa === $bb) {
+            exit('Yes');
+        }
     }
 }
 echo 'No';

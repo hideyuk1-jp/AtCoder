@@ -1,4 +1,5 @@
 <?php
+
 define('ROAD', '.');
 define('WALL', '#');
 list($h, $w) = [3, 3];
@@ -19,7 +20,7 @@ class SGraph
     private $w;
 
     // マス目の文字列からグラフを作成
-    function __construct($h, $w, $a)
+    public function __construct($h, $w, $a)
     {
         $this->h = $h;
         $this->w = $w;
@@ -27,14 +28,16 @@ class SGraph
         $this->g = array_fill(0, $h * $w, []);
         for ($i = 0; $i < $h; ++$i) {
             for ($j = 0; $j < $w; ++$j) {
-                if ($a[$i][$j] === WALL) continue;
+                if ($a[$i][$j] === WALL) {
+                    continue;
+                }
                 $this->connectGraphRD($i, $j, $a);
             }
         }
     }
 
     // 右と下が道の場合にグラフの辺をはる
-    function connectGraphRD($i, $j, $a)
+    public function connectGraphRD($i, $j, $a)
     {
         $g = $this->g;
         $h = $this->h;
@@ -54,7 +57,7 @@ class SGraph
     }
 
     // 4方向（上下左右）が道の場合にグラフの辺をはる
-    function connectGraph4($i, $j, $a)
+    public function connectGraph4($i, $j, $a)
     {
         $g = $this->g;
         $h = $this->h;
@@ -84,7 +87,7 @@ class SGraph
     }
 
     // 4方向（斜め）が道の場合にグラフの辺をはる
-    function connectGraph4d($i, $j, $a)
+    public function connectGraph4d($i, $j, $a)
     {
         $g = $this->g;
         $h = $this->h;
@@ -114,13 +117,13 @@ class SGraph
     }
 
     // 8方向が道の場合にグラフの辺をはる
-    function connectGraph8($i, $j, $a)
+    public function connectGraph8($i, $j, $a)
     {
         $this->connectGraph4($i, $j, $a);
         $this->connectGraph4d($i, $j, $a);
     }
 
-    function graph()
+    public function graph()
     {
         return $this->g;
     }

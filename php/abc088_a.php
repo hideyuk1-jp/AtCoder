@@ -1,7 +1,8 @@
 <?php
+
 list($n) = ints();
 list($a) = ints();
-echo ($n % 500) <= $a ? 'Yes' : 'No';
+echo($n % 500) <= $a ? 'Yes' : 'No';
 
 function ints()
 {

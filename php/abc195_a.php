@@ -1,4 +1,5 @@
 <?php
+
 [$M, $H] = ints();
 echo $H % $M ? "No" : "Yes";
 function ints()

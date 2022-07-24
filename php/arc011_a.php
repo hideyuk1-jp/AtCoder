@@ -1,4 +1,5 @@
 <?php
+
 list($m, $n, $N) = ints();
 $ans = $N;
 while ($N >= $m) {

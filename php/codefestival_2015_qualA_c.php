@@ -1,10 +1,13 @@
 <?php
+
 list($n, $t) = ints();
 for ($i = 0; $i < $n; ++$i) {
     list($a[$i], $b[$i]) = ints();
     $d[$i] = $a[$i] - $b[$i];
 }
-if (array_sum($b) > $t) exit('-1' . PHP_EOL);
+if (array_sum($b) > $t) {
+    exit('-1' . PHP_EOL);
+}
 rsort($d);
 $sumt = array_sum($a);
 $i = 0;

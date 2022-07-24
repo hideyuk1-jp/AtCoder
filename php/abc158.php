@@ -1,4 +1,5 @@
 <?php
+
 fscanf(STDIN, '%s', $s);
 fscanf(STDIN, '%d', $q);
 $cnt = 0;

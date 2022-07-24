@@ -1,4 +1,5 @@
 <?php
+
 list($n, $m, $q) = ints();
 $scores = array_fill(0, $m, $n);
 for ($i = 0; $i < $q; ++$i) {

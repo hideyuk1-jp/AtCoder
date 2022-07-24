@@ -1,4 +1,5 @@
 <?php
+
 list($s) = strs();
 for ($i = 0; $i < strlen($s); ++$i) {
     $chr[$s[$i]] = true;

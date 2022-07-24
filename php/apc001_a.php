@@ -1,4 +1,5 @@
 <?php
+
 list($x, $y) = ints();
 echo $x % $y ? $x : -1;
 echo PHP_EOL;

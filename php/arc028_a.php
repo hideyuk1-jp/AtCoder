@@ -1,6 +1,7 @@
 <?php
+
 list($n, $a, $b) = ints();
-echo ($n - 1) % ($a + $b) < $a ? 'Ant' : 'Bug';
+echo($n - 1) % ($a + $b) < $a ? 'Ant' : 'Bug';
 echo PHP_EOL;
 function ints()
 {

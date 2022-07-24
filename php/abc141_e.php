@@ -1,12 +1,14 @@
 <?php
+
 list($n) = ints();
 list($s) = strs();
 $max = 0;
 for ($i = 0; $i < $n; ++$i) {
     $t = substr($s, $i);
     $lcp = zAlgo($t);
-    for ($j = 0; $j < $n - $i; ++$j)
+    for ($j = 0; $j < $n - $i; ++$j) {
         $max = max($max, min($j, $lcp[$j]));
+    }
 }
 echo $max;
 // sとs[i:]が、先頭から最大で何文字まで一致しているか格納した配列を返す
@@ -19,7 +21,9 @@ function zAlgo(string $s): array
     $i = 1;
     $len = 0;
     while ($i < $n) {
-        while ($i + $len < $n && $s[$len] === $s[$i + $len]) ++$len;
+        while ($i + $len < $n && $s[$len] === $s[$i + $len]) {
+            ++$len;
+        }
         $res[$i] = $len;
         if ($len === 0) {
             ++$i;

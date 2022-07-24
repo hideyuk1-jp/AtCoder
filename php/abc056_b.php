@@ -1,4 +1,5 @@
 <?php
+
 list($w, $a, $b) = ints();
 if ($b > $a + $w) {
     echo $b - ($a + $w);

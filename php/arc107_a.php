@@ -1,4 +1,5 @@
 <?php
+
 const MOD = 998244353;
 [$a, $b, $c] = ints();
 $ans = ((1 + $a) * $a / 2) % MOD;

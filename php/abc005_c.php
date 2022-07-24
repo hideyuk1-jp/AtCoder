@@ -1,10 +1,13 @@
 <?php
+
 list($t) = ints();
 list($n) = ints();
 $a = ints();
 list($m) = ints();
 $b = ints();
-if ($m > $n) exit('no' . PHP_EOL);
+if ($m > $n) {
+    exit('no' . PHP_EOL);
+}
 $j = 0;
 for ($i = 0; $i < $m; ++$i) {
     for ($j = $j; $j < $n; ++$j) {

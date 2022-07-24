@@ -1,4 +1,5 @@
 <?php
+
 list($n, $s, $t) = ints();
 list($w) = ints();
 $ans = 0;
@@ -7,7 +8,9 @@ for ($i = 0; $i < $n; ++$i) {
         list($a) = ints();
         $w += $a;
     }
-    if ($w >= $s && $w <= $t) $ans++;
+    if ($w >= $s && $w <= $t) {
+        $ans++;
+    }
 }
 echo $ans . PHP_EOL;
 function ints()

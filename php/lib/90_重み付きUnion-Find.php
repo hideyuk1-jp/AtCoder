@@ -1,4 +1,5 @@
 <?php
+
 // 重み付きUnion-Find：同じグループに属するかどうかの判定と根からの重みを保持する
 class UnionFind2
 {
@@ -7,7 +8,7 @@ class UnionFind2
     private $rank; // rank[$i]:$iの重み
     private $diff_weight; // diff_weight[$i]:$iの重みの差
 
-    function __construct($n, $sum_unity = 0)
+    public function __construct($n, $sum_unity = 0)
     {
         for ($i = 0; $i < $n; $i++) {
             $this->par[$i] = $i; // 最初は全てが根
@@ -17,48 +18,54 @@ class UnionFind2
         }
     }
 
-    function root($x)
+    public function root($x)
     { // 根を返す
-        if ($this->par[$x] === $x) return $x; // 根の場合
+        if ($this->par[$x] === $x) {
+            return $x;
+        } // 根の場合
         $r = $this->root($this->par[$x]);
         $this->diff_weight[$x] += $this->diff_weight[$this->par[$x]]; // 全ての枝の重みの差を根との重みの差にする
         return $this->par[$x] = $r; // 全ての枝の親を根にする
     }
 
-    function weight($x)
+    public function weight($x)
     {
         $this->root($x);
         return $this->diff_weight[$x];
     }
 
-    function unite($x, $y, $w)
+    public function unite($x, $y, $w)
     { // $xと$yの木を併合
         $w += $this->weight($x);
         $w -= $this->weight($y);
         $ix = $this->root($x);
         $iy = $this->root($y);
-        if ($ix === $iy) return;
+        if ($ix === $iy) {
+            return;
+        }
         if ($this->rank[$ix] < $this->rank[$iy]) {
             list($ix, $iy) = [$iy, $ix];
             $w = -$w;
         }
-        if ($this->rank[$ix] === $this->rank[$iy]) $this->rank[$ix]++;
+        if ($this->rank[$ix] === $this->rank[$iy]) {
+            $this->rank[$ix]++;
+        }
         $this->size[$ix] += $this->size[$iy];
         $this->par[$iy] = $ix; // $yの根を$xの根に付ける
         $this->diff_weight[$iy] = $w;
     }
 
-    function isSame($x, $y)
+    public function isSame($x, $y)
     { // $xと$yの根が同じか
         return $this->root($x) === $this->root($y);
     }
 
-    function diff($x, $y)
+    public function diff($x, $y)
     {
         return $this->weight($y) - $this->weight($x);
     }
 
-    function size($x)
+    public function size($x)
     {
         return $this->size[$this->root($x)];
     }

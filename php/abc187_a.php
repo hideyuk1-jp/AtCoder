@@ -1,4 +1,5 @@
 <?php
+
 [$a, $b] = ints();
 echo max(f($a), f($b));
 function f($n)

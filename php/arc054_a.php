@@ -1,4 +1,5 @@
 <?php
+
 list($l, $x, $y, $s, $d) = ints();
 // 半時計
 if ($x < $y) {

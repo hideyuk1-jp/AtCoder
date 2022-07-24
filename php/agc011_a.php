@@ -1,6 +1,9 @@
 <?php
+
 list($n, $c, $k) = ints();
-for ($i = 0; $i < $n; ++$i) list($t[]) = ints();
+for ($i = 0; $i < $n; ++$i) {
+    list($t[]) = ints();
+}
 sort($t);
 $cnt = $nbus = $num = 0;
 foreach ($t as $tt) {

@@ -1,10 +1,11 @@
 <?php
+
 fscanf(STDIN, '%d %d', $n, $m);
 $a = array_map('intval', explode(' ', trim(fgets(STDIN))));
 $lcm = lcmAll($a);
 for ($i = 0; $i < $n; ++$i) {
     if ($lcm / $a[$i] % 2 === 0) {
-        echo (0) . PHP_EOL;
+        echo(0) . PHP_EOL;
         exit;
     }
 }
@@ -14,7 +15,9 @@ echo $ans . PHP_EOL;
 // 最大公約数（2つ）
 function gcd($m, $n)
 {
-    if (!$n) return $m;
+    if (!$n) {
+        return $m;
+    }
     return gcd($n, $m % $n);
 }
 
@@ -52,15 +55,21 @@ $q = array_map('intval', explode(' ', trim(fgets(STDIN))));
 $arr = junretsu($n);
 sort($arr);
 foreach ($arr as $i => $v) {
-    if (implode('', $v) === implode('', $p)) $a = $i + 1;
-    if (implode('', $v) === implode('', $q)) $b = $i + 1;
+    if (implode('', $v) === implode('', $p)) {
+        $a = $i + 1;
+    }
+    if (implode('', $v) === implode('', $q)) {
+        $b = $i + 1;
+    }
 }
 $ans = abs($a - $b);
 echo $ans . PHP_EOL;
 
 function junretsu($n)
 {
-    if ($n === 1) return [[1]];
+    if ($n === 1) {
+        return [[1]];
+    }
     $arr = [];
     foreach (junretsu($n - 1) as $v) {
         for ($i = 0; $i < $n; $i++) {

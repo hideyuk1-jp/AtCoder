@@ -1,4 +1,5 @@
 <?php
+
 list($s) = strs();
 echo max(((int) $s[0] - 1) + (strlen($s) - 1) * 9, digitSum($s));
 function strs()

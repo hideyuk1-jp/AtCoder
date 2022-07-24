@@ -1,12 +1,17 @@
 <?php
+
 // C
 fscanf(STDIN, '%d %d %d', $a, $b, $c);
 $a = [$a, $b, $c];
 sort($a);
-if (count(array_unique($a)) === 1) exit('0');
+if (count(array_unique($a)) === 1) {
+    exit('0');
+}
 $ans = $a[2] - $a[1];
 $ans += intdiv($a[1] - $a[0], 2);
-if (($a[1] - $a[0]) % 2 === 1) $ans += 2;
+if (($a[1] - $a[0]) % 2 === 1) {
+    $ans += 2;
+}
 echo $ans;
 
 exit;

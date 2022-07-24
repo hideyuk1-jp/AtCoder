@@ -1,12 +1,17 @@
 <?php
+
 // C
 fscanf(STDIN, '%d', $n);
 $a = array_map('intval', explode(' ', trim(fgets(STDIN))));
-for ($i = 0; $i < $n; $i++) $aa[] = $a[$i] - ($i + 1);
+for ($i = 0; $i < $n; $i++) {
+    $aa[] = $a[$i] - ($i + 1);
+}
 sort($aa);
 $b = $aa[intdiv($n, 2)];
 $ans = 0;
-for ($i = 0; $i < $n; $i++) $ans += abs($a[$i] - ($i + 1) - $b);
+for ($i = 0; $i < $n; $i++) {
+    $ans += abs($a[$i] - ($i + 1) - $b);
+}
 echo $ans;
 
 exit;

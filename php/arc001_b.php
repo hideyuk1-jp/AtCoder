@@ -1,4 +1,5 @@
 <?php
+
 list($a, $b) = ints();
 $min = PHP_INT_MAX;
 $d = abs($a - $b);

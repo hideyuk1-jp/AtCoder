@@ -1,4 +1,5 @@
 <?php
+
 list($s, $t) = strs();
 echo abs(f($s) - f($t));
 function f($s)

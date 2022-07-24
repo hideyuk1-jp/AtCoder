@@ -1,4 +1,5 @@
 <?php
+
 // A
 fscanf(STDIN, '%s', $s[]);
 fscanf(STDIN, '%s', $s[]);

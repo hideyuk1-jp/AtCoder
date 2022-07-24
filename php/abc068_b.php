@@ -1,7 +1,10 @@
 <?php
+
 list($n) = ints();
 $ans = 1;
-while ($ans * 2 <= $n) $ans *= 2;
+while ($ans * 2 <= $n) {
+    $ans *= 2;
+}
 echo $ans;
 function ints()
 {

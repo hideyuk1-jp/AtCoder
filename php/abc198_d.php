@@ -1,4 +1,5 @@
 <?php
+
 for ($i = 0; $i < 3; ++$i) {
     [$s[]] = strs();
     $head[$s[$i][0]] = true;
@@ -11,7 +12,9 @@ for ($i = 0; $i < 3; ++$i) {
 }
 $keys = array_keys($cnt);
 $l = count($cnt);
-if ($l > 10) exit('UNSOLVABLE');
+if ($l > 10) {
+    exit('UNSOLVABLE');
+}
 $nums = [];
 $arr = range(0, 9);
 dfs();
@@ -29,7 +32,9 @@ function dfs($d = 0)
     $_arr = $arr;
     foreach ($_arr as $i) {
         // 最上位桁が0
-        if ($i === 0 && isset($head[$keys[$d]])) continue;
+        if ($i === 0 && isset($head[$keys[$d]])) {
+            continue;
+        }
         $_s = $s;
         for ($j = 0; $j < 3; ++$j) {
             $s[$j] = str_replace($keys[$d], $i, $s[$j]);

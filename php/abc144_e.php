@@ -1,12 +1,14 @@
 <?php
+
 list($n, $k) = ints();
 $a = ints();
 $f = ints();
 sort($a);
 rsort($f);
 $max = 0;
-for ($i = 0; $i < $n; ++$i)
+for ($i = 0; $i < $n; ++$i) {
     $max = max($max, $a[$i] * $f[$i]);
+}
 // 二分探索
 $ok = $max;
 $ng = -1;
@@ -18,8 +20,11 @@ while (abs($ok - $ng) > 1) {
         // a * f <= mid, a <= mid / f
         $cnt += max(0, $a[$i] - intdiv($mid, $f[$i]));
     }
-    if ($cnt <= $k) $ok = $mid;
-    else $ng = $mid;
+    if ($cnt <= $k) {
+        $ok = $mid;
+    } else {
+        $ng = $mid;
+    }
 }
 echo $ok;
 function ints()

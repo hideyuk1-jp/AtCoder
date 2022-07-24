@@ -1,4 +1,5 @@
 <?php
+
 list($n) = ints();
 $s = (string) $n;
 $l = strlen($s);
@@ -15,8 +16,9 @@ for ($i = 1; $i <= $l; ++$i) {
     }
 }
 $ans = 0;
-for ($i = 0; $i <= $l; ++$i)
+for ($i = 0; $i <= $l; ++$i) {
     $ans += $i * ($dp[$l][0][$i] + $dp[$l][1][$i]);
+}
 echo $ans, PHP_EOL;
 function ints()
 {

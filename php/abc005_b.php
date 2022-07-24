@@ -1,4 +1,5 @@
 <?php
+
 list($n) = ints();
 $min = PHP_INT_MAX;
 for ($i = 0; $i < $n; ++$i) {

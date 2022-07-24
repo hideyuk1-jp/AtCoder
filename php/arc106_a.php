@@ -1,4 +1,5 @@
 <?php
+
 [$N] = ints();
 $a = 1;
 $num1 = 5;
@@ -6,7 +7,9 @@ while ($num1 <= $N) {
     $num2 = 3;
     $b = 1;
     while ($num1 + $num2 <= $N) {
-        if ($num1 + $num2 === $N) exit("${b} ${a}");
+        if ($num1 + $num2 === $N) {
+            exit("${b} ${a}");
+        }
         ++$b;
         $num2 *= 3;
     }

@@ -1,4 +1,5 @@
 <?php
+
 [$N] = ints();
 $ans = 1;
 for ($i = 2; $i <= $N; ++$i) {
@@ -13,7 +14,9 @@ function ints()
 // 最大公約数（2つ）
 function gcd($m, $n)
 {
-    if (!$n) return $m;
+    if (!$n) {
+        return $m;
+    }
     return gcd($n, $m % $n);
 }
 // 最小公倍数（2つ）

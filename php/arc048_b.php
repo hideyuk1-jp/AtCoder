@@ -1,4 +1,5 @@
 <?php
+
 list($n) = ints();
 $max_r = 10 ** 5;
 $max_h = 2;

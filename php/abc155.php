@@ -1,4 +1,5 @@
 <?php
+
 fscanf(STDIN, '%d %d', $n, $k);
 $a = array_map('intval', explode(' ', trim(fgets(STDIN))));
 $minus = $zero = $plus = [];
@@ -31,8 +32,11 @@ $ok = -10 ** 18 - 1;
 $ng = 10 ** 18 + 1;
 while (abs($ok - $ng) > 1) {
     $mid = intdiv($ok + $ng, 2);
-    if (cnt($mid) < $k) $ok = $mid;
-    else $ng = $mid;
+    if (cnt($mid) < $k) {
+        $ok = $mid;
+    } else {
+        $ng = $mid;
+    }
 }
 echo $ok;
 
@@ -55,7 +59,9 @@ function cnt($x)
                 $r--;
             }
             $res += $r - $l;
-            if ($l >= $r) break;
+            if ($l >= $r) {
+                break;
+            }
         }
 
         // しゃくとり マイナスxマイナス
@@ -65,7 +71,9 @@ function cnt($x)
                 $r--;
             }
             $res += $r - $l;
-            if ($l >= $r) break;
+            if ($l >= $r) {
+                break;
+            }
         }
 
         return $res;
@@ -98,8 +106,11 @@ arsort($count);
 $c = 0;
 $ans = [];
 foreach ($count as $k => $v) {
-    if ($c == 0) $c = $v;
-    elseif ($c != $v) break;
+    if ($c == 0) {
+        $c = $v;
+    } elseif ($c != $v) {
+        break;
+    }
     $ans[] = $k;
 }
 sort($ans);

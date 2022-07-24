@@ -1,4 +1,5 @@
 <?php
+
 define('MOD', 10 ** 9 + 7);
 list($n) = ints();
 $p = new Prime((int) sqrt(10 ** 6) + 1);
@@ -6,14 +7,21 @@ $a = ints();
 for ($i = 0; $i < $n; ++$i) {
     $pfs = $p->factor($a[$i]);
     foreach ($pfs as $k => $v) {
-        if (isset($cnt[$k])) $cnt[$k] = max($cnt[$k], $v);
-        else $cnt[$k] = $v;
+        if (isset($cnt[$k])) {
+            $cnt[$k] = max($cnt[$k], $v);
+        } else {
+            $cnt[$k] = $v;
+        }
     }
 }
 $lcm = 1;
-foreach ($cnt as $k => $v) $lcm = modMul($lcm, modPow($k, $v));
+foreach ($cnt as $k => $v) {
+    $lcm = modMul($lcm, modPow($k, $v));
+}
 $ans = 0;
-for ($i = 0; $i < $n; ++$i) $ans = modAdd($ans, modDiv($lcm, $a[$i]));
+for ($i = 0; $i < $n; ++$i) {
+    $ans = modAdd($ans, modDiv($lcm, $a[$i]));
+}
 echo $ans;
 function ints()
 {
@@ -47,23 +55,31 @@ function modDiv($x, $y)
 // 累乗（繰り返し二乗法）
 function modPow($n, $x)
 {
-    if ($x === 0) return 1;
+    if ($x === 0) {
+        return 1;
+    }
     $res = (modPow($n, $x >> 1) ** 2) % MOD;
-    if ($x % 2 === 1) $res = modMul($res, $n);
+    if ($x % 2 === 1) {
+        $res = modMul($res, $n);
+    }
     return $res;
 }
 
 // 階乗
 function modFac($n)
 {
-    if ($n === 0) return 1;
+    if ($n === 0) {
+        return 1;
+    }
     return modMul($n, modFac($n - 1));
 }
 
 // 順列
 function nPr($n, $r)
 {
-    if ($r === 0) return 1;
+    if ($r === 0) {
+        return 1;
+    }
     return modMul(nPr($n, $r - 1), $n - $r + 1);
 }
 
@@ -71,7 +87,9 @@ function nPr($n, $r)
 function nCr($n, $r)
 {
     $r = min($r, $n - $r);
-    if ($r === 0) return 1;
+    if ($r === 0) {
+        return 1;
+    }
     return modDiv(nPr($n, $r), modFac($r));
 }
 
@@ -80,10 +98,13 @@ function init($n)
 {
     global $fact, $ifact;
     $fact[0] = 1;
-    for ($i = 1; $i <= $n; ++$i) $fact[$i] = modMul($fact[$i - 1], $i);
+    for ($i = 1; $i <= $n; ++$i) {
+        $fact[$i] = modMul($fact[$i - 1], $i);
+    }
     $ifact[$n] = modDiv(1, $fact[$n]);
-    for ($i = $n; $i >= 1; --$i)
+    for ($i = $n; $i >= 1; --$i) {
         $ifact[$i - 1] = modMul($ifact[$i], $i);
+    }
 }
 
 // 順列（前処理）
@@ -106,19 +127,21 @@ class Prime
     private $n;
     private $table; // 素数の添字にtrueが格納された配列
 
-    function __construct($n)
+    public function __construct($n)
     {
         $this->n = $n;
         $this->makeTable();
     }
 
-    function makeTable()
+    public function makeTable()
     {
         $n = $this->n;
         $table = array_fill(2, $n - 1, true);
         $rn = (int) floor(sqrt($n));
         for ($i = 2; $i <= $rn; $i++) {
-            if (!isset($table[$i])) continue;
+            if (!isset($table[$i])) {
+                continue;
+            }
             for ($j = 2 * $i; $j <= $n; $j += $i) {
                 unset($table[$j]);
             }
@@ -127,38 +150,46 @@ class Prime
     }
 
     // 素数
-    function primes()
+    public function primes()
     {
         return array_keys($this->table);
     }
 
-    function table()
+    public function table()
     {
         return $this->table;
     }
 
     // 素数判定
-    function isPrime($x)
+    public function isPrime($x)
     {
         return isset($this->table[$x]);
     }
 
     // 素因数分解
-    function factor($x)
+    public function factor($x)
     {
         $res = [];
-        if ($x === 1) return $res;
+        if ($x === 1) {
+            return $res;
+        }
         $primes = $this->primes();
         foreach ($primes as $prime) {
             while ($x % $prime === 0) {
-                if (isset($res[$prime])) $res[$prime]++;
-                else $res[$prime] = 1;
+                if (isset($res[$prime])) {
+                    $res[$prime]++;
+                } else {
+                    $res[$prime] = 1;
+                }
                 $x /= $prime;
             }
         }
         if ($x > 1) {
-            if (isset($res[$x])) $res[$x]++;
-            else $res[$x] = 1;
+            if (isset($res[$x])) {
+                $res[$x]++;
+            } else {
+                $res[$x] = 1;
+            }
         }
         return $res;
     }

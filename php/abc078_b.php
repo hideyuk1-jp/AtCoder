@@ -1,4 +1,5 @@
 <?php
+
 list($x, $y, $z) = ints();
 echo intdiv($x - ($y + 2 * $z), $y + $z) + 1;
 function ints()

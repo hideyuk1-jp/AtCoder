@@ -1,4 +1,5 @@
 <?php
+
 // F
 
 // E
@@ -6,7 +7,9 @@ fscanf(STDIN, '%d %d', $H, $N);
 $q = new SplPriorityQueue();
 for ($i  = 0; $i < $N; $i++) {
     fscanf(STDIN, '%d %d', $a, $b);
-    if ($a > $H) $a = $H;
+    if ($a > $H) {
+        $a = $H;
+    }
     $q->insert([$a, $b], $a/$b);
 }
 $ans = 0;

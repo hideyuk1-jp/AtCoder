@@ -1,4 +1,5 @@
 <?php
+
 list($n) = ints();
 $t = ints();
 $sum = array_sum($t);

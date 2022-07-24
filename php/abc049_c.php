@@ -1,4 +1,5 @@
 <?php
+
 list($s) = strs();
 $a = ['dreameraser', 'dreamerase', 'dreamer', 'dream', 'eraser', 'erase'];
 $i = 0;

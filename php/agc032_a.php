@@ -1,4 +1,5 @@
 <?php
+
 list($n) = ints();
 $b = ints();
 while (count($b) > 0) {

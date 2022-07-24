@@ -1,4 +1,5 @@
 <?php
+
 [$N, $K] = ints();
 $a = $N;
 while ($K > 0) {

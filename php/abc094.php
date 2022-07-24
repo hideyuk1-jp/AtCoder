@@ -1,4 +1,5 @@
 <?php
+
 // D
 fscanf(STDIN, '%d', $n);
 $a = array_map('intval', explode(' ', trim(fgets(STDIN))));
@@ -37,8 +38,11 @@ fscanf(STDIN, '%d %d %d', $n, $m, $x);
 $a = array_map('intval', explode(' ', trim(fgets(STDIN))));
 $c0 = $cn = 0;
 for ($i = 0; $i < $m; $i++) {
-    if ($a[$i] < $x) $c0++;
-    else $cn++;
+    if ($a[$i] < $x) {
+        $c0++;
+    } else {
+        $cn++;
+    }
 }
 echo min($c0, $cn);
 

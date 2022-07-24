@@ -1,4 +1,5 @@
 <?php
+
 define("MOD", 10 ** 9 + 7);
 
 // nCr 前処理

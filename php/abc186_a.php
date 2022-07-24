@@ -1,4 +1,5 @@
 <?php
+
 [$N, $W] = ints();
 echo intdiv($N, $W);
 function ints()

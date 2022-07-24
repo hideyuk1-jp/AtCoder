@@ -1,4 +1,5 @@
 <?php
+
 // G 6
 define('WALL', '#');
 define('ROAD', '.');
@@ -18,7 +19,9 @@ for ($i  = 0; $i < $h * $w; $i++) {
     $l = intval(floor($i / $w));
     $m = $i % $w;
 
-    if ($s[$l][$m] === WALL) continue;
+    if ($s[$l][$m] === WALL) {
+        continue;
+    }
 
     if ($m < $w - 1 && $s[$l][$m + 1] === ROAD) {
         $g[$i][] = $i + 1;
@@ -50,7 +53,9 @@ while (!$q->isEmpty()) {
     $v = $q->dequeue();
 
     foreach ($g[$v] as $next_v) {
-        if ($dist[$next_v] !== -1) continue; // 発見済み
+        if ($dist[$next_v] !== -1) {
+            continue;
+        } // 発見済み
 
         $dist[$next_v] = $dist[$v] + 1;
         $q->enqueue($next_v);
@@ -71,7 +76,7 @@ $s = '';
 for ($i = 0; $i < intdiv($n, 2); $i++) {
     $c = array_intersect($a[$i], $a[$n - 1 - $i]);
     if (count($c) === 0) {
-        echo (-1);
+        echo(-1);
         exit;
     }
     $s .= array_pop($c);
@@ -96,8 +101,11 @@ for ($i  = 0; $i < $q; $i++) {
     $s[1]--;
     if ($s[0] === 1) {
         $ans[] = $c[$s[1]];
-        if (isset($g[$s[1]]))
-            foreach ($g[$s[1]] as $k) $c[$k] = $c[$s[1]];
+        if (isset($g[$s[1]])) {
+            foreach ($g[$s[1]] as $k) {
+                $c[$k] = $c[$s[1]];
+            }
+        }
     } elseif ($s[0] === 2) {
         $ans[] = $c[$s[1]];
         $c[$s[1]] = $s[2];
@@ -129,7 +137,9 @@ for ($i  = 0; $i < 5; $i++) {
 $ans = '';
 for ($i = 0; $i < $n; $i++) {
     for ($j = 0; $j < 10; $j++) {
-        if ($x[$i] === $nums[$j]) $ans = $ans . strval($j);
+        if ($x[$i] === $nums[$j]) {
+            $ans = $ans . strval($j);
+        }
     }
 }
 echo $ans;
@@ -138,8 +148,11 @@ exit;
 
 // C 8
 fscanf(STDIN, '%d %d %d', $a, $r, $n);
-if ($a * pow($r, $n - 1) > pow(10, 9)) $ans = 'large';
-else $ans = $a * pow($r, $n - 1);
+if ($a * pow($r, $n - 1) > pow(10, 9)) {
+    $ans = 'large';
+} else {
+    $ans = $a * pow($r, $n - 1);
+}
 echo $ans;
 
 exit;
@@ -170,7 +183,11 @@ exit;
 // A 9
 fscanf(STDIN, '%s', $s);
 fscanf(STDIN, '%s', $t);
-if ($s === $t) $ans = 'same';
-elseif (strcasecmp($s, $t) === 0) $ans = 'case-insensitive';
-else $ans = 'different';
+if ($s === $t) {
+    $ans = 'same';
+} elseif (strcasecmp($s, $t) === 0) {
+    $ans = 'case-insensitive';
+} else {
+    $ans = 'different';
+}
 echo $ans;

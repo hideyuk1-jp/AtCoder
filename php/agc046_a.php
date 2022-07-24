@@ -1,4 +1,5 @@
 <?php
+
 list($x) = ints();
 echo intdiv(lcm($x, 360), $x);
 function ints()
@@ -8,7 +9,9 @@ function ints()
 // 最大公約数（2つ）
 function gcd($m, $n)
 {
-    if (!$n) return $m;
+    if (!$n) {
+        return $m;
+    }
     return gcd($n, $m % $n);
 }
 

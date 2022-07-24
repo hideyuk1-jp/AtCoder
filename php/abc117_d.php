@@ -1,4 +1,5 @@
 <?php
+
 $debug = false;
 list($n, $k) = ints();
 $a = ints();
@@ -6,12 +7,17 @@ $a = ints();
 for ($i = 0; $i < $n; ++$i) {
     $j = 0;
     while ($a[$i] >> $j > 0) {
-        if (isset($cnt1[$j])) $cnt1[$j] += $a[$i] >> $j & 1;
-        else $cnt1[$j] = $a[$i] >> $j & 1;
+        if (isset($cnt1[$j])) {
+            $cnt1[$j] += $a[$i] >> $j & 1;
+        } else {
+            $cnt1[$j] = $a[$i] >> $j & 1;
+        }
         ++$j;
     }
 }
-if ($debug) var_dump($cnt1);
+if ($debug) {
+    var_dump($cnt1);
+}
 $l = strlen(decbin(max($k, max($a))));
 $ans = 0;
 $smaller = false; // true: xがk以下確定, false: xがk以下か未確定
@@ -22,7 +28,9 @@ for ($i = $l - 1; $i >= 0; --$i) {
     } else {
         $bitk = $k >> $i & 1;
         $bitx = min($bitx, $bitk);
-        if ($debug) var_dump($i, $bitk, $bitx, '-----');
+        if ($debug) {
+            var_dump($i, $bitk, $bitx, '-----');
+        }
         if ($bitx < $bitk) {
             $ans += (1 << $i) * $cnt1[$i];
             $smaller = true;

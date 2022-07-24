@@ -1,6 +1,7 @@
 <?php
+
 list($a, $b) = ints();
-echo ($a * $b) % 2 === 1 ? 'Odd' : 'Even';
+echo($a * $b) % 2 === 1 ? 'Odd' : 'Even';
 
 function ints()
 {

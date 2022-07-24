@@ -1,4 +1,5 @@
 <?php
+
 // C
 fscanf(STDIN, '%d %d', $n, $k);
 $x = array_map('intval', explode(' ', trim(fgets(STDIN))));
@@ -23,7 +24,9 @@ for ($i = 0; $i < $n; $i++) {
 $ans = 10 ** 10;
 sort($l);
 for ($i = 0; $i <= $k; $i++) {
-    if (!isset($l[$i]) || !isset($r[$k - $i])) continue;
+    if (!isset($l[$i]) || !isset($r[$k - $i])) {
+        continue;
+    }
     $d = [$l[$i], $r[$k - $i]];
     sort($d);
     $ans = min($ans, $d[0] * 2 + $d[1]);
@@ -52,7 +55,9 @@ sort($gi);
 sort($gj);
 foreach ($gi as $i) {
     $ga = [];
-    foreach ($gj as $j) echo $a[$i][$j];
+    foreach ($gj as $j) {
+        echo $a[$i][$j];
+    }
     echo PHP_EOL;
 }
 

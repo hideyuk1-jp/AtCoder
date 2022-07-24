@@ -1,11 +1,14 @@
 <?php
+
 list($n) = ints();
 $bg = 10 ** 6 + 1;
 $cnt = array_fill(0, $bg, 0);
 for ($i = 0; $i < $n; ++$i) {
     list($a, $b) = ints();
     $cnt[$a]++;
-    if ($b < $bg - 1) $cnt[$b + 1]--;
+    if ($b < $bg - 1) {
+        $cnt[$b + 1]--;
+    }
 }
 $max = 0;
 for ($i = 0; $i < $bg; ++$i) {

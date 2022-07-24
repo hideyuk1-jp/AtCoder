@@ -1,4 +1,5 @@
 <?php
+
 list($n) = ints();
 for ($i = 0; $i < $n; ++$i) {
     list($a, $b) = ints();
@@ -8,7 +9,11 @@ for ($i = 0; $i < $n; ++$i) {
 $sum = 0;
 $q = new SplMaxHeap();
 for ($i = 0; $i < $n; ++$i) {
-    if (isset($task[$i])) foreach ($task[$i] as $b) $q->insert($b);
+    if (isset($task[$i])) {
+        foreach ($task[$i] as $b) {
+            $q->insert($b);
+        }
+    }
     $sum += $q->extract();
     $ans[] = $sum;
 }

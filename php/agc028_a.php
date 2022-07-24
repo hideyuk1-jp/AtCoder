@@ -1,4 +1,5 @@
 <?php
+
 list($n, $m) = ints();
 list($s) = strs();
 list($t) = strs();

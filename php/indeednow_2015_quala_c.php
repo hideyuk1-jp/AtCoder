@@ -1,11 +1,15 @@
 <?php
+
 list($n) = ints();
 $cnt = [];
 for ($i = 0; $i < $n; ++$i) {
     list($s) = ints();
     if ($s > 0) {
-        if (isset($cnt[$s])) ++$cnt[$s];
-        else $cnt[$s] = 1;
+        if (isset($cnt[$s])) {
+            ++$cnt[$s];
+        } else {
+            $cnt[$s] = 1;
+        }
     }
 }
 krsort($cnt);

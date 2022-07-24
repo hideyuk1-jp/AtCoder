@@ -1,4 +1,5 @@
 <?php
+
 list($n, $m, $x, $y) = ints();
 --$x;
 --$y;
@@ -25,19 +26,19 @@ class Dijkstra
     private $d; // 最短距離を格納
     private $cost; // ノード間の距離を格納
 
-    function __construct($n)
+    public function __construct($n)
     {
         $this->n = $n;
         $this->cost = array_fill(0, $this->n, array_fill(0, $this->n, [INF, 1]));
     }
 
-    function connect($x, $y, $w, $k)
+    public function connect($x, $y, $w, $k)
     {
         $this->cost[$x][$y] = [$w, $k];
         $this->cost[$y][$x] = [$w, $k];
     }
 
-    function solve($s = 0)
+    public function solve($s = 0)
     {
         $n = $this->n;
         $d = $this->d;
@@ -46,11 +47,15 @@ class Dijkstra
         $d[$s][$s] = 0;
         $q = new SplPriorityQueue();
         for ($i = 0; $i < $n; ++$i) {
-            if ($i === $s) continue;
+            if ($i === $s) {
+                continue;
+            }
             $q->insert([$i, $cost[$s][$i]], -$cost[$s][$i][0]);
         }
         while (true) {
-            if ($q->isEmpty()) break;
+            if ($q->isEmpty()) {
+                break;
+            }
             [$v, [$t, $k]] = $q->extract();
             var_dump($v);
             for ($i = 0; $i < $n; ++$i) {
@@ -62,7 +67,7 @@ class Dijkstra
         $this->d = $d;
     }
 
-    function dist($x, $y)
+    public function dist($x, $y)
     {
         return $this->d[$x][$y];
     }

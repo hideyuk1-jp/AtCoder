@@ -1,4 +1,5 @@
 <?php
+
 list($n) = ints();
 $max = 0;
 for ($i = 2; $i <= $n; ++$i) {
@@ -11,7 +12,9 @@ for ($i = 2; $i <= $n; ++$i) {
 }
 $max = 0;
 for ($i = 1; $i <= $n; ++$i) {
-    if ($i === $maxi) continue;
+    if ($i === $maxi) {
+        continue;
+    }
     echo '? ', $maxi, ' ', $i, PHP_EOL;
     list($d) = ints();
     $max = max($max, $d);

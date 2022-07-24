@@ -1,4 +1,5 @@
 <?php
+
 // D
 fscanf(STDIN, '%d %d %d', $a, $b, $n);
 $x = min($b - 1, $n);
@@ -9,7 +10,9 @@ exit;
 
 // C
 fscanf(STDIN, '%d %d %d', $n, $m, $q);
-for ($i  = 0; $i < $q; $i++) fscanf(STDIN, '%d %d %d %d', $a[], $b[], $c[], $d[]);
+for ($i  = 0; $i < $q; $i++) {
+    fscanf(STDIN, '%d %d %d %d', $a[], $b[], $c[], $d[]);
+}
 func();
 echo max($scores);
 
@@ -47,7 +50,9 @@ $zan = 100;
 while (true) {
     $ans++;
     $zan = (int) ($zan * 1.01);
-    if ($zan >= $x) break;
+    if ($zan >= $x) {
+        break;
+    }
 }
 echo $ans;
 

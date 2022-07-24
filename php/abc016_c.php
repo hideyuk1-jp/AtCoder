@@ -1,4 +1,5 @@
 <?php
+
 list($n, $m) = ints();
 $wf = new WarshallFloyd(10);
 for ($i = 0; $i < $m; ++$i) {
@@ -12,7 +13,9 @@ $wf->solve();
 $ans = array_fill(0, $n, 0);
 for ($i = 0; $i < $n; ++$i) {
     for ($j = 0; $j < $n; ++$j) {
-        if ($wf->dist($i, $j) === 2) $ans[$i]++;
+        if ($wf->dist($i, $j) === 2) {
+            $ans[$i]++;
+        }
     }
 }
 echo implode(PHP_EOL, $ans) . PHP_EOL;
@@ -27,19 +30,21 @@ class WarshallFloyd
     private $n;
     private $d;
 
-    function __construct($n)
+    public function __construct($n)
     {
         $this->n = $n;
         $this->d = array_fill(0, $this->n, array_fill(0, $this->n, INF));
-        for ($i = 0; $i < $this->n; ++$i) $this->d[$i][$i] = 0;
+        for ($i = 0; $i < $this->n; ++$i) {
+            $this->d[$i][$i] = 0;
+        }
     }
 
-    function connect($x, $y, $w)
+    public function connect($x, $y, $w)
     {
         $this->d[$x][$y] = $w;
     }
 
-    function solve()
+    public function solve()
     {
         for ($k = 0; $k < $this->n; ++$k) { // 経由点
             for ($i = 0; $i < $this->n; ++$i) { // 始点
@@ -50,7 +55,7 @@ class WarshallFloyd
         }
     }
 
-    function dist($x, $y)
+    public function dist($x, $y)
     {
         return $this->d[$x][$y];
     }

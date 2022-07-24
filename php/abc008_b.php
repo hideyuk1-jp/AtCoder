@@ -1,9 +1,13 @@
 <?php
+
 list($n) = ints();
 for ($i = 0; $i < $n; ++$i) {
     list($s) = strs();
-    if (isset($cnt[$s])) $cnt[$s]++;
-    else $cnt[$s] = 1;
+    if (isset($cnt[$s])) {
+        $cnt[$s]++;
+    } else {
+        $cnt[$s] = 1;
+    }
 }
 $max = max($cnt);
 echo array_flip($cnt)[$max] . PHP_EOL;

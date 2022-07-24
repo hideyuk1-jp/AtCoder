@@ -1,4 +1,5 @@
 <?php
+
 list($a, $b, $k) = ints();
 for ($i = 0; $i < $k; ++$i) {
     if ($i % 2) {

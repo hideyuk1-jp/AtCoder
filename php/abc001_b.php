@@ -1,4 +1,5 @@
 <?php
+
 list($m) = ints();
 if ($m < 100) {
     echo '00';

@@ -1,4 +1,5 @@
 <?php
+
 fscanf(STDIN, '%d %d', $n, $m);
 $x = array_map('intval', explode(' ', trim(fgets(STDIN))));
 if ($n >= $m) {

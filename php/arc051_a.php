@@ -1,10 +1,12 @@
 <?php
+
 list($x1, $y1, $r) = ints();
 list($x2, $y2, $x3, $y3) = ints();
-if (isRedInBlue())
+if (isRedInBlue()) {
     exit(implode(PHP_EOL, ['NO', 'YES']));
-elseif (isBlueInRed())
+} elseif (isBlueInRed()) {
     exit(implode(PHP_EOL, ['YES', 'NO']));
+}
 echo implode(PHP_EOL, ['YES', 'YES']);
 function isRedInBlue()
 {

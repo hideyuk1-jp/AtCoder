@@ -1,4 +1,5 @@
 <?php
+
 // D
 fscanf(STDIN, '%d %d', $n, $m);
 for ($i  = 0; $i < $m; $i++) {
@@ -20,7 +21,9 @@ while (!$q->isEmpty()) {
     $v = $q->dequeue();
 
     foreach ($g[$v] as $next_v) {
-        if ($dist[$next_v] !== -1) continue; // 発見済み
+        if ($dist[$next_v] !== -1) {
+            continue;
+        } // 発見済み
 
         $dist[$next_v] = $dist[$v] + 1;
         $arrow[$next_v] = $v;
@@ -30,7 +33,7 @@ while (!$q->isEmpty()) {
 
 echo 'Yes' . PHP_EOL;
 for ($i = 1; $i < $n; $i++) {
-    echo ($arrow[$i] + 1) . PHP_EOL;
+    echo($arrow[$i] + 1) . PHP_EOL;
 }
 
 exit;

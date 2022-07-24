@@ -1,6 +1,9 @@
 <?php
+
 list($n, $m) = ints();
-for ($i = 0; $i < $n; ++$i) list($x[], $y[], $z[]) = ints();
+for ($i = 0; $i < $n; ++$i) {
+    list($x[], $y[], $z[]) = ints();
+}
 $max = PHP_INT_MIN;
 for ($i = 0; $i < 2 ** 3; ++$i) {
     for ($j = 0; $j < 3; ++$j) {
@@ -10,8 +13,9 @@ for ($i = 0; $i < 2 ** 3; ++$i) {
             $d[$j] = -1;
         }
     }
-    for ($j = 0; $j < $n; ++$j)
+    for ($j = 0; $j < $n; ++$j) {
         $t[$j] = $d[0] * $x[$j] + $d[1] * $y[$j] + $d[2] * $z[$j];
+    }
     list($_x, $_y, $_z) = [$x, $y, $z];
     array_multisort($t, SORT_DESC, $_x, $_y, $_z);
     $_x = array_slice($_x, 0, $m);

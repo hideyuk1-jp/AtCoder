@@ -1,4 +1,5 @@
 <?php
+
 fscanf(STDIN, '%d', $N);
 fscanf(STDIN, '%d', $K);
 
@@ -10,7 +11,7 @@ function keta($n)
 }
 
 if ($keta < $K) {
-    echo (0) . PHP_EOL;
+    echo(0) . PHP_EOL;
     exit;
 }
 

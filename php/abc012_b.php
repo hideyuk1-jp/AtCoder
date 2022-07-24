@@ -1,4 +1,5 @@
 <?php
+
 list($n) = ints();
 $h = intdiv($n, 3600);
 $m = intdiv($n % 3600, 60);

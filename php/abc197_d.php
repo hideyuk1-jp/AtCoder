@@ -1,4 +1,5 @@
 <?php
+
 [$n] = ints();
 [$x0, $y0] = ints();
 [$xx, $yx] = ints();

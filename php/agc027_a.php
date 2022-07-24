@@ -1,10 +1,13 @@
 <?php
+
 list($n, $x) = ints();
 $a = ints();
 sort($a);
 $cnt = 0;
 for ($i = 0; $i < $n; ++$i) {
-    if ($x < $a[$i]) break;
+    if ($x < $a[$i]) {
+        break;
+    }
     if ($i < $n - 1) {
         ++$cnt;
         $x -= $a[$i];

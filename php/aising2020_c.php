@@ -1,4 +1,5 @@
 <?php
+
 list($n) = ints();
 $max = (int) (sqrt($n) + 1);
 $ans = array_fill(1, $n, 0);
@@ -8,9 +9,13 @@ for ($x = 1; $x <= $max; ++$x) {
             $t = $x ** 2 + $y ** 2 + $z ** 2 + $x * $y + $y * $z + $x * $z;
             if ($t <= $n) {
                 $c = count(array_unique([$x, $y, $z]));
-                if ($c === 3) $ans[$t] += 6;
-                elseif ($c === 2) $ans[$t] += 3;
-                else ++$ans[$t];
+                if ($c === 3) {
+                    $ans[$t] += 6;
+                } elseif ($c === 2) {
+                    $ans[$t] += 3;
+                } else {
+                    ++$ans[$t];
+                }
             }
         }
     }

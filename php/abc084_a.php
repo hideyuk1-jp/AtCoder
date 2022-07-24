@@ -1,4 +1,5 @@
 <?php
+
 list($m) = ints();
 echo 48 - $m;
 function ints()

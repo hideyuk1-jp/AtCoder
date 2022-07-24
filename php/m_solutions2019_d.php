@@ -1,4 +1,5 @@
 <?php
+
 list($n) = ints();
 for ($i = 0; $i < $n - 1; ++$i) {
     list($a, $b) = ints();
@@ -21,7 +22,9 @@ while (!$q->isEmpty()) {
     $d[$v] = $c[$i];
     ++$i;
     foreach ($g[$v] as $next_v) {
-        if ($dist[$next_v] !== -1) continue; // 発見済み
+        if ($dist[$next_v] !== -1) {
+            continue;
+        } // 発見済み
 
         $dist[$next_v] = $dist[$v] + 1;
         $q->enqueue($next_v);

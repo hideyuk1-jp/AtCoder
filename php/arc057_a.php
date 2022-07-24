@@ -1,7 +1,10 @@
 <?php
+
 list($a, $k) = ints();
 $n = 2 * (10 ** 12);
-if ($k === 0) exit((string) ($n - $a)) . PHP_EOL;
+if ($k === 0) {
+    exit((string) ($n - $a)) . PHP_EOL;
+}
 $i = 0;
 while ($a < $n) {
     $a += 1 + $a * $k;

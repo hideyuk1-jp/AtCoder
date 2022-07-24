@@ -1,4 +1,5 @@
 <?php
+
 [$n] = ints();
 $a = ints();
 $k = array_keys($a); // key記録

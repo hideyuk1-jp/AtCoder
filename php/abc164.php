@@ -1,4 +1,5 @@
 <?php
+
 // D
 fscanf(STDIN, '%s', $s);
 $n = strlen($s);
@@ -21,7 +22,9 @@ exit;
 
 // C
 fscanf(STDIN, '%d', $n);
-for ($i  = 0; $i < $n; $i++) fscanf(STDIN, '%s', $s[]);
+for ($i  = 0; $i < $n; $i++) {
+    fscanf(STDIN, '%s', $s[]);
+}
 echo count(array_unique($s));
 
 exit;

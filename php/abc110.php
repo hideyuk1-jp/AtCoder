@@ -1,4 +1,5 @@
 <?php
+
 // C
 fscanf(STDIN, '%s', $s);
 fscanf(STDIN, '%s', $t);

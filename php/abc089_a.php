@@ -1,4 +1,5 @@
 <?php
+
 list($n) = ints();
 echo intdiv($n, 3);
 function ints()

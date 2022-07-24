@@ -1,10 +1,13 @@
 <?php
+
 fscanf(STDIN, '%d %d', $a, $b);
 $gcd = gcd($a, $b);
 $divisors = divisors($gcd);
 $ans = 1;
 foreach ($divisors as $v) {
-    if (isPrime($v)) $ans++;
+    if (isPrime($v)) {
+        $ans++;
+    }
 }
 echo $ans . PHP_EOL;
 
@@ -27,10 +30,14 @@ function isPrimeArr($max)
 
 function isPrime($n)
 {
-    if ($n === 1) return false;
+    if ($n === 1) {
+        return false;
+    }
     $rmax = (int) floor(sqrt($n));
     for ($i = 2; $i <= $rmax; $i++) {
-        if ($n % $i === 0) return false;
+        if ($n % $i === 0) {
+            return false;
+        }
     }
     return true;
 }
@@ -39,7 +46,9 @@ function primes($max)
 {
     $arr = [];
     for ($i = 2; $i <= $max; $i++) {
-        if (isPrime($i)) $arr[] = $i;
+        if (isPrime($i)) {
+            $arr[] = $i;
+        }
     }
     return $arr;
 }
@@ -61,7 +70,9 @@ function divisors($max)
 // 最大公約数（2つ）
 function gcd($m, $n)
 {
-    if (!$n) return $m;
+    if (!$n) {
+        return $m;
+    }
     return gcd($n, $m % $n);
 }
 
@@ -95,7 +106,7 @@ exit();
 
 fscanf(STDIN, '%d', $n);
 $a = array_map('intval', explode(' ', trim(fgets(STDIN))));
-$q = new SplPriorityQueue;
+$q = new SplPriorityQueue();
 for ($i = 0; $i < $n; $i++) {
     $q->insert($i + 1, -$a[$i]);
 }
@@ -109,7 +120,9 @@ fscanf(STDIN, '%d %d', $n, $k);
 $h = array_map('intval', explode(' ', trim(fgets(STDIN))));
 $res = 0;
 for ($i = 0; $i < $n; $i++) {
-    if ($h[$i] >= $k) $res++;
+    if ($h[$i] >= $k) {
+        $res++;
+    }
 }
 echo $res . PHP_EOL;
 

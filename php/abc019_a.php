@@ -1,4 +1,5 @@
 <?php
+
 $a = ints();
 sort($a);
 echo $a[1] . PHP_EOL;

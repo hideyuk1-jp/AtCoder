@@ -1,8 +1,11 @@
 <?php
+
 list($n, $l) = ints();
 $x = ints();
 $hurdle = array_fill(0, $l, false);
-for ($i = 0; $i < $n; ++$i) $hurdle[$x[$i]] = true;
+for ($i = 0; $i < $n; ++$i) {
+    $hurdle[$x[$i]] = true;
+}
 $t = ints();
 $dp[$l] = 0;
 for ($i = $l - 1; $i >= 0; --$i) {
@@ -20,7 +23,9 @@ for ($i = $l - 1; $i >= 0; --$i) {
         $dp[$i] = min($dp[$i], intdiv($t[0], 2) + (int)(($l - $i - 0.5) * $t[1]));
     }
 
-    if ($hurdle[$i]) $dp[$i] += $t[2];
+    if ($hurdle[$i]) {
+        $dp[$i] += $t[2];
+    }
 }
 echo $dp[0];
 function ints()

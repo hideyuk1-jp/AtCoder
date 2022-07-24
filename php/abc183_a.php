@@ -1,4 +1,5 @@
 <?php
+
 [$x] = ints();
 echo max($x, 0);
 function ints()

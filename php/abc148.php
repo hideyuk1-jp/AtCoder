@@ -1,9 +1,10 @@
 <?php
+
 // バーチャル参加でDまでAC 1000 15:44 => 推定パフォ761
 
 fscanf(STDIN, '%d', $n);
 if ($n % 2 === 1) {
-    echo (0) . PHP_EOL;
+    echo(0) . PHP_EOL;
     exit;
 }
 $ans = 0;
@@ -36,7 +37,9 @@ echo $ans . PHP_EOL;
 // 最大公約数（2つ）
 function gcd($m, $n)
 {
-    if (!$n) return $m;
+    if (!$n) {
+        return $m;
+    }
     return gcd($n, $m % $n);
 }
 

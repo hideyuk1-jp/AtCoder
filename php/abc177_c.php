@@ -1,4 +1,5 @@
 <?php
+
 const MOD = 10 ** 9 + 7;
 list($n) = ints();
 $a = ints();
@@ -25,7 +26,9 @@ function modAdd($x, $y)
 function modSum(...$xs)
 {
     $res = 0;
-    foreach ($xs as $x) $res = modAdd($res, $x);
+    foreach ($xs as $x) {
+        $res = modAdd($res, $x);
+    }
     return $res;
 }
 
@@ -45,7 +48,9 @@ function modMul($x, $y)
 function modProd(...$xs)
 {
     $res = 1;
-    foreach ($xs as $x) $res = modMul($res, $x);
+    foreach ($xs as $x) {
+        $res = modMul($res, $x);
+    }
     return $res;
 }
 

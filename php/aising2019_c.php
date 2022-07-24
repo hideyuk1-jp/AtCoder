@@ -1,6 +1,9 @@
 <?php
+
 list($h, $w) = ints();
-for ($i = 0; $i < $h; ++$i) list($s[]) = strs();
+for ($i = 0; $i < $h; ++$i) {
+    list($s[]) = strs();
+}
 for ($i = 0; $i < $h; ++$i) {
     for ($j = 0; $j < $w; ++$j) {
         if ($i < $h - 1 && $s[$i][$j] !== $s[$i + 1][$j]) {
@@ -30,9 +33,13 @@ function dfs($i, $j)
     $seen[$i][$j] = true;
 
     $res = $s[$i][$j] === '#' ? [1, 0] : [0, 1];
-    if (is_null($g[$i][$j])) return $res;
+    if (is_null($g[$i][$j])) {
+        return $res;
+    }
     foreach ($g[$i][$j] as list($ni, $nj)) {
-        if ($seen[$ni][$nj]) continue;
+        if ($seen[$ni][$nj]) {
+            continue;
+        }
         list($cb, $cw) = dfs($ni, $nj);
         $res[0] += $cb;
         $res[1] += $cw;

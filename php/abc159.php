@@ -1,4 +1,5 @@
 <?php
+
 // コンテスト参加 Dまで自力AC 1000 49:47 => パフォ 920
 // https://atcoder.jp/users/hideyuk1/history/share/abc159
 
@@ -13,7 +14,9 @@ for ($i  = 0; $i < $h; $i++) {
 for ($i = 0; $i < $h; $i++) {
     for ($j = 0; $j < $w; $j++) {
         $w_sum[$i][$j] = ($w_sum[$i - 1][$j] ?? 0) + ($w_sum[$i][$j - 1] ?? 0) - ($w_sum[$i - 1][$j - 1] ?? 0);
-        if ($s[$i][$j] === WHITE) $w_sum[$i][$j]++;
+        if ($s[$i][$j] === WHITE) {
+            $w_sum[$i][$j]++;
+        }
     }
 }
 
@@ -43,7 +46,9 @@ for ($i = 0; $i < 2 ** ($h - 1); $i++) {
             $w_cut[] = $j - 1;
         }
     }
-    if ($flag) $min = min(count($h_cut) + count($w_cut), $min);
+    if ($flag) {
+        $min = min(count($h_cut) + count($w_cut), $min);
+    }
 }
 
 echo $min . PHP_EOL;
@@ -104,13 +109,19 @@ exit;
 fscanf(STDIN, '%s', $s);
 $n = strlen($s);
 $ans = 'Yes';
-if (!isKaibun($s)) $ans = 'No';
+if (!isKaibun($s)) {
+    $ans = 'No';
+}
 
 $st = substr($s, 0, ($n - 1) / 2);
-if (!isKaibun($st)) $ans = 'No';
+if (!isKaibun($st)) {
+    $ans = 'No';
+}
 
 $st = substr($s, ($n + 3) / 2 - 1, $n - ($n + 3) / 2 + 1);
-if (!isKaibun($st)) $ans = 'No';
+if (!isKaibun($st)) {
+    $ans = 'No';
+}
 
 echo $ans . PHP_EOL;
 
@@ -118,7 +129,9 @@ function isKaibun($s)
 {
     $n = strlen($s);
     for ($i = 0; $i < intdiv($n, 2); $i++) {
-        if ($s[$i] !== $s[$n - $i - 1]) return false;
+        if ($s[$i] !== $s[$n - $i - 1]) {
+            return false;
+        }
     }
     return true;
 }

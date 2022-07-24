@@ -1,4 +1,5 @@
 <?php
+
 [$N] = ints();
 [$S] = strs();
 [$X] = strs();
@@ -10,8 +11,11 @@ $d = 1;
 for ($i = 0; $i < $N; ++$i) {
     $num = (intval($S[$i]) * $d) % 7;
     for ($k = 0; $k < 7; ++$k) {
-        if ($X[$i] === 'T') $dp[$i + 1][$k] = $dp[$i][$k] || $dp[$i][($k + 7 - $num) % 7];
-        else $dp[$i + 1][$k] = $dp[$i][$k] && $dp[$i][($k + 7 - $num) % 7];
+        if ($X[$i] === 'T') {
+            $dp[$i + 1][$k] = $dp[$i][$k] || $dp[$i][($k + 7 - $num) % 7];
+        } else {
+            $dp[$i + 1][$k] = $dp[$i][$k] && $dp[$i][($k + 7 - $num) % 7];
+        }
     }
     $d *= 10;
     $d %= 7;

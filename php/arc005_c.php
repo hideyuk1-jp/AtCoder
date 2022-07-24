@@ -1,4 +1,5 @@
 <?php
+
 $di = [-1, 0, 1, 0];
 $dj = [0, 1, 0, -1];
 list($h, $w) = ints();
@@ -33,16 +34,24 @@ function bfs($si, $sj)
             $ni = $i + $di[$dir];
             $nj = $j + $dj[$dir];
             // 範囲外であればコンテニュー
-            if ($ni < 0 || $ni > $h - 1 || $nj < 0 || $nj > $w - 1) continue;
+            if ($ni < 0 || $ni > $h - 1 || $nj < 0 || $nj > $w - 1) {
+                continue;
+            }
             if ($c[$ni][$nj] === '#') { // 壁
-                if ($score[$ni][$nj] <= $score[$i][$j] + 1) continue;
+                if ($score[$ni][$nj] <= $score[$i][$j] + 1) {
+                    continue;
+                }
                 if ($score[$i][$j] <= 1) {
                     // 末尾に追加
                     $q_end->enqueue([$ni, $nj]);
                     $score[$ni][$nj] = $score[$i][$j] + 1;
-                } else continue;
+                } else {
+                    continue;
+                }
             } else { // 壁以外
-                if ($score[$ni][$nj] <= $score[$i][$j]) continue;
+                if ($score[$ni][$nj] <= $score[$i][$j]) {
+                    continue;
+                }
                 // 先頭に追加
                 $q_top->enqueue([$ni, $nj]);
                 $score[$ni][$nj] = $score[$i][$j];

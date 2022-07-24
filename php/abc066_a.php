@@ -1,4 +1,5 @@
 <?php
+
 $a = ints();
 echo array_sum($a) - max($a);
 function ints()

@@ -1,4 +1,5 @@
 <?php
+
 [$S] = strs();
 $N = strlen($S);
 $ans = "Yes";

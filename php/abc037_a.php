@@ -1,4 +1,5 @@
 <?php
+
 list($a, $b, $c) = ints();
 echo intdiv($c, min($a, $b));
 function ints()

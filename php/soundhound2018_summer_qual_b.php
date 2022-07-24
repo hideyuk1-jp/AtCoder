@@ -1,9 +1,12 @@
 <?php
+
 list($s) = strs();
 list($w) = ints();
 $a = str_split($s, $w);
 $ans = '';
-for ($i = 0; $i < count($a); ++$i) $ans .= $a[$i][0];
+for ($i = 0; $i < count($a); ++$i) {
+    $ans .= $a[$i][0];
+}
 echo $ans;
 function ints()
 {

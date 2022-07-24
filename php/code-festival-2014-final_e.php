@@ -1,12 +1,18 @@
 <?php
+
 list($n) = ints();
 $r = ints();
 $cnt = 0;
 $p = '';
 for ($i = 0; $i < $n - 1; ++$i) {
-    if ($r[$i] === $r[$i + 1]) continue;
-    if ($r[$i] < $r[$i + 1]) $c = '<';
-    else $c = '>';
+    if ($r[$i] === $r[$i + 1]) {
+        continue;
+    }
+    if ($r[$i] < $r[$i + 1]) {
+        $c = '<';
+    } else {
+        $c = '>';
+    }
 
     if ($p !== $c) {
         $p = $c;
@@ -14,7 +20,9 @@ for ($i = 0; $i < $n - 1; ++$i) {
     }
 }
 ++$cnt;
-if ($cnt < 3) exit('0' . PHP_EOL);
+if ($cnt < 3) {
+    exit('0' . PHP_EOL);
+}
 echo $cnt . PHP_EOL;
 function ints()
 {

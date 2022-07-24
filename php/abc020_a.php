@@ -1,4 +1,5 @@
 <?php
+
 list($q) = ints();
 echo $q === 1 ? 'ABC' : 'chokudai';
 echo PHP_EOL;

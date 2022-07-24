@@ -1,4 +1,5 @@
 <?php
+
 list($n) = ints();
 $ans = '';
 while ($n !== 0) {

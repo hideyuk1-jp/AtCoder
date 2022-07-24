@@ -1,4 +1,5 @@
 <?php
+
 $debug = false;
 list($a, $b, $q) = ints();
 for ($i = 0; $i < $a; ++$i) {
@@ -40,8 +41,11 @@ function nibutan($n, $arr, $x)
     $ng = -1;
     while (abs($ok - $ng) > 1) {
         $mid = intdiv($ok + $ng, 2);
-        if ($arr[$mid] > $x) $ok = $mid;
-        else $ng = $mid;
+        if ($arr[$mid] > $x) {
+            $ok = $mid;
+        } else {
+            $ng = $mid;
+        }
     }
     $r = $ok !== $n ? abs($arr[$ok] - $x) : PHP_INT_MAX;
     $l = $ng !== -1 ? abs($arr[$ng] - $x) : PHP_INT_MAX;

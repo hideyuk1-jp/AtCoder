@@ -1,4 +1,5 @@
 <?php
+
 list($n) = ints();
 echo 180 * ($n - 2);
 function ints()

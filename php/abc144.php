@@ -1,10 +1,11 @@
 <?php
+
 fscanf(STDIN, '%d %d', $n, $k);
 $a = array_map('intval', explode(' ', trim(fgets(STDIN))));
 $f = array_map('intval', explode(' ', trim(fgets(STDIN))));
 rsort($a);
 sort($f);
-$q = new SplPriorityQueue;
+$q = new SplPriorityQueue();
 for ($i = 0; $i < $n; $i++) {
     $q->insert([$a[$i] * $f[$i], $a[$i], $f[$i]], $a[$i] * $f[$i]);
 }
@@ -12,7 +13,9 @@ for ($i = 0; $i < $n; $i++) {
 
 for ($i = 0; $i < $k; $i++) {
     $_q = $q->extract();
-    if ($_q[1] === 0) break;
+    if ($_q[1] === 0) {
+        break;
+    }
     $q->insert([($_q[1] - 1) * $_q[2], $_q[1] - 1, $_q[2]], ($_q[1] - 1) * $_q[2]);
 }
 $ans = 0;
@@ -54,15 +57,21 @@ $arr = pf($n);
 $a = 1;
 $b = 1;
 foreach ($arr as $v) {
-    if ($a <= $b) $a *= $v;
-    else $b *= $v;
+    if ($a <= $b) {
+        $a *= $v;
+    } else {
+        $b *= $v;
+    }
 }
 $ans = $a + $b - 2;
 echo $ans.PHP_EOL;
 
-function pf($n){
+function pf($n)
+{
     $is_prime = is_prime($n);
-    if ($is_prime[$n] === '1') return [$n];
+    if ($is_prime[$n] === '1') {
+        return [$n];
+    }
     $init = 2; //１以外の最初の素数
     while ($n !== 1) { //$nが1になるまで繰り返す
         $i = $init;
@@ -76,10 +85,11 @@ function pf($n){
         }
         $init = $i;
     }
-   return $result;
+    return $result;
 }
 
-function is_prime($max) {
+function is_prime($max)
+{
     $arr = str_repeat('1', $max + 1);
     $arr[0]  = $arr[1] = '0';
     $rmax = floor(sqrt($max));
@@ -97,7 +107,9 @@ fscanf(STDIN, '%d', $n);
 $ans = 'No';
 for ($i = 1; $i < 10; $i++) {
     for ($j = 1; $j < 10; $j++) {
-        if ($i * $j === $n) $ans = 'Yes';
+        if ($i * $j === $n) {
+            $ans = 'Yes';
+        }
     }
 }
 echo $ans.PHP_EOL;
@@ -105,6 +117,9 @@ echo $ans.PHP_EOL;
 exit;
 
 fscanf(STDIN, '%d %d', $a, $b);
-if (max($a, $b) > 9) $ans = -1;
-else $ans = $a * $b;
+if (max($a, $b) > 9) {
+    $ans = -1;
+} else {
+    $ans = $a * $b;
+}
 echo $ans.PHP_EOL;

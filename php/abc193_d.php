@@ -1,4 +1,5 @@
 <?php
+
 [$K] = ints();
 [$S] = strs();
 [$T] = strs();

@@ -1,4 +1,5 @@
 <?php
+
 const MOD = 2 ** 63;
 [$l] = ints();
 $nCr = comb($l - 1);

@@ -1,4 +1,5 @@
 <?php
+
 // E
 fscanf(STDIN, '%d', $n);
 $a = array_map('intval', explode(' ', trim(fgets(STDIN))));
@@ -8,7 +9,9 @@ for ($i = 0; $i < $n; $i++) {
 }
 $ans = 0;
 for ($i = 0; $i < $n; $i++) {
-    if (!isset($x[$i]) || !isset($y[$i])) continue;
+    if (!isset($x[$i]) || !isset($y[$i])) {
+        continue;
+    }
     $ans += count($x[$i]) * count($y[$i]);
 }
 echo $ans;

@@ -1,4 +1,5 @@
 <?php
+
 // bitDP
 list($n, $m) = ints();
 for ($i = 0; $i < $m; ++$i) {

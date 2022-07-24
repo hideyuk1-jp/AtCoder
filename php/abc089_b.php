@@ -1,8 +1,11 @@
 <?php
+
 list($n) = ints();
 $s = strs();
 for ($i = 0; $i < $n; $i++) {
-    if ($s[$i] === 'Y') exit('Four');
+    if ($s[$i] === 'Y') {
+        exit('Four');
+    }
 }
 echo 'Three';
 function ints()

@@ -1,9 +1,16 @@
 <?php
+
 // C
 fscanf(STDIN, '%d', $n);
-if ($n < 6) exit(strval($n));
-for ($i = 1; $i <= floorFloat(log($n, 6)); $i++) $a6[] = 6 ** $i;
-for ($i = 1; $i <= floorFloat(log($n, 9)); $i++) $a9[] = 9 ** $i;
+if ($n < 6) {
+    exit(strval($n));
+}
+for ($i = 1; $i <= floorFloat(log($n, 6)); $i++) {
+    $a6[] = 6 ** $i;
+}
+for ($i = 1; $i <= floorFloat(log($n, 9)); $i++) {
+    $a9[] = 9 ** $i;
+}
 rsort($a6);
 rsort($a9);
 $ans = PHP_INT_MAX;

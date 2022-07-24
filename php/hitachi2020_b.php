@@ -1,4 +1,5 @@
 <?php
+
 list($A, $B, $M) = ints();
 $a = ints();
 $b = ints();

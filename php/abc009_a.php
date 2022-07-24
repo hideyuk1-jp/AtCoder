@@ -1,4 +1,5 @@
 <?php
+
 list($n) = ints();
 echo $n % 2 ? intdiv($n, 2) + 1 : intdiv($n, 2);
 echo PHP_EOL;

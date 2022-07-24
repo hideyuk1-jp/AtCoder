@@ -1,13 +1,22 @@
 <?php
+
 // abc079_d
 list($h, $w) = ints();
 $d = new Dijkstra(10);
-for ($i = 0; $i < 10; ++$i)
-    foreach (ints() as $j => $v) $d->connect($i, $j, $v);
-for ($i = 0; $i < 10; ++$i) $d->solve($i);
+for ($i = 0; $i < 10; ++$i) {
+    foreach (ints() as $j => $v) {
+        $d->connect($i, $j, $v);
+    }
+}
+for ($i = 0; $i < 10; ++$i) {
+    $d->solve($i);
+}
 $ans = 0;
-for ($i = 0; $i < $h; ++$i)
-    foreach (ints() as $v) $ans += $v !== -1 ? $d->dist($v, 1) : 0;
+for ($i = 0; $i < $h; ++$i) {
+    foreach (ints() as $v) {
+        $ans += $v !== -1 ? $d->dist($v, 1) : 0;
+    }
+}
 echo $ans . PHP_EOL;
 // 各ノードから１までの
 for ($i = 0; $i < 10; ++$i) {
@@ -29,18 +38,18 @@ class Dijkstra
     private $d; // 最短距離を格納
     private $cost; // ノード間の距離を格納
 
-    function __construct($n)
+    public function __construct($n)
     {
         $this->n = $n;
         $this->cost = array_fill(0, $this->n, array_fill(0, $this->n, INF));
     }
 
-    function connect($x, $y, $w)
+    public function connect($x, $y, $w)
     {
         $this->cost[$x][$y] = $w;
     }
 
-    function solve($s = 0)
+    public function solve($s = 0)
     {
         $n = $this->n;
         $d = $this->d;
@@ -52,10 +61,15 @@ class Dijkstra
             $v = -1;
             // 残りのノードのうち最短で到達出来るノードを選択
             for ($i = 0; $i < $n; ++$i) {
-                if (!$used[$i] && $v === -1) $v = $i;
-                elseif (!$used[$i] && $d[$s][$i] < $d[$s][$v]) $v = $i;
+                if (!$used[$i] && $v === -1) {
+                    $v = $i;
+                } elseif (!$used[$i] && $d[$s][$i] < $d[$s][$v]) {
+                    $v = $i;
+                }
             }
-            if ($v === -1) break;
+            if ($v === -1) {
+                break;
+            }
             for ($i = 0; $i < $n; ++$i) {
                 if ($d[$s][$i] > $d[$s][$v] + $cost[$v][$i]) {
                     $d[$s][$i] = $d[$s][$v] + $cost[$v][$i];
@@ -66,7 +80,7 @@ class Dijkstra
         $this->d = $d;
     }
 
-    function dist($x, $y)
+    public function dist($x, $y)
     {
         return $this->d[$x][$y];
     }
@@ -81,18 +95,18 @@ class Dijkstra2
     private $cost; // ノード間の距離を格納
     private $root; // 最短経路を格納
 
-    function __construct($n)
+    public function __construct($n)
     {
         $this->n = $n;
         $this->cost = array_fill(0, $this->n, array_fill(0, $this->n, INF));
     }
 
-    function connect($x, $y, $w)
+    public function connect($x, $y, $w)
     {
         $this->cost[$x][$y] = $w;
     }
 
-    function solve($s = 0)
+    public function solve($s = 0)
     {
         $n = $this->n;
         $d = $this->d;
@@ -106,10 +120,15 @@ class Dijkstra2
             $v = -1;
             // 残りのノードのうち最短で到達出来るノードを選択
             for ($i = 0; $i < $n; ++$i) {
-                if (!$used[$i] && $v === -1) $v = $i;
-                elseif (!$used[$i] && $d[$s][$i] < $d[$s][$v]) $v = $i;
+                if (!$used[$i] && $v === -1) {
+                    $v = $i;
+                } elseif (!$used[$i] && $d[$s][$i] < $d[$s][$v]) {
+                    $v = $i;
+                }
             }
-            if ($v === -1) break;
+            if ($v === -1) {
+                break;
+            }
             for ($i = 0; $i < $n; ++$i) {
                 if ($d[$s][$i] > $d[$s][$v] + $cost[$v][$i]) {
                     $d[$s][$i] = $d[$s][$v] + $cost[$v][$i];
@@ -122,12 +141,12 @@ class Dijkstra2
         $this->root = $root;
     }
 
-    function dist($x, $y)
+    public function dist($x, $y)
     {
         return $this->d[$x][$y];
     }
 
-    function root($x, $y)
+    public function root($x, $y)
     {
         return $this->root[$x][$y];
     }

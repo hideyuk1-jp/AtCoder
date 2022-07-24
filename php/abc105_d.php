@@ -1,4 +1,5 @@
 <?php
+
 list($n, $m) = ints();
 $a = ints();
 // cnt[mod]: m で割った余りが mod になる累積和の個数
@@ -7,11 +8,15 @@ $cnt[0] = 1; // 何も選ばない場合
 $ans = $sum = 0;
 for ($i = 0; $i < $n; ++$i) {
     $sum += $a[$i];
-    if (isset($cnt[$sum % $m])) ++$cnt[$sum % $m];
-    else $cnt[$sum % $m] = 1;
+    if (isset($cnt[$sum % $m])) {
+        ++$cnt[$sum % $m];
+    } else {
+        $cnt[$sum % $m] = 1;
+    }
 }
-foreach ($cnt as $c)
+foreach ($cnt as $c) {
     $ans += $c * ($c - 1) / 2;
+}
 echo $ans;
 function ints()
 {

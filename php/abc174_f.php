@@ -1,4 +1,5 @@
 <?php
+
 list($n, $q) = ints();
 $c = ints();
 for ($i = 0; $i < $q; ++$i) {

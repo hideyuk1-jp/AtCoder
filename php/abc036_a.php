@@ -1,4 +1,5 @@
 <?php
+
 list($a, $b) = ints();
 echo intdivceil($b, $a);
 function ints()

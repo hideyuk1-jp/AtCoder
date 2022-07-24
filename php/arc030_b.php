@@ -1,4 +1,5 @@
 <?php
+
 list($n, $x) = ints();
 --$x;
 $h = ints();
@@ -15,8 +16,11 @@ for ($i = 0; $i < $n - 1; ++$i) {
     unset($g[$a[$i]][$b[$i]]);
     unset($g[$b[$i]][$a[$i]]);
     bfs($x);
-    for ($j = 0; $j < $n; ++$j)
-        if ($h[$j] === 1 && $dist[$j] === -1) continue 2;
+    for ($j = 0; $j < $n; ++$j) {
+        if ($h[$j] === 1 && $dist[$j] === -1) {
+            continue 2;
+        }
+    }
     --$cnt;
 }
 echo $cnt * 2 . PHP_EOL;
@@ -34,7 +38,9 @@ function bfs($s = 0)
         $v = $q->dequeue();
 
         foreach ($g[$v] as $next_v => $cost) {
-            if ($dist[$next_v] !== -1) continue; // 発見済み
+            if ($dist[$next_v] !== -1) {
+                continue;
+            } // 発見済み
 
             $dist[$next_v] = $dist[$v] + $cost;
             $q->enqueue($next_v);

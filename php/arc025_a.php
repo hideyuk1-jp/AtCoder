@@ -1,7 +1,10 @@
 <?php
+
 $d = ints();
 $j = ints();
-for ($i = $ans = 0; $i < 7; ++$i) $ans += max($d[$i], $j[$i]);
+for ($i = $ans = 0; $i < 7; ++$i) {
+    $ans += max($d[$i], $j[$i]);
+}
 echo $ans . PHP_EOL;
 function ints()
 {

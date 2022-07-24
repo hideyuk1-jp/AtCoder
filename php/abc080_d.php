@@ -1,4 +1,5 @@
 <?php
+
 list($N, $C) = ints();
 $T = 10 ** 5;
 $cusum = array_fill(0, $C, array_fill(0, $T, 0));
@@ -8,7 +9,9 @@ for ($i = 0; $i < $N; ++$i) {
     --$t;
     --$c;
     ++$cusum[$c][$s];
-    if ($t + 1 < $T) --$cusum[$c][$t + 1];
+    if ($t + 1 < $T) {
+        --$cusum[$c][$t + 1];
+    }
 }
 $max = 0;
 for ($i = 0; $i < $T; ++$i) {

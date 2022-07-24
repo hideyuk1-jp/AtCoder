@@ -1,6 +1,7 @@
 <?php
+
 list($a, $b) = strs();
-echo (countHateNum($b) - countHateNum($a - 1)) . PHP_EOL;
+echo(countHateNum($b) - countHateNum($a - 1)) . PHP_EOL;
 function countHateNum(String $s): int
 {
     $l = strlen($s);

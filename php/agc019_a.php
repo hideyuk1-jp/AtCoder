@@ -1,4 +1,5 @@
 <?php
+
 list($q, $h, $s, $d) = ints();
 list($n) = ints();
 $min2l = min($q * 8, $h * 4, $s * 2, $d);

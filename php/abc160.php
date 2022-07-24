@@ -1,4 +1,5 @@
 <?php
+
 // コンテスト参加 EまでAC
 // F
 define("MOD", 10 ** 9 + 7);
@@ -23,7 +24,9 @@ function dfs1($v, $par = -1)
     $size = 0;
     $value = 1;
     foreach ($g[$v] as $to) {
-        if ($to === $par) continue;
+        if ($to === $par) {
+            continue;
+        }
         dfs1($to, $v);
         $size += $dp[$to][$v]['size'];
         $value = modMul($value, $dp[$to][$v]['value']);
@@ -39,7 +42,9 @@ function dfs2($v, $par = -1)
 
     $size = $dp[$v][-1]['size'];
     foreach ($g[$v] as $to) {
-        if ($to === $par) continue;
+        if ($to === $par) {
+            continue;
+        }
         $value = modMul($dp[$v][-1]['value'], $dp[$to][$v]['size']);
         $value = modDiv($value, $size - $dp[$to][$v]['size']);
         $dp[$to][-1] = compact('value', 'size');
@@ -74,23 +79,31 @@ function modDiv($x, $y)
 // 累乗（繰り返し二乗法）
 function modPow($n, $x)
 {
-    if ($x === 0) return 1;
+    if ($x === 0) {
+        return 1;
+    }
     $res = (modPow($n, $x >> 1) ** 2) % MOD;
-    if ($x % 2 === 1) $res = modMul($res, $n);
+    if ($x % 2 === 1) {
+        $res = modMul($res, $n);
+    }
     return $res;
 }
 
 // 階乗
 function modFac($n)
 {
-    if ($n === 0) return 1;
+    if ($n === 0) {
+        return 1;
+    }
     return modMul($n, modFac($n - 1));
 }
 
 // 順列
 function nPr($n, $r)
 {
-    if ($r === 0) return 1;
+    if ($r === 0) {
+        return 1;
+    }
     return modDiv(modFac($n), modFac($n - $r));
 }
 
@@ -98,7 +111,9 @@ function nPr($n, $r)
 function nCr($n, $r)
 {
     $r = min($r, $n - $r);
-    if ($r === 0) return 1;
+    if ($r === 0) {
+        return 1;
+    }
     return modDiv(nPr($n, $r), modFac($r));
 }
 
@@ -148,7 +163,7 @@ for ($i = 0; $i < $n - 1; $i++) {
     }
 }
 for ($i = 1; $i < $n; $i++) {
-    echo ($ans[$i] ?? 0) . PHP_EOL;
+    echo($ans[$i] ?? 0) . PHP_EOL;
 }
 
 function bfs($x)
@@ -165,7 +180,9 @@ function bfs($x)
         $v = $q->dequeue();
 
         foreach ($g[$v] as $next_v) {
-            if ($dist[$next_v] !== -1) continue; // 発見済み
+            if ($dist[$next_v] !== -1) {
+                continue;
+            } // 発見済み
 
             $dist[$next_v] = $dist[$v] + 1;
             $q->enqueue($next_v);

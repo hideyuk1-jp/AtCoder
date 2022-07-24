@@ -1,4 +1,5 @@
 <?php
+
 [$N] = ints();
 $a = ints();
 $max_a = max($a);
@@ -7,7 +8,9 @@ $ans = $max_a;
 for ($k = 2; $k <= $max_a; ++$k) {
     $cnt = 0;
     for ($i = 0; $i < $N; ++$i) {
-        if ($a[$i] % $k === 0) ++$cnt;
+        if ($a[$i] % $k === 0) {
+            ++$cnt;
+        }
     }
     if ($cnt > $max_cnt) {
         $max_cnt = $cnt;

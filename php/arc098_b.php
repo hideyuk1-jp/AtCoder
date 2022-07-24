@@ -1,4 +1,5 @@
 <?php
+
 list($n) = ints();
 $a = ints();
 // 尺取法

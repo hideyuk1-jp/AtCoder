@@ -1,4 +1,5 @@
 <?php
+
 // B
 fscanf(STDIN, '%d', $s);
 $n = 1000000;
@@ -6,7 +7,9 @@ $a = $s;
 $c[$s] = true;
 for ($i = 2; $i <= $n; $i++) {
     $a = ($a & 1) ? 3 * $a + 1 : $a / 2;
-    if (isset($c[$a])) break;
+    if (isset($c[$a])) {
+        break;
+    }
     $c[$a] = true;
 }
 echo $i;
@@ -39,9 +42,14 @@ function func($h, $_min = 0)
         if ($v > $_min) {
             $min = min($min, $v);
         }
-        if ($v > $_min && ($h[$i + 1] ?? $_min) <= $_min) $j++;
+        if ($v > $_min && ($h[$i + 1] ?? $_min) <= $_min) {
+            $j++;
+        }
     }
     $sum = ($min - $_min) * $j;
-    if ($min === max($h)) return $sum;
-    else  return $sum + func($h, $min);
+    if ($min === max($h)) {
+        return $sum;
+    } else {
+        return $sum + func($h, $min);
+    }
 }

@@ -1,6 +1,9 @@
 <?php
+
 list($x, $y) = ints();
-if (abs($x) === abs($y)) exit('1');
+if (abs($x) === abs($y)) {
+    exit('1');
+}
 $c = 0;
 if ($x > 0 && abs($x) > abs($y)) {
     $c = 1;
@@ -11,7 +14,9 @@ if ($x > 0 && abs($x) > abs($y)) {
 }
 $c += abs(abs($x) - abs($y));
 $x += abs(abs($x) - abs($y));
-if ($x !== $y) ++$c;
+if ($x !== $y) {
+    ++$c;
+}
 echo $c;
 function ints()
 {

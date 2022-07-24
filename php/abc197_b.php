@@ -1,4 +1,5 @@
 <?php
+
 [$H, $W, $Y, $X] = ints();
 $X--;
 $Y--;
@@ -8,25 +9,33 @@ for ($i = 0; $i < $H; ++$i) {
 $cnt = 0;
 $i = 0;
 while (true) {
-    if ($X + $i > $W - 1 || $S[$Y][$X + $i] === '#') break;
+    if ($X + $i > $W - 1 || $S[$Y][$X + $i] === '#') {
+        break;
+    }
     $cnt++;
     $i++;
 }
 $i = 0;
 while (true) {
-    if ($X + $i < 0 || $S[$Y][$X + $i] === '#') break;
+    if ($X + $i < 0 || $S[$Y][$X + $i] === '#') {
+        break;
+    }
     $cnt++;
     $i--;
 }
 $i = 0;
 while (true) {
-    if ($Y + $i > $H - 1 || $S[$Y + $i][$X] === '#') break;
+    if ($Y + $i > $H - 1 || $S[$Y + $i][$X] === '#') {
+        break;
+    }
     $cnt++;
     $i++;
 }
 $i = 0;
 while (true) {
-    if ($Y + $i < 0 || $S[$Y + $i][$X] === '#') break;
+    if ($Y + $i < 0 || $S[$Y + $i][$X] === '#') {
+        break;
+    }
     $cnt++;
     $i--;
 }

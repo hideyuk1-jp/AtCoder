@@ -1,7 +1,12 @@
 <?php
+
 list($a, $b, $c) = ints();
-if (isExistOdd()) exit('0');
-if ($a === $b && $b === $c) exit('-1');
+if (isExistOdd()) {
+    exit('0');
+}
+if ($a === $b && $b === $c) {
+    exit('-1');
+}
 $cnt = 0;
 while (!isExistOdd()) {
     ++$cnt;

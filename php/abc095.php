@@ -1,4 +1,5 @@
 <?php
+
 // C
 fscanf(STDIN, '%d %d %d %d %d', $a, $b, $c, $x, $y);
 $ans = 0;
@@ -16,7 +17,9 @@ exit;
 
 // B
 fscanf(STDIN, '%d %d', $n, $x);
-for ($i  = 0; $i < $n; $i++) fscanf(STDIN, '%d', $m[]);
+for ($i  = 0; $i < $n; $i++) {
+    fscanf(STDIN, '%d', $m[]);
+}
 echo $n + intdiv(($x - array_sum($m)), min($m));
 
 exit;

@@ -1,4 +1,5 @@
 <?php
+
 list($n) = ints();
 $cnt = 0;
 $r = $n;
@@ -12,8 +13,11 @@ for ($i = 0; $i < $n; ++$i) {
             break;
         }
     }
-    if ($flag) ++$cnt;
-    else $r = $n;
+    if ($flag) {
+        ++$cnt;
+    } else {
+        $r = $n;
+    }
 }
 echo $cnt, PHP_EOL;
 function strs()

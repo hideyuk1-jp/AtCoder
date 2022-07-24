@@ -1,4 +1,5 @@
 <?php
+
 list($n) = ints();
 echo $n >= 30 ? 'Yes' : 'No';
 function ints()

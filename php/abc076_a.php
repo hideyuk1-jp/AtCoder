@@ -1,4 +1,5 @@
 <?php
+
 list($r) = ints();
 list($g) = ints();
 echo $r + ($g - $r) * 2;

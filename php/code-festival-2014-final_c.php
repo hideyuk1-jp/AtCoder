@@ -1,9 +1,14 @@
 <?php
+
 list($a) = ints();
 for ($i = 10; true; ++$i) {
     $f = f($i);
-    if ($f === $a) break;
-    if ($f > $a) exit('-1' . PHP_EOL);
+    if ($f === $a) {
+        break;
+    }
+    if ($f > $a) {
+        exit('-1' . PHP_EOL);
+    }
 }
 echo $i . PHP_EOL;
 function f($n)

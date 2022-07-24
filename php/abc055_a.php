@@ -1,4 +1,5 @@
 <?php
+
 list($n) = ints();
 echo 800 * $n - 200 * intdiv($n, 15);
 function ints()

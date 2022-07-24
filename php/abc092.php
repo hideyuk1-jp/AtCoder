@@ -1,10 +1,15 @@
 <?php
+
 // C
 fscanf(STDIN, '%d', $n);
 $a = array_map('intval', explode(' ', trim(fgets(STDIN))));
 $c = $a[-1] = $a[$n] = 0;
-for ($i = 0; $i <= $n; $i++) $c += abs($a[$i] - $a[$i - 1]);
-for ($i = 0; $i < $n; $i++) $ans[] = $c + abs($a[$i + 1]  - $a[$i - 1]) - (abs($a[$i] - $a[$i - 1]) + abs($a[$i + 1] - $a[$i]));
+for ($i = 0; $i <= $n; $i++) {
+    $c += abs($a[$i] - $a[$i - 1]);
+}
+for ($i = 0; $i < $n; $i++) {
+    $ans[] = $c + abs($a[$i + 1]  - $a[$i - 1]) - (abs($a[$i] - $a[$i - 1]) + abs($a[$i + 1] - $a[$i]));
+}
 echo implode(PHP_EOL, $ans);
 
 exit;

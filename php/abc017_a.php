@@ -1,4 +1,5 @@
 <?php
+
 $ans = 0;
 for ($i = 0; $i < 3; ++$i) {
     list($s, $e) = ints();

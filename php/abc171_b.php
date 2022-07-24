@@ -1,4 +1,5 @@
 <?php
+
 list($n, $k) = ints();
 $p = ints();
 sort($p);

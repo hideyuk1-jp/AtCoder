@@ -1,4 +1,5 @@
 <?php
+
 list($h, $w) = ints();
 list($n) = ints();
 $a = ints();
@@ -7,7 +8,9 @@ for ($i = 0; $i < $n; ++$i) {
     for ($j = 0; $j < $a[$i]; ++$j) {
         $l = intdiv($c, $w);
         $m = $c % $w;
-        if ($l % 2) $m = $w - 1 - $m;
+        if ($l % 2) {
+            $m = $w - 1 - $m;
+        }
         $ans[$l][$m] = $i + 1;
         $c++;
     }

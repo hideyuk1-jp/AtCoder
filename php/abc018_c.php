@@ -1,15 +1,20 @@
 <?php
+
 list($r, $c, $k) = ints();
 for ($i = 0; $i < $r; ++$i) {
     list($s[]) = strs();
     for ($j = 0; $j < $c; ++$j) {
-        if ($s[$i][$j] === 'x') setNG($i, $j);
+        if ($s[$i][$j] === 'x') {
+            setNG($i, $j);
+        }
     }
 }
 $cnt = 0;
 for ($i = $k - 1; $i <= $r - $k; ++$i) {
     for ($j = $k - 1; $j <= $c - $k; ++$j) {
-        if (!isset($ng[$i][$j])) ++$cnt;
+        if (!isset($ng[$i][$j])) {
+            ++$cnt;
+        }
     }
 }
 echo $cnt . PHP_EOL;

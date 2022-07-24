@@ -1,10 +1,14 @@
 <?php
+
 list($n) = ints();
 list($s) = strs();
 list($k) = ints();
 --$k;
-for ($i = 0; $i < $n; ++$i)
-    if ($s[$i] !== $s[$k]) $s[$i] = '*';
+for ($i = 0; $i < $n; ++$i) {
+    if ($s[$i] !== $s[$k]) {
+        $s[$i] = '*';
+    }
+}
 echo $s;
 function strs()
 {

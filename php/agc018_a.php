@@ -1,8 +1,12 @@
 <?php
+
 list($n, $k) = ints();
 $a = ints();
-if ($k % gcdAll($a) === 0 && $k <= max($a)) echo 'POSSIBLE';
-else echo 'IMPOSSIBLE';
+if ($k % gcdAll($a) === 0 && $k <= max($a)) {
+    echo 'POSSIBLE';
+} else {
+    echo 'IMPOSSIBLE';
+}
 function ints()
 {
     return array_map('intval', explode(' ', trim(fgets(STDIN))));
@@ -10,7 +14,9 @@ function ints()
 // 最大公約数（2つ）
 function gcd($m, $n)
 {
-    if (!$n) return $m;
+    if (!$n) {
+        return $m;
+    }
     return gcd($n, $m % $n);
 }
 

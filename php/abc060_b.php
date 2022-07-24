@@ -1,7 +1,11 @@
 <?php
+
 list($a, $b, $c) = ints();
-for ($i = $a; $i <= $a * $b; $i += $a)
-    if ($i % $b === $c) exit('YES');
+for ($i = $a; $i <= $a * $b; $i += $a) {
+    if ($i % $b === $c) {
+        exit('YES');
+    }
+}
 echo 'NO';
 function ints()
 {

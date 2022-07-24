@@ -1,4 +1,5 @@
 <?php
+
 // バーチャルでCまで自力AC 600 52:14 => 推定パフォ655
 
 define('MOD', 10 ** 9 + 7);
@@ -38,23 +39,31 @@ function modDiv($x, $y)
 // 累乗（繰り返し二乗法）
 function modPow($n, $x)
 {
-    if ($x === 0) return 1;
+    if ($x === 0) {
+        return 1;
+    }
     $res = (modPow($n, $x >> 1) ** 2) % MOD;
-    if ($x & 1) $res = modMul($res, $n);
+    if ($x & 1) {
+        $res = modMul($res, $n);
+    }
     return $res;
 }
 
 // 階乗
 function modFac($n)
 {
-    if ($n === 0) return 1;
+    if ($n === 0) {
+        return 1;
+    }
     return modMul($n, modFac($n - 1));
 }
 
 // 順列
 function nPr($n, $r)
 {
-    if ($r === 0) return 1;
+    if ($r === 0) {
+        return 1;
+    }
     return modDiv(modFac($n), modFac($n - $r));
 }
 
@@ -68,7 +77,9 @@ function nCr($n, $r)
 exit;
 
 fscanf(STDIN, '%d', $n);
-for ($i  = 0; $i < $n; $i++) fscanf(STDIN, '%d %d', $x[], $y[]);
+for ($i  = 0; $i < $n; $i++) {
+    fscanf(STDIN, '%d %d', $x[], $y[]);
+}
 $sum = 0.0;
 for ($i = 0; $i < $n - 1; $i++) {
     for ($j = $i + 1; $j < $n; $j++) {
@@ -79,14 +90,18 @@ echo $sum * ($n - 1) / nCr2($n, 2);
 
 function fac2($n)
 {
-    if ($n === 0) return 1;
+    if ($n === 0) {
+        return 1;
+    }
     return $n * fac2($n - 1);
 }
 
 // 順列
 function nPr2($n, $r)
 {
-    if ($r === 0) return 1;
+    if ($r === 0) {
+        return 1;
+    }
     return fac2($n) / fac2($n - $r);
 }
 

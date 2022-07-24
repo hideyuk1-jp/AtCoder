@@ -1,4 +1,5 @@
 <?php
+
 list($n) = ints();
 $p = [1, 1];
 for ($i = 0; $i < $n; ++$i) {

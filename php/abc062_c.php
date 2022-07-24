@@ -1,6 +1,9 @@
 <?php
+
 list($h, $w) = ints();
-if ($h % 3 === 0 || $w % 3 === 0) exit('0');
+if ($h % 3 === 0 || $w % 3 === 0) {
+    exit('0');
+}
 $min = PHP_INT_MAX;
 
 $min = min($min, $w * (intdiv($h, 3) + 1) - $w * intdiv($h, 3));

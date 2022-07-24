@@ -1,4 +1,5 @@
 <?php
+
 // C
 fscanf(STDIN, '%d', $n);
 $a = array_map('intval', explode(' ', trim(fgets(STDIN))));
@@ -15,7 +16,9 @@ exit;
 
 // B
 fscanf(STDIN, '%d %d', $d, $n);
-if ($n === 100) $n++;
+if ($n === 100) {
+    $n++;
+}
 echo $n * 100 ** $d;
 
 exit;

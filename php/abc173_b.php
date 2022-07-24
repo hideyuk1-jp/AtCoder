@@ -1,6 +1,9 @@
 <?php
+
 list($n) = ints();
-foreach (['AC', 'WA', 'TLE', 'RE'] as $v) $cnt[$v] = 0;
+foreach (['AC', 'WA', 'TLE', 'RE'] as $v) {
+    $cnt[$v] = 0;
+}
 for ($i = 0; $i < $n; ++$i) {
     list($s) = strs();
     ++$cnt[$s];

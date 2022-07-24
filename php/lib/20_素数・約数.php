@@ -1,4 +1,5 @@
 <?php
+
 // 素因数分解（エラトステネスの篩）
 fscanf(STDIN, '%d', $n);
 $prime_fac = primeFactorization($n);
@@ -34,7 +35,7 @@ for ($i = 1; $i <= $max; $i++) {
 }
 
 for ($i = 0; $i < $q; $i++) {
-    echo ($s[$r[$i]] - $s[$l[$i] - 1]) . PHP_EOL;
+    echo($s[$r[$i]] - $s[$l[$i] - 1]) . PHP_EOL;
 }
 
 /**
@@ -46,7 +47,9 @@ function primesArr($max)
     $arr = array_fill(2, $max - 1, true);
     $rmax = (int) floor(sqrt($max));
     for ($i = 2; $i <= $rmax; $i++) {
-        if (!isset($arr[$i])) continue;
+        if (!isset($arr[$i])) {
+            continue;
+        }
         for ($j = 2 * $i; $j <= $max; $j += $i) {
             unset($arr[$j]);
         }
@@ -77,7 +80,9 @@ function isPrimeArr($max)
 function primeFactor($n)
 {
     $res = [];
-    if ($n === 1) return $res;
+    if ($n === 1) {
+        return $res;
+    }
 
     // 何回も呼ぶ場合は前処理検討
     $primes = primesArr((int) sqrt($n) + 1);
@@ -109,7 +114,9 @@ function primes($max)
 {
     $arr = [];
     for ($i = 2; $i <= $max; $i++) {
-        if (isPrime($i)) $arr[] = $i;
+        if (isPrime($i)) {
+            $arr[] = $i;
+        }
     }
     return $arr;
 }
@@ -117,10 +124,14 @@ function primes($max)
 // 素数判定（試し割り）
 function isPrime($n)
 {
-    if ($n === 1) return false;
+    if ($n === 1) {
+        return false;
+    }
     $rmax = (int) floor(sqrt($n));
     for ($i = 2; $i <= $rmax; $i++) {
-        if ($n % $i === 0) return false;
+        if ($n % $i === 0) {
+            return false;
+        }
     }
     return true;
 }
@@ -146,19 +157,21 @@ class Prime
     private $n;
     private $table; // 素数の添字にtrueが格納された配列
 
-    function __construct($n)
+    public function __construct($n)
     {
         $this->n = $n;
         $this->makeTable();
     }
 
-    function makeTable()
+    public function makeTable()
     {
         $n = $this->n;
         $table = array_fill(2, $n - 1, true);
         $rn = (int) floor(sqrt($n));
         for ($i = 2; $i <= $rn; $i++) {
-            if (!isset($table[$i])) continue;
+            if (!isset($table[$i])) {
+                continue;
+            }
             for ($j = 2 * $i; $j <= $n; $j += $i) {
                 unset($table[$j]);
             }
@@ -167,38 +180,46 @@ class Prime
     }
 
     // 素数
-    function primes()
+    public function primes()
     {
         return array_keys($this->table);
     }
 
-    function table()
+    public function table()
     {
         return $this->table;
     }
 
     // 素数判定
-    function isPrime($x)
+    public function isPrime($x)
     {
         return isset($this->table[$x]);
     }
 
     // 素因数分解
-    function factor($x)
+    public function factor($x)
     {
         $res = [];
-        if ($x === 1) return $res;
+        if ($x === 1) {
+            return $res;
+        }
         $primes = $this->primes();
         foreach ($primes as $prime) {
             while ($x % $prime === 0) {
-                if (isset($res[$prime])) $res[$prime]++;
-                else $res[$prime] = 1;
+                if (isset($res[$prime])) {
+                    $res[$prime]++;
+                } else {
+                    $res[$prime] = 1;
+                }
                 $x /= $prime;
             }
         }
         if ($x > 1) {
-            if (isset($res[$x])) $res[$x]++;
-            else $res[$x] = 1;
+            if (isset($res[$x])) {
+                $res[$x]++;
+            } else {
+                $res[$x] = 1;
+            }
         }
         return $res;
     }

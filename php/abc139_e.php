@@ -1,4 +1,5 @@
 <?php
+
 list($n) = ints();
 for ($i = 0; $i < $n; ++$i) {
     $a = ints();
@@ -13,11 +14,15 @@ echo dfs();
 function dfs($v = 0)
 {
     global $g, $seen, $dist;
-    if ($seen[$v] === 2) return $dist[$v];
+    if ($seen[$v] === 2) {
+        return $dist[$v];
+    }
     $seen[$v] = 1; // 行きがけ
     if (isset($g[$v])) {
         foreach ($g[$v] as $to) {
-            if ($seen[$to] === 1) exit('-1'); // 閉路あり
+            if ($seen[$to] === 1) {
+                exit('-1');
+            } // 閉路あり
             $dist[$v] = max($dist[$v], dfs($to) + 1);
         }
     } else {

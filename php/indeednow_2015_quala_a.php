@@ -1,4 +1,5 @@
 <?php
+
 list($a) = ints();
 list($b) = ints();
 echo strlen((string) $a) * strlen((string) $b);

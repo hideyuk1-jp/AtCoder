@@ -1,4 +1,5 @@
 <?php
+
 list($a, $b) = ints();
 echo $b . ' ' . $a . PHP_EOL;
 function ints()

@@ -1,11 +1,18 @@
 <?php
+
 [$N, $C] = ints();
 for ($i = 0; $i < $N; ++$i) {
     [$a, $b, $c] = ints();
-    if (isset($sum[$a])) $sum[$a] += $c;
-    else $sum[$a] = $c;
-    if (isset($sum[$b + 1])) $sum[$b + 1] -= $c;
-    else $sum[$b + 1] = -$c;
+    if (isset($sum[$a])) {
+        $sum[$a] += $c;
+    } else {
+        $sum[$a] = $c;
+    }
+    if (isset($sum[$b + 1])) {
+        $sum[$b + 1] -= $c;
+    } else {
+        $sum[$b + 1] = -$c;
+    }
 }
 ksort($sum);
 $cnt = $cost = 0;

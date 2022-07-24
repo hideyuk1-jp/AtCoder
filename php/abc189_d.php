@@ -1,4 +1,5 @@
 <?php
+
 [$N] = ints();
 for ($i = 0; $i < $N; ++$i) {
     [$S[]] = strs();
@@ -7,8 +8,12 @@ echo dfs($N, true);
 function dfs($d, $y)
 {
     global $S, $memo;
-    if ($d == 0) return 1;
-    if (isset($memo[$d][$y])) return $memo[$d][$y];
+    if ($d == 0) {
+        return 1;
+    }
+    if (isset($memo[$d][$y])) {
+        return $memo[$d][$y];
+    }
     $cnt = 0;
     if ($S[$d - 1] === "AND") {
         if ($y) {

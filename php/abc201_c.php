@@ -1,4 +1,5 @@
 <?php
+
 [$S] = strs();
 $ans = 0;
 for ($i = 0; $i < 10000; ++$i) {
@@ -9,8 +10,12 @@ for ($i = 0; $i < 10000; ++$i) {
         $num = intdiv($num, 10);
     }
     for ($j = 0; $j < 10; ++$j) {
-        if ($S[$j] === 'o' && !$exists[$j]) continue 2;
-        if ($S[$j] === 'x' && $exists[$j]) continue 2;
+        if ($S[$j] === 'o' && !$exists[$j]) {
+            continue 2;
+        }
+        if ($S[$j] === 'x' && $exists[$j]) {
+            continue 2;
+        }
     }
     $ans++;
 }

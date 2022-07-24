@@ -1,6 +1,9 @@
 <?php
+
 list($n, $m) = ints();
-for ($i = 1; $i <= $n; ++$i) $t[$i] = -$i;
+for ($i = 1; $i <= $n; ++$i) {
+    $t[$i] = -$i;
+}
 for ($i = 0; $i < $m; ++$i) {
     list($a) = ints();
     $t[$a] = $i;

@@ -1,6 +1,9 @@
 <?php
+
 list($n, $k) = ints();
-for ($i = 0; $i < $n; ++$i) list($a[], $b[]) = ints();
+for ($i = 0; $i < $n; ++$i) {
+    list($a[], $b[]) = ints();
+}
 array_multisort($a, SORT_ASC, $b);
 $i = 0;
 while ($k > 0) {

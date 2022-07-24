@@ -1,4 +1,5 @@
 <?php
+
 [$h, $w] = ints();
 $min = PHP_INT_MAX;
 for ($i = 0; $i < $h; ++$i) {

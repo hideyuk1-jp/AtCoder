@@ -1,4 +1,5 @@
 <?php
+
 [$N] = ints();
 for ($i = 0; $i < $N; ++$i) {
     [$x[], $y[]] = ints();
@@ -9,7 +10,9 @@ for ($i = 0; $i < $N - 2; ++$i) {
         for ($k = $j + 1; $k < $N; ++$k) {
             $t = calcAreaOfTri($x[$j] - $x[$i], $y[$j] - $y[$i], $x[$k] - $x[$i], $y[$k] - $y[$i]);
             // 三角形の面積が0ならば一直線上
-            if ($t === 0) $ans = 'Yes';
+            if ($t === 0) {
+                $ans = 'Yes';
+            }
         }
     }
 }

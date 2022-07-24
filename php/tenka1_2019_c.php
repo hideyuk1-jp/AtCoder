@@ -1,4 +1,5 @@
 <?php
+
 list($n) = ints();
 list($s) = strs();
 $sinfo = substr_info($s);
@@ -7,13 +8,17 @@ $cntw[0] = $cntb[0] = 0;
 for ($i = 1; $i <= $k; ++$i) {
     $cntw[$i] = $cntw[$i - 1];
     $cntb[$i] = $cntb[$i - 1];
-    if ($sinfo[$i - 1][0] === '.') $cntw[$i] += $sinfo[$i - 1][1];
-    else $cntb[$i] += $sinfo[$i - 1][1];
+    if ($sinfo[$i - 1][0] === '.') {
+        $cntw[$i] += $sinfo[$i - 1][1];
+    } else {
+        $cntb[$i] += $sinfo[$i - 1][1];
+    }
 }
 $min = PHP_INT_MAX;
 //...###
-for ($i = 0; $i <= $k; ++$i)
+for ($i = 0; $i <= $k; ++$i) {
     $min = min($min, $cntb[$i] + ($cntw[$k] - $cntw[$i]));
+}
 echo $min;
 // 文字列の要素と連続数を格納した配列を返す
 function substr_info(string $s): array

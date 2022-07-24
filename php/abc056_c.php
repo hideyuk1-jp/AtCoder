@@ -1,4 +1,5 @@
 <?php
+
 list($x) = ints();
 $i = $sum =  0;
 while ($sum < $x) {

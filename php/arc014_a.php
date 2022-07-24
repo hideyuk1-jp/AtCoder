@@ -1,4 +1,5 @@
 <?php
+
 list($n) = ints();
 echo $n % 2 ? 'Red' : 'Blue';
 echo PHP_EOL;

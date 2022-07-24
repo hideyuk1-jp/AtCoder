@@ -1,15 +1,24 @@
 <?php
+
 fscanf(STDIN, '%d', $n);
-for ($i = 0; $i < $n; $i++) $a[$i] = array_map('intval', explode(' ', trim(fgets(STDIN))));
+for ($i = 0; $i < $n; $i++) {
+    $a[$i] = array_map('intval', explode(' ', trim(fgets(STDIN))));
+}
 
 for ($i = 0; $i < $n; $i++) {
     $m = count($a[$i]);
     for ($j = 1; $j < $m; $j++) {
-        if ($i + 1 > $a[$i][$j]) list($_i, $_v) = [$a[$i][$j], $i + 1];
-        else list($_i, $_v) = [$i + 1, $a[$i][$j]];
+        if ($i + 1 > $a[$i][$j]) {
+            list($_i, $_v) = [$a[$i][$j], $i + 1];
+        } else {
+            list($_i, $_v) = [$i + 1, $a[$i][$j]];
+        }
 
-        if ($i + 1 > $a[$i][$j - 1]) list($_pi, $_pv) = [$a[$i][$j - 1], $i + 1];
-        else list($_pi, $_pv) = [$i + 1, $a[$i][$j - 1]];
+        if ($i + 1 > $a[$i][$j - 1]) {
+            list($_pi, $_pv) = [$a[$i][$j - 1], $i + 1];
+        } else {
+            list($_pi, $_pv) = [$i + 1, $a[$i][$j - 1]];
+        }
 
         $g[$_pi][$_pv][] = [$_i, $_v];
     }
@@ -28,7 +37,8 @@ for ($i = 1; $i <= $n; $i++) {
 }
 echo $max . PHP_EOL;
 
-function isAcyclic($g) {
+function isAcyclic($g)
+{
     global $n, $status, $path;
 
     for ($i = 1; $i <= $n; $i++) {
@@ -49,7 +59,8 @@ function isAcyclic($g) {
     return true;
 }
 
-function isAcyclicDfs($g, $v, $p) {
+function isAcyclicDfs($g, $v, $p)
+{
     global $status, $path;
     list($i, $j) = $v;
     $status[$i][$j] = 'Active';
@@ -85,8 +96,11 @@ $h = array_map('intval', explode(' ', trim(fgets(STDIN))));
 $ans = 0;
 $cnt = 0;
 for ($i = 0; $i < $n - 1; $i++) {
-    if ($h[$i + 1] <= $h[$i]) $cnt++;
-    else $cnt = 0;
+    if ($h[$i + 1] <= $h[$i]) {
+        $cnt++;
+    } else {
+        $cnt = 0;
+    }
     $ans = max($cnt, $ans);
 }
 echo $ans . PHP_EOL;
@@ -95,11 +109,11 @@ exit();
 
 fscanf(STDIN, '%d %d', $a, $b);
 if ($b === 1) {
-    echo (0) . PHP_EOL;
+    echo(0) . PHP_EOL;
     exit();
 }
 if ($a >= $b) {
-    echo (1) . PHP_EOL;
+    echo(1) . PHP_EOL;
     exit();
 }
 $ans = 1 + (int)ceil(($b - $a)  / ($a - 1));
@@ -111,6 +125,8 @@ fscanf(STDIN, '%s', $s);
 fscanf(STDIN, '%s', $t);
 $ans = 0;
 for ($i = 0; $i < 3; $i++) {
-    if ($s[$i] === $t[$i]) $ans++;
+    if ($s[$i] === $t[$i]) {
+        $ans++;
+    }
 }
 echo $ans . PHP_EOL;

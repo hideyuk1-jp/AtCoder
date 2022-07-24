@@ -1,4 +1,5 @@
 <?php
+
 [$N] = ints();
 [$T] = strs();
 $S = "110";
@@ -26,10 +27,14 @@ for ($i = 0; $i < $N; ++$i) {
         echo "0";
         exit();
     }
-    if ($T[$i] === "0") $zero++;
+    if ($T[$i] === "0") {
+        $zero++;
+    }
 }
 $ans = 10 ** 10 - $zero;
-if ($T[strlen($T) - 1] === "0") $ans++;
+if ($T[strlen($T) - 1] === "0") {
+    $ans++;
+}
 echo $ans;
 function ints()
 {

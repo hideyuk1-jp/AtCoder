@@ -1,16 +1,25 @@
 <?php
+
 list($s) = strs();
 $t[] = '';
 for ($i = $j = 0; $i < strlen($s); ++$i) {
     if ($i < strlen($s) - 1 && $s[$i] === 'B' && $s[$i + 1] === 'C') {
-        if (isset($t[$j])) $t[$j] .= 'D';
-        else $t[$j] = 'D';
+        if (isset($t[$j])) {
+            $t[$j] .= 'D';
+        } else {
+            $t[$j] = 'D';
+        }
         ++$i;
     } elseif ($s[$i] === 'B' || $s[$i] === 'C') {
-        if (isset($t[$j])) ++$j;
+        if (isset($t[$j])) {
+            ++$j;
+        }
     } else {
-        if (isset($t[$j])) $t[$j] .= $s[$i];
-        else $t[$j] = $s[$i];
+        if (isset($t[$j])) {
+            $t[$j] .= $s[$i];
+        } else {
+            $t[$j] = $s[$i];
+        }
     }
 }
 $cnt = 0;

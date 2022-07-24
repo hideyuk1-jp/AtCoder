@@ -1,8 +1,10 @@
 <?php
+
 [$n] = ints();
 $cnt = 0;
-for ($a = 1; $a < $n; ++$a)
+for ($a = 1; $a < $n; ++$a) {
     $cnt += intdiv($n - 1, $a);
+}
 echo $cnt . PHP_EOL;
 function ints()
 {

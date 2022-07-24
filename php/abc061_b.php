@@ -1,4 +1,5 @@
 <?php
+
 list($n, $m) = ints();
 
 for ($i = 0; $i < $m; ++$i) {
@@ -8,7 +9,9 @@ for ($i = 0; $i < $m; ++$i) {
     $g[$a][] = $b;
     $g[$b][] = $a;
 }
-for ($i = 0; $i < $n; ++$i) $ans[] = count($g[$i] ?? []);
+for ($i = 0; $i < $n; ++$i) {
+    $ans[] = count($g[$i] ?? []);
+}
 echo implode(PHP_EOL, $ans);
 function ints()
 {

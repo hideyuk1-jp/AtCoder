@@ -1,4 +1,5 @@
 <?php
+
 $a = ints();
 echo min($a);
 function ints()

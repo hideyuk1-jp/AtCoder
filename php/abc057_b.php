@@ -1,7 +1,12 @@
 <?php
+
 list($n, $m) = ints();
-for ($i = 0; $i < $n; ++$i) $a[] = ints();
-for ($i = 0; $i < $m; ++$i) $c[] = ints();
+for ($i = 0; $i < $n; ++$i) {
+    $a[] = ints();
+}
+for ($i = 0; $i < $m; ++$i) {
+    $c[] = ints();
+}
 for ($i = 0; $i < $n; ++$i) {
     $min_d = PHP_INT_MAX;
     $min_j = 0;

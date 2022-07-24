@@ -1,6 +1,9 @@
 <?php
+
 list($n, $t) = ints();
-for ($i = 0; $i < $n; ++$i) list($a[], $b[]) = ints();
+for ($i = 0; $i < $n; ++$i) {
+    list($a[], $b[]) = ints();
+}
 array_multisort($a, SORT_ASC, $b);
 // dp[i][t] = s
 // i番目までの料理のうち、t未満で食べ切れる満足度の最大値s
@@ -15,7 +18,9 @@ for ($i = 0; $i < $n; ++$i) {
     }
 }
 $ans = 0;
-for ($i = 0; $i < $n; ++$i) $ans = max($ans, $dp[$i][$t] + $b[$i]);
+for ($i = 0; $i < $n; ++$i) {
+    $ans = max($ans, $dp[$i][$t] + $b[$i]);
+}
 echo $ans;
 function ints()
 {

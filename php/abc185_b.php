@@ -1,4 +1,5 @@
 <?php
+
 fscanf(STDIN, '%d %d %d', $n, $m, $t);
 $_n = $n;
 $now = 0;

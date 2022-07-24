@@ -1,4 +1,5 @@
 <?php
+
 $start = microtime(true);
 list($n) = ints();
 $k = 26;
@@ -10,7 +11,9 @@ for ($i = 1; $i <= $n; ++$i) {
     for ($p = 0; $p < $k; ++$p) {
         $ts = ($score[$i - 1] ?? 0) + $s[$i][$p];
         for ($q = 0; $q < $k; ++$q) {
-            if ($p === $q) continue;
+            if ($p === $q) {
+                continue;
+            }
             $ts -= $c[$q] * ($i - $last[$q]);
         }
         if ($ts > $max) {
@@ -37,7 +40,9 @@ while (true) {
             }
         }
         $now = microtime(true);
-        if ($now - $start > 1.9) break 2;
+        if ($now - $start > 1.9) {
+            break 2;
+        }
     }
 }
 echo implode(PHP_EOL, $ans);

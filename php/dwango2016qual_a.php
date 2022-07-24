@@ -1,4 +1,5 @@
 <?php
+
 list($n) = ints();
 echo intdiv($n, 25) . PHP_EOL;
 function ints()

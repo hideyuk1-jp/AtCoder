@@ -1,4 +1,5 @@
 <?php
+
 $a = ints();
 echo count(array_unique($a));
 function ints()

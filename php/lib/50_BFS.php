@@ -1,4 +1,5 @@
 <?php
+
 // グラフ：頂点と辺の総数のあと改行して改行区切りの辺の集合
 fscanf(STDIN, '%d %d', $n, $m);
 for ($i  = 0; $i < $m; $i++) {
@@ -20,7 +21,9 @@ while (!$q->isEmpty()) {
     $v = $q->dequeue();
 
     foreach ($g[$v] as $next_v) {
-        if ($dist[$next_v] !== -1) continue; // 発見済み
+        if ($dist[$next_v] !== -1) {
+            continue;
+        } // 発見済み
 
         $dist[$next_v] = $dist[$v] + 1;
         $q->enqueue($next_v);
@@ -37,7 +40,9 @@ $q = new SplQueue(); // キューを用意
 $dist = array_fill(0, $n, -1); // 距離を格納する配列（-1の場合はその頂点が未発見）
 
 for ($i = 0; $i < $n; $i++) {
-    if ($dist[$i] !== -1) continue; // 発見済み
+    if ($dist[$i] !== -1) {
+        continue;
+    } // 発見済み
     $dist[$i] = 0; // 頂点$iからの距離格納配列
     $q->enqueue($i); // キューに$iを追加
     while (!$q->isEmpty()) {
@@ -57,5 +62,8 @@ for ($i = 0; $i < $n; $i++) {
     }
 }
 
-if ($is_nipartite) echo 'YES' . PHP_EOL;
-else echo 'NO' . PHP_EOL;
+if ($is_nipartite) {
+    echo 'YES' . PHP_EOL;
+} else {
+    echo 'NO' . PHP_EOL;
+}

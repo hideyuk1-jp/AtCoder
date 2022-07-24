@@ -1,4 +1,5 @@
 <?php
+
 list($a, $b, $c) = ints();
 list($k) = ints();
 $cnt = 0;

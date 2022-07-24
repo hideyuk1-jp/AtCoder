@@ -1,4 +1,5 @@
 <?php
+
 list($n) = ints();
 list($a) = ints();
 echo $n * $n - $a;

@@ -1,4 +1,5 @@
 <?php
+
 list($s) = strs();
 $a = substr_info($s);
 $ans = '';
