@@ -49,9 +49,13 @@ class WarshallFloyd
         $n = $this->n;
         $d = $this->d;
         for ($k = 0; $k < $n; ++$k) { // 経由点
+            $dk = &$d[$k];
             for ($i = 0; $i < $n; ++$i) { // 始点
+                $di = &$d[$i];
                 for ($j = 0; $j < $n; ++$j) { // 終点
-                    $d[$i][$j] = min($d[$i][$j], $d[$i][$k] + $d[$k][$j]);
+                    if ($di[$k] + $dk[$j] < $di[$j]) {
+                        $di[$j] = $di[$k] + $dk[$j];
+                    }
                 }
             }
         }
